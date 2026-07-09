@@ -3,7 +3,7 @@
 This is the easiest no-extra-service workflow:
 
 1. Mysbah uploads images or videos in GitHub.
-2. She edits one JSON file.
+2. If she uses the fixed video slot names, she does not need to edit code.
 3. GitHub saves the change.
 4. Vercel automatically redeploys the website.
 
@@ -27,7 +27,7 @@ Assembler-Fourier/ugcbymysbah
 main
 ```
 
-After this, every push/commit to `main` will publish the live website.
+This is already connected for `ugcbymysbah`. Every push/commit to `main` should publish the live website.
 
 ## Add A Portfolio Video
 
@@ -46,39 +46,34 @@ public/videos
 ```
 
 3. Click **Add file** -> **Upload files**.
-4. Upload the video.
-5. Name files with lowercase letters and hyphens, for example:
+4. Upload the video with one of these exact names:
 
 ```text
-skincare-demo.mp4
-travel-hotel-review.mp4
-beauty-unboxing.mp4
+01-lifestyle-creator-intro.mp4
+02-beauty-demo-routine.mp4
+03-travel-nomad-story.mp4
+04-wellness-testimonial-hook.mp4
+05-skincare-texture-shot.mp4
+06-unboxing-friend-rec-energy.mp4
 ```
 
-6. Commit the upload.
+5. Commit the upload to `main`.
+6. Vercel will redeploy automatically.
 
-## Put The Video On The Website
+The website already knows where each of those files belongs. If the file exists, the matching card becomes a video. If it does not exist, the card stays as a designed placeholder.
 
-1. Open:
+## Video Slot Map
 
-```text
-data/portfolio-items.json
-```
+| Upload this file | Goes into this card |
+| --- | --- |
+| `01-lifestyle-creator-intro.mp4` | Lifestyle / Creator intro |
+| `02-beauty-demo-routine.mp4` | Beauty / Demo routine |
+| `03-travel-nomad-story.mp4` | Travel / Nomad story |
+| `04-wellness-testimonial-hook.mp4` | Wellness / Testimonial hook |
+| `05-skincare-texture-shot.mp4` | Skincare / Texture shot |
+| `06-unboxing-friend-rec-energy.mp4` | Unboxing / Friend-rec energy |
 
-2. Click the pencil/edit button.
-3. Add a `videoSrc` line to the card you want to replace:
-
-```json
-{
-  "title": "Skincare",
-  "type": "Texture shot",
-  "color": "from-[#b54868] to-[#f6c453]",
-  "videoSrc": "/videos/skincare-demo.mp4"
-}
-```
-
-4. Commit the change.
-5. Wait for Vercel to redeploy.
+There are matching `.placeholder.txt` files inside `public/videos` so she can see the slots in GitHub.
 
 ## Add A Poster Image
 
@@ -90,7 +85,13 @@ If the video needs a thumbnail/poster:
 public/images
 ```
 
-2. Add `imageSrc` beside `videoSrc`:
+2. Open:
+
+```text
+data/portfolio-items.json
+```
+
+3. Add or change `imageSrc` beside the matching `videoSrc`:
 
 ```json
 {
@@ -98,7 +99,7 @@ public/images
   "type": "Texture shot",
   "color": "from-[#b54868] to-[#f6c453]",
   "imageSrc": "/images/skincare-poster.jpeg",
-  "videoSrc": "/videos/skincare-demo.mp4"
+  "videoSrc": "/videos/05-skincare-texture-shot.mp4"
 }
 ```
 

@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -60,6 +62,14 @@ type ContentSample = {
 };
 
 const contentSamples = portfolioItems as ContentSample[];
+
+function publicFileExists(src?: string) {
+  if (!src) {
+    return false;
+  }
+
+  return existsSync(join(process.cwd(), "public", src.replace(/^\//, "")));
+}
 
 const services = [
   "Paid ad UGC",
@@ -208,13 +218,15 @@ function PhoneFrame({
   sample: (typeof contentSamples)[number];
   index: number;
 }) {
+  const hasVideo = publicFileExists(sample.videoSrc);
+
   return (
     <article className="group relative rounded-[2rem] bg-[#111] p-2 shadow-[0_20px_45px_rgba(0,0,0,0.2)] transition duration-500 hover:-translate-y-2 hover:rotate-1">
       <div className="absolute -top-4 left-5 z-10 grid size-12 place-items-center rounded-full border-4 border-white bg-white text-xs font-black text-[#17120f] shadow-soft">
         {index + 1}
       </div>
       <div className="relative aspect-[9/16] overflow-hidden rounded-[1.55rem] bg-black">
-        {sample.videoSrc ? (
+        {hasVideo ? (
           <video
             src={sample.videoSrc}
             poster={sample.imageSrc}

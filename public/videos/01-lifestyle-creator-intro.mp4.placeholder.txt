@@ -1,0 +1,5 @@
+Replace this slot by uploading a real MP4 named:
+
+01-lifestyle-creator-intro.mp4
+
+This appears in the Lifestyle / Creator intro card.

@@ -3,32 +3,38 @@
     "title": "Lifestyle",
     "type": "Creator intro",
     "color": "from-[#ff7aa2] to-[#ffbd59]",
-    "imageSrc": "/images/mysbah-hero.jpeg"
+    "imageSrc": "/images/mysbah-hero.jpeg",
+    "videoSrc": "/videos/01-lifestyle-creator-intro.mp4"
   },
   {
     "title": "Beauty",
     "type": "Demo / routine",
-    "color": "from-[#1e1717] to-[#b54868]"
+    "color": "from-[#1e1717] to-[#b54868]",
+    "videoSrc": "/videos/02-beauty-demo-routine.mp4"
   },
   {
     "title": "Travel",
     "type": "Nomad story",
     "color": "from-[#2a2721] to-[#4bb5b0]",
-    "imageSrc": "/images/mysbah-travel.jpeg"
+    "imageSrc": "/images/mysbah-travel.jpeg",
+    "videoSrc": "/videos/03-travel-nomad-story.mp4"
   },
   {
     "title": "Wellness",
     "type": "Testimonial hook",
-    "color": "from-[#45322e] to-[#8ab17d]"
+    "color": "from-[#45322e] to-[#8ab17d]",
+    "videoSrc": "/videos/04-wellness-testimonial-hook.mp4"
   },
   {
     "title": "Skincare",
     "type": "Texture shot",
-    "color": "from-[#b54868] to-[#f6c453]"
+    "color": "from-[#b54868] to-[#f6c453]",
+    "videoSrc": "/videos/05-skincare-texture-shot.mp4"
   },
   {
     "title": "Unboxing",
     "type": "Friend-rec energy",
-    "color": "from-[#17120f] to-[#7d5fff]"
+    "color": "from-[#17120f] to-[#7d5fff]",
+    "videoSrc": "/videos/06-unboxing-friend-rec-energy.mp4"
   }
 ]

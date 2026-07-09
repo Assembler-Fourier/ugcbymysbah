@@ -110,9 +110,9 @@ docs/MYSBAH_EDITING_GUIDE.md
 To add real media later:
 
 1. Add images or short video thumbnails to `public/images/`.
-2. Open `app/page.tsx` and replace the hero image path or portfolio sample image paths.
-3. Keep the image files compressed for performance.
-4. Keep video files compressed for performance. For heavier videos, host them externally and link or embed them carefully.
+2. Add portfolio videos to the fixed slots in `public/videos/`.
+3. Edit portfolio text or paths in `data/portfolio-items.json`.
+4. Keep image and video files compressed for performance. For heavier videos, host them externally and link or embed them carefully.
 
 Helpful code comments are already included near the relevant media sections.
 
