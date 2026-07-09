@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Lifestyle",
+    "type": "Creator intro",
+    "color": "from-[#ff7aa2] to-[#ffbd59]",
+    "imageSrc": "/images/mysbah-hero.jpeg"
+  },
+  {
+    "title": "Beauty",
+    "type": "Demo / routine",
+    "color": "from-[#1e1717] to-[#b54868]"
+  },
+  {
+    "title": "Travel",
+    "type": "Nomad story",
+    "color": "from-[#2a2721] to-[#4bb5b0]",
+    "imageSrc": "/images/mysbah-travel.jpeg"
+  },
+  {
+    "title": "Wellness",
+    "type": "Testimonial hook",
+    "color": "from-[#45322e] to-[#8ab17d]"
+  },
+  {
+    "title": "Skincare",
+    "type": "Texture shot",
+    "color": "from-[#b54868] to-[#f6c453]"
+  },
+  {
+    "title": "Unboxing",
+    "type": "Friend-rec energy",
+    "color": "from-[#17120f] to-[#7d5fff]"
+  }
+]

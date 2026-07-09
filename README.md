@@ -101,6 +101,12 @@ No database, paid service, or environment variables are required.
 
 The current build uses `public/images/mysbah-hero.jpeg` for the main creator image and `public/images/mysbah-travel.jpeg` for the travel image. Designed portfolio placeholders are ready for future UGC work.
 
+For the easiest editing workflow, use:
+
+```text
+docs/MYSBAH_EDITING_GUIDE.md
+```
+
 To add real media later:
 
 1. Add images or short video thumbnails to `public/images/`.

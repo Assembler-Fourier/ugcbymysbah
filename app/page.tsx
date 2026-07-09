@@ -17,6 +17,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { contactEmail, mailtoLink } from "@/data/site";
+import portfolioItems from "@/data/portfolio-items.json";
 
 const navItems = [
   { label: "Contact", href: "#contact" },
@@ -50,40 +51,15 @@ const brandLogos = [
   { name: "Yango", label: "Mobility app", logo: "/logos/yango.png" },
 ];
 
-const contentSamples = [
-  {
-    title: "Lifestyle",
-    type: "Creator intro",
-    color: "from-[#ff7aa2] to-[#ffbd59]",
-    imageSrc: "/images/mysbah-hero.jpeg",
-  },
-  {
-    title: "Beauty",
-    type: "Demo / routine",
-    color: "from-[#1e1717] to-[#b54868]",
-  },
-  {
-    title: "Travel",
-    type: "Nomad story",
-    color: "from-[#2a2721] to-[#4bb5b0]",
-    imageSrc: "/images/mysbah-travel.jpeg",
-  },
-  {
-    title: "Wellness",
-    type: "Testimonial hook",
-    color: "from-[#45322e] to-[#8ab17d]",
-  },
-  {
-    title: "Skincare",
-    type: "Texture shot",
-    color: "from-[#b54868] to-[#f6c453]",
-  },
-  {
-    title: "Unboxing",
-    type: "Friend-rec energy",
-    color: "from-[#17120f] to-[#7d5fff]",
-  },
-];
+type ContentSample = {
+  title: string;
+  type: string;
+  color: string;
+  imageSrc?: string;
+  videoSrc?: string;
+};
+
+const contentSamples = portfolioItems as ContentSample[];
 
 const services = [
   "Paid ad UGC",
@@ -238,7 +214,16 @@ function PhoneFrame({
         {index + 1}
       </div>
       <div className="relative aspect-[9/16] overflow-hidden rounded-[1.55rem] bg-black">
-        {sample.imageSrc ? (
+        {sample.videoSrc ? (
+          <video
+            src={sample.videoSrc}
+            poster={sample.imageSrc}
+            controls
+            playsInline
+            preload="metadata"
+            className="size-full object-cover"
+          />
+        ) : sample.imageSrc ? (
           <Image
             src={sample.imageSrc}
             alt={`${sample.title} UGC creator sample`}
