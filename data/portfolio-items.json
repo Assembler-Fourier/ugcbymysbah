@@ -3,7 +3,7 @@
     "title": "Lifestyle",
     "type": "Creator intro",
     "color": "from-[#ff7aa2] to-[#ffbd59]",
-    "imageSrc": "/images/mysbah-hero.jpeg",
+    "imageSrc": "/images/00-main-profile-photo.jpeg",
     "videoSrc": "/videos/01-lifestyle-creator-intro.mp4"
   },
   {
@@ -16,7 +16,7 @@
     "title": "Travel",
     "type": "Nomad story",
     "color": "from-[#2a2721] to-[#4bb5b0]",
-    "imageSrc": "/images/mysbah-travel.jpeg",
+    "imageSrc": "/images/00-travel-profile-photo.jpeg",
     "videoSrc": "/videos/03-travel-nomad-story.mp4"
   },
   {

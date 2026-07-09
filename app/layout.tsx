@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "UGC by Mysbah",
     images: [
       {
-        url: "/images/mysbah-hero.jpeg",
+        url: "/images/00-main-profile-photo.jpeg",
         width: 960,
         height: 1280,
         alt: "Mysbah UGC creator portfolio profile image",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "UGC by Mysbah | TikTok & Reels UGC Creator",
     description:
       "Lifestyle, beauty, and travel UGC that feels real and performs like paid media.",
-    images: ["/images/mysbah-hero.jpeg"],
+    images: ["/images/00-main-profile-photo.jpeg"],
   },
   icons: {
     icon: "/favicon.svg",

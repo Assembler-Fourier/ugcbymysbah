@@ -1,0 +1,5 @@
+Replace this slot by uploading a real JPEG named:
+
+00-main-profile-photo.jpeg
+
+This appears as the top hero photo, social preview image, and Lifestyle portfolio card.

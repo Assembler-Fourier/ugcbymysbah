@@ -99,11 +99,12 @@ No database, paid service, or environment variables are required.
 
 ## Replacing Placeholder Media
 
-The current build uses `public/images/mysbah-hero.jpeg` for the main creator image and `public/images/mysbah-travel.jpeg` for the travel image. Designed portfolio placeholders are ready for future UGC work.
+The current build uses `public/images/00-main-profile-photo.jpeg` for the main creator image and `public/images/00-travel-profile-photo.jpeg` for the travel image. Designed portfolio placeholders are ready for future UGC work.
 
 For the easiest editing workflow, use:
 
 ```text
+MYSBAH_START_HERE.md
 docs/MYSBAH_EDITING_GUIDE.md
 ```
 

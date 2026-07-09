@@ -371,7 +371,7 @@ export default function Home() {
               <div className="w-full rounded-[2.35rem] bg-[#17120f] p-2.5 shadow-glow">
                 <div className="relative aspect-[3/4] overflow-hidden rounded-[1.7rem] bg-[#f6ebe6]">
                   <Image
-                    src="/images/mysbah-hero.jpeg"
+                    src="/images/00-main-profile-photo.jpeg"
                     alt="Mysbah in a pink top, main UGC creator portrait"
                     fill
                     priority

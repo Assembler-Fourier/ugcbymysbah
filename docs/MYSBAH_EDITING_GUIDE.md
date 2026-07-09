@@ -7,6 +7,42 @@ This is the easiest no-extra-service workflow:
 3. GitHub saves the change.
 4. Vercel automatically redeploys the website.
 
+For the shortest version, use:
+
+```text
+MYSBAH_START_HERE.md
+```
+
+## Give Mysbah Access To Edit
+
+Do this from your GitHub account:
+
+1. Open the repo:
+
+```text
+https://github.com/Assembler-Fourier/ugcbymysbah
+```
+
+2. Click **Settings**.
+3. Click **Collaborators & teams** in the left sidebar.
+4. Click **Add people**.
+5. Search her GitHub username or email.
+6. Give her **Write** access.
+7. Send the invite.
+
+She needs to accept the invite before she can upload files or commit changes.
+
+## Change Profile Pictures
+
+Use these exact image names:
+
+| File name | Where it appears |
+| --- | --- |
+| `public/images/00-main-profile-photo.jpeg` | Top hero photo, social preview image, Lifestyle card |
+| `public/images/00-travel-profile-photo.jpeg` | Travel portfolio card |
+
+To replace one, upload a new JPEG with the exact same name. If GitHub says the file already exists, delete the old one first, then upload the new one.
+
 ## One-Time Vercel Auto-Deploy Setup
 
 Do this once in Vercel:
