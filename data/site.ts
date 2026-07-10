@@ -280,6 +280,10 @@ export const testimonialPlaceholders = [
 ];
 
 export const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/mysbahdoingugc/",
+  },
   { label: "TikTok", href: "https://www.tiktok.com/@mysbah_ugc" },
   {
     label: "LinkedIn",

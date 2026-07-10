@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  AtSign,
   BriefcaseBusiness,
   CalendarDays,
   Camera,
@@ -35,6 +36,7 @@ const navItems = [
 const linkedinUrl = "https://www.linkedin.com/in/misbah-ahmad-401076214/";
 const upworkUrl =
   "https://www.upwork.com/freelancers/~010ac3ca797266679e";
+const instagramUrl = "https://www.instagram.com/mysbahdoingugc/";
 const tiktokUrl = "https://www.tiktok.com/@mysbah_ugc";
 const bookCallLink =
   "mailto:misbahugcwork@gmail.com?subject=Book%20a%20Call%20with%20Mysbah";
@@ -147,6 +149,7 @@ const verifiedReviewCards = [
 ];
 
 const socialLinks = [
+  { label: "Instagram", href: instagramUrl, icon: AtSign },
   { label: "TikTok", href: tiktokUrl, icon: Music2 },
   { label: "LinkedIn", href: linkedinUrl, icon: Network },
   { label: "Upwork", href: upworkUrl, icon: BriefcaseBusiness },
@@ -155,12 +158,15 @@ const socialLinks = [
 
 function ProofTicker() {
   const proofItems = [
+    "@mysbahdoingugc on Instagram",
+    "Instagram-first UGC creator",
+    "@mysbah_ugc on TikTok",
     "5.0 (5) Upwork rating",
     "100% Job Success",
     "Rising Talent on Upwork",
     "8 Upwork jobs",
-    "UGC Creator | TikTok & short-form ads",
-    "@mysbah_ugc on TikTok",
+    "LinkedIn profile proof",
+    "UGC Creator | Reels, TikTok & short-form ads",
   ];
 
   return (
@@ -270,14 +276,14 @@ export default function Home() {
             ))}
           </nav>
           <Link
-            href={tiktokUrl}
+            href={instagramUrl}
             target="_blank"
             rel="noreferrer"
-            aria-label="Follow Mysbah on TikTok at @mysbah_ugc"
+            aria-label="Follow Mysbah on Instagram at @mysbahdoingugc"
             className="focus-ring hidden min-h-9 shrink-0 items-center gap-2 rounded-full bg-white px-3 text-xs font-black text-[#17120f] transition hover:-translate-y-0.5 hover:bg-[#a8c686] lg:inline-flex"
           >
-            <Music2 aria-hidden="true" size={15} />
-            @mysbah_ugc
+            <AtSign aria-hidden="true" size={15} />
+            @mysbahdoingugc
           </Link>
         </div>
       </header>
@@ -331,15 +337,29 @@ export default function Home() {
                 <Video aria-hidden="true" size={18} />
                 Watch Samples
               </Link>
-              <Link
-                href={tiktokUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="focus-ring col-span-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#17120f]/15 bg-white px-5 text-sm font-black shadow-soft transition hover:-translate-y-1 hover:border-[#b54868]/40 sm:col-auto sm:min-h-12"
-              >
-                <Music2 aria-hidden="true" size={18} />
-                @mysbah_ugc
-              </Link>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {socialLinks
+                .filter((link) => link.label !== "Email")
+                .map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-4 text-xs font-black shadow-sm transition hover:-translate-y-1 ${
+                      link.label === "Instagram"
+                        ? "bg-[#17120f] text-white hover:bg-[#b54868]"
+                        : "border border-[#17120f]/10 bg-white text-[#17120f] hover:border-[#b54868]/40"
+                    }`}
+                  >
+                    <link.icon aria-hidden="true" size={16} />
+                    {link.label === "Instagram"
+                      ? "@mysbahdoingugc"
+                      : link.label}
+                  </Link>
+                ))}
             </div>
 
             <div className="mt-6 flex flex-nowrap gap-3 overflow-x-auto pb-2 text-sm font-black [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap sm:overflow-visible sm:pb-0">
@@ -357,7 +377,7 @@ export default function Home() {
               </span>
               <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
                 <Video aria-hidden="true" size={16} />
-                TikTok + Reels UGC
+                Instagram + TikTok UGC
               </span>
               <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
                 <MapPin aria-hidden="true" size={16} />
@@ -512,13 +532,13 @@ export default function Home() {
               <ArrowRight aria-hidden="true" size={17} />
             </Link>
             <Link
-              href={tiktokUrl}
+              href={instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#17120f]/16 bg-white/82 px-6 text-sm font-black transition hover:-translate-y-1 hover:bg-white"
             >
-              <Music2 aria-hidden="true" size={18} />
-              See @mysbah_ugc
+              <AtSign aria-hidden="true" size={18} />
+              See @mysbahdoingugc
             </Link>
           </div>
         </div>
@@ -567,6 +587,15 @@ export default function Home() {
                 Verify the public proof and professional profile here.
               </p>
               <div className="flex flex-col gap-2 sm:flex-row">
+                <Link
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring inline-flex items-center justify-center gap-2 rounded-full bg-[#a8c686] px-4 py-2.5 text-sm font-black text-[#17120f] transition hover:bg-white"
+                >
+                  Instagram
+                  <ExternalLink aria-hidden="true" size={15} />
+                </Link>
                 <Link
                   href={upworkUrl}
                   target="_blank"

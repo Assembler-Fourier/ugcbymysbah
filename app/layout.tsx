@@ -10,11 +10,13 @@ export const metadata: Metadata = {
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Short, creative UGC landing page for Mysbah, a lifestyle, beauty, and travel UGC creator making TikTok and Reels content that feels real and performs like paid media.",
+    "Short, creative UGC landing page for Mysbah, a lifestyle, beauty, and travel UGC creator making Instagram Reels, TikTok, and short-form content that feels real and performs like paid media.",
   keywords: [
     "UGC creator",
     "TikTok ad creator",
     "Reels ad creator",
+    "Instagram UGC creator",
+    "Instagram Reels creator",
     "short-form video creator",
     "beauty UGC creator",
     "skincare UGC creator",
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "UGC by Mysbah | Lifestyle, Beauty & Travel Creator",
     description:
-      "Content that does not look like an ad, but performs like one. Lifestyle, beauty, travel, product demos, testimonials, and short-form UGC.",
+      "Content that does not look like an ad, but performs like one. Lifestyle, beauty, travel, Instagram Reels, TikTok, product demos, testimonials, and short-form UGC.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
     images: [
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UGC by Mysbah | TikTok & Reels UGC Creator",
+    title: "UGC by Mysbah | Instagram Reels & TikTok UGC Creator",
     description:
       "Lifestyle, beauty, and travel UGC that feels real and performs like paid media.",
     images: ["/images/00-main-profile-photo.jpeg"],

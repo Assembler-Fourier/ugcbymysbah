@@ -20,6 +20,7 @@ https://workwithmisbah.vercel.app
 - SEO metadata and Open Graph metadata
 - Compact hero, animated logo ticker, portfolio samples, services, proof/reviews, CTA, and contact sections
 - Direct email booking and collaboration CTAs
+- Instagram profile link for `@mysbahdoingugc`
 - TikTok profile link for `@mysbah_ugc`
 - Clean edit-friendly content in `app/page.tsx`
 - Placeholder media slots ready for real UGC videos/images
@@ -128,7 +129,7 @@ app/page.tsx
 Update this file to change:
 
 - Navigation labels
-- Email, TikTok, LinkedIn, and Upwork links
+- Email, Instagram, TikTok, LinkedIn, and Upwork links
 - Services
 - Brand logo ticker items
 - Portfolio cards and proof/review cards
@@ -144,6 +145,7 @@ mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry
 ## Notes
 
 - The public landing page uses the client-provided display name **Mysbah**.
+- Instagram uses `https://www.instagram.com/mysbahdoingugc/`.
 - TikTok uses `https://www.tiktok.com/@mysbah_ugc`.
 - No phone number or WhatsApp link is published on the website.
 - Brand logo ticker wording reflects client-provided content references.
