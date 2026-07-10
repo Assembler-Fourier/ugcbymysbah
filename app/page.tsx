@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  AtSign,
-  BriefcaseBusiness,
   CalendarDays,
   Camera,
   Check,
@@ -13,8 +11,6 @@ import {
   Heart,
   Mail,
   MapPin,
-  Music2,
-  Network,
   Play,
   Quote,
   Sparkles,
@@ -23,6 +19,7 @@ import {
   Video,
   Wand2,
 } from "lucide-react";
+import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
 import { contactEmail, mailtoLink } from "@/data/site";
 import portfolioItems from "@/data/portfolio-items.json";
 
@@ -54,7 +51,11 @@ const brandLogos = [
   },
   { name: "Orbitz", label: "Travel", logo: "/logos/orbitz.png" },
   { name: "Agoda", label: "Hotels", logo: "/logos/agoda.png" },
-  { name: "Hotel & Resorts", label: "Hospitality", logo: null },
+  {
+    name: "Hotel & Resorts",
+    label: "Hospitality",
+    logo: "/logos/hotel-resorts.svg",
+  },
   { name: "Yango", label: "Mobility app", logo: "/logos/yango.png" },
 ];
 
@@ -102,29 +103,20 @@ function LogoTicker() {
           {[...brandLogos, ...brandLogos].map((brand, index) => (
             <div
               key={`${brand.name}-${index}`}
-              className="flex h-[5.5rem] w-60 shrink-0 items-center gap-4 rounded-2xl border border-white/18 bg-white px-4 text-[#17120f] shadow-[0_18px_40px_rgba(0,0,0,0.2)] transition duration-500 hover:-translate-y-1"
+              className="flex h-[6rem] w-56 shrink-0 flex-col items-center justify-center gap-2 rounded-2xl border border-white/18 bg-white px-4 text-[#17120f] shadow-[0_18px_40px_rgba(0,0,0,0.2)] transition duration-500 hover:-translate-y-1"
             >
-            <div className="grid size-14 shrink-0 place-items-center rounded-2xl bg-[#f6ebe6] p-2">
-              {brand.logo ? (
+              <div className="grid h-12 w-full place-items-center">
                 <Image
                   src={brand.logo}
                   alt={`${brand.name} logo`}
-                  width={52}
-                  height={52}
-                  className="max-h-10 w-auto object-contain"
+                  width={140}
+                  height={58}
+                  className="max-h-12 max-w-[8.75rem] object-contain"
                 />
-              ) : (
-                <span className="text-center text-xs font-black uppercase leading-tight text-[#b54868]">
-                  H&R
-                </span>
-              )}
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-base font-black">{brand.name}</p>
-              <p className="mt-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#b54868]">
+              </div>
+              <p className="max-w-full truncate text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#b54868]">
                 {brand.label}
               </p>
-            </div>
             </div>
           ))}
         </div>
@@ -149,12 +141,16 @@ const verifiedReviewCards = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: instagramUrl, icon: AtSign },
-  { label: "TikTok", href: tiktokUrl, icon: Music2 },
-  { label: "LinkedIn", href: linkedinUrl, icon: Network },
-  { label: "Upwork", href: upworkUrl, icon: BriefcaseBusiness },
-  { label: "Email", href: mailtoLink, icon: Mail },
-];
+  { label: "Instagram", href: instagramUrl, logo: "instagram" },
+  { label: "TikTok", href: tiktokUrl, logo: "tiktok" },
+  { label: "LinkedIn", href: linkedinUrl, logo: "linkedin" },
+  { label: "Upwork", href: upworkUrl, logo: "upwork" },
+  { label: "Email", href: mailtoLink, logo: "email" },
+] satisfies Array<{
+  label: string;
+  href: string;
+  logo: SocialLogoName;
+}>;
 
 function ProofTicker() {
   const proofItems = [
@@ -282,7 +278,7 @@ export default function Home() {
             aria-label="Follow Mysbah on Instagram at @mysbahdoingugc"
             className="focus-ring hidden min-h-9 shrink-0 items-center gap-2 rounded-full bg-white px-3 text-xs font-black text-[#17120f] transition hover:-translate-y-0.5 hover:bg-[#a8c686] lg:inline-flex"
           >
-            <AtSign aria-hidden="true" size={15} />
+            <SocialLogo logo="instagram" className="size-5 shrink-0" />
             @mysbahdoingugc
           </Link>
         </div>
@@ -354,7 +350,7 @@ export default function Home() {
                         : "border border-[#17120f]/10 bg-white text-[#17120f] hover:border-[#b54868]/40"
                     }`}
                   >
-                    <link.icon aria-hidden="true" size={16} />
+                    <SocialLogo logo={link.logo} className="size-5 shrink-0" />
                     {link.label === "Instagram"
                       ? "@mysbahdoingugc"
                       : link.label}
@@ -537,7 +533,7 @@ export default function Home() {
               rel="noreferrer"
               className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#17120f]/16 bg-white/82 px-6 text-sm font-black transition hover:-translate-y-1 hover:bg-white"
             >
-              <AtSign aria-hidden="true" size={18} />
+              <SocialLogo logo="instagram" className="size-5 shrink-0" />
               See @mysbahdoingugc
             </Link>
           </div>
@@ -651,7 +647,7 @@ export default function Home() {
                   rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                   className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/16 px-4 text-sm font-black transition hover:-translate-y-1 hover:bg-white/10"
                 >
-                  <link.icon aria-hidden="true" size={16} />
+                  <SocialLogo logo={link.logo} className="size-5 shrink-0" />
                   {link.label}
                 </Link>
               ))}

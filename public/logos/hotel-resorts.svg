@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="Hotel and Resorts logo">
+  <rect width="240" height="80" rx="14" fill="#17120f"/>
+  <path fill="#a8c686" d="M28 56V24h10v12h16V24h10v32H54V45H38v11H28Z"/>
+  <path fill="#ffffff" d="M83 29h8v22h13v6H83V29Zm27 0h8v28h-8V29Zm16 0h22v6h-14v5h12v6h-12v11h-8V29Zm29 0h23v6h-15v5h13v6h-13v5h16v6h-24V29Z"/>
+  <text x="83" y="68" fill="#a8c686" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="800" letter-spacing="2.5">HOTEL &amp; RESORTS</text>
+</svg>
