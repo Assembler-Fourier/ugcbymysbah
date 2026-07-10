@@ -147,6 +147,21 @@ a {
   }
 }
 
+@keyframes portrait-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(24px) rotate(1deg) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
+.marquee-window {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
 .marquee-track {
   animation: marquee-left 24s linear infinite;
 }
@@ -157,6 +172,15 @@ a {
 
 .hero-pop {
   animation: hero-pop 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-portrait {
+  animation: portrait-reveal 1s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.marquee-track:hover,
+.review-marquee:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

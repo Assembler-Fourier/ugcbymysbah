@@ -1,7 +1,7 @@
-export const contactEmail = "misbahahmad152@gmail.com";
+export const contactEmail = "misbahugcwork@gmail.com";
 
 export const mailtoLink =
-  "mailto:misbahahmad152@gmail.com?subject=UGC%20Collaboration%20Inquiry";
+  "mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry";
 
 export const navItems = [
   { label: "About", href: "#about" },
@@ -280,8 +280,13 @@ export const testimonialPlaceholders = [
 ];
 
 export const socialLinks = [
-  // Replace these placeholder URLs with Misbah Ahmad's real public profile URLs.
-  { label: "LinkedIn", href: "#" },
-  { label: "Upwork", href: "#" },
-  { label: "Portfolio", href: "#" },
+  { label: "TikTok", href: "https://www.tiktok.com/@mysbah_ugc" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/misbah-ahmad-401076214/",
+  },
+  {
+    label: "Upwork",
+    href: "https://www.upwork.com/freelancers/~010ac3ca797266679e",
+  },
 ];

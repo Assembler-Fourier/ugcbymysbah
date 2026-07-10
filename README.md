@@ -19,8 +19,8 @@ https://workwithmisbah.vercel.app
 - Responsive mobile-first layout
 - SEO metadata and Open Graph metadata
 - Compact hero, animated logo ticker, portfolio samples, services, proof/reviews, CTA, and contact sections
-- Mailto collaboration CTA
-- Floating WhatsApp CTA
+- Direct email booking and collaboration CTAs
+- TikTok profile link for `@mysbah_ugc`
 - Clean edit-friendly content in `app/page.tsx`
 - Placeholder media slots ready for real UGC videos/images
 
@@ -128,30 +128,23 @@ app/page.tsx
 Update this file to change:
 
 - Navigation labels
-- Email, WhatsApp, LinkedIn, and Upwork links
+- Email, TikTok, LinkedIn, and Upwork links
 - Services
 - Brand logo ticker items
 - Portfolio cards and proof/review cards
-
-The Instagram URL is currently a placeholder. Replace it with Mysbah's real Instagram link when ready.
 
 ## Contact CTA
 
 The main collaboration button uses:
 
 ```text
-mailto:misbahahmad152@gmail.com?subject=UGC%20Collaboration%20Inquiry
-```
-
-The WhatsApp CTA uses:
-
-```text
-https://wa.me/923104371263
+mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry
 ```
 
 ## Notes
 
 - The public landing page uses the client-provided display name **Mysbah**.
-- The WhatsApp number is displayed through footer/social links and a floating bottom/side CTA because the client requested direct WhatsApp contact.
+- TikTok uses `https://www.tiktok.com/@mysbah_ugc`.
+- No phone number or WhatsApp link is published on the website.
 - Brand logo ticker wording reflects client-provided content references.
 - Testimonials/proof copy uses public Upwork profile signals and avoids inventing client quotes.
