@@ -1,29 +1,33 @@
 # UGC by Mysbah
 
-A short, creative, conversion-focused UGC landing page for **Mysbah**. Built with Next.js, TypeScript, and Tailwind CSS for free deployment on Vercel.
+Production-ready UGC creator portfolio for Mysbah Ahmad. Built with Next.js, TypeScript, Tailwind CSS, and Vercel.
 
-Live production URLs:
+Production URL:
 
 ```text
-https://ugcbymysbah.vercel.app
-https://ugcbymisbah.vercel.app
-https://misbahugc.vercel.app
-https://mysbahbutt.vercel.app
-https://misbahahmad.vercel.app
-https://workwithmisbah.vercel.app
+https://ugcbymysbah.com
 ```
 
-## What This Site Includes
+Repository:
 
-- Static-first Next.js App Router website
-- Responsive mobile-first layout
-- SEO metadata and Open Graph metadata
-- Compact hero, animated logo ticker, portfolio samples, services, proof/reviews, CTA, and contact sections
-- Direct email booking and collaboration CTAs
-- Instagram profile link for `@mysbahdoingugc`
-- TikTok profile link for `@mysbah_ugc`
-- Clean edit-friendly content in `app/page.tsx`
-- Placeholder media slots ready for real UGC videos/images
+```text
+https://github.com/Assembler-Fourier/ugcbymysbah
+```
+
+## Features
+
+- Responsive, conversion-focused creator landing page
+- Custom pink, sage, charcoal, and white visual system
+- Automatic portfolio discovery from `public/videos`
+- Lightweight poster-based cards with one-at-a-time video playback
+- Horizontal portfolio rail that stays compact as more videos are added
+- Brand carousel and public Upwork proof
+- Correct Instagram, TikTok, LinkedIn, Upwork, and email links
+- SEO metadata for UGC creator searches in Pakistan
+- Person, service, website, and FAQ structured data
+- Dynamic Open Graph image, sitemap, robots, and web manifest
+- Canonical custom-domain redirects
+- No database, paid service, or environment variable required
 
 ## Local Setup
 
@@ -32,121 +36,72 @@ npm install
 npm run dev
 ```
 
-On Windows PowerShell, if script execution policy blocks `npm`, use `npm.cmd install`, `npm.cmd run dev`, and `npm.cmd run build`.
+Open `http://localhost:3000`.
 
-Open the local URL shown in your terminal, usually:
+On Windows PowerShell, use `npm.cmd` if script execution policy blocks `npm`.
 
-```bash
-http://localhost:3000
-```
-
-## Build
+## Production Build
 
 ```bash
+npm run lint
 npm run build
-```
-
-Optional production preview:
-
-```bash
 npm run start
 ```
 
 ## Docker
 
-Build the production image:
-
 ```bash
 docker build -t ugcbymysbah .
-```
-
-Run it locally:
-
-```bash
 docker run --rm -p 3000:3000 ugcbymysbah
 ```
 
-Then open:
+The Docker image uses Next.js standalone output.
 
-```bash
-http://localhost:3000
-```
+## Vercel Deployment
 
-The Docker build uses Next.js standalone output, so the runtime image only copies the production server, static assets, and public files.
+The GitHub `main` branch is connected to the Vercel project `ugcbymysbah`. Each commit to `main` deploys automatically.
 
-## Deploy Free on Vercel
+For a fresh Vercel import:
 
-Recommended clean Vercel project/link options:
+1. Import `Assembler-Fourier/ugcbymysbah` in Vercel.
+2. Keep the detected framework as Next.js.
+3. Use `npm install` and `npm run build`.
+4. Leave the output directory at its default.
+5. Set `main` as the production branch.
+6. Add `ugcbymysbah.com` and `www.ugcbymysbah.com` to the project domains.
 
-- `https://ugcbymysbah.vercel.app`
-- `https://ugcbymisbah.vercel.app`
-- `https://misbahugc.vercel.app`
-- `https://mysbahbutt.vercel.app`
-- `https://misbahahmad.vercel.app`
-- `https://workwithmisbah.vercel.app`
+## Add Videos
 
-1. Push this project to a GitHub repository.
-2. Go to [Vercel](https://vercel.com/).
-3. Choose **Add New Project**.
-4. Import the repository.
-5. Keep the default framework setting as **Next.js**.
-6. Use these build settings:
-   - Install command: `npm install`
-   - Build command: `npm run build`
-   - Output directory: leave blank/default
-7. Deploy on the free Hobby plan.
-
-No database, paid service, or environment variables are required.
-
-## Replacing Placeholder Media
-
-The current build uses `public/images/00-main-profile-photo.jpeg` for the main creator image and `public/images/00-travel-profile-photo.jpeg` for the travel image. Designed portfolio placeholders are ready for future UGC work.
-
-For the easiest editing workflow, use:
+Upload any `.mp4` or `.webm` to:
 
 ```text
-MYSBAH_START_HERE.md
-docs/MYSBAH_EDITING_GUIDE.md
+public/videos
 ```
 
-To add real media later:
-
-1. Add images or short video thumbnails to `public/images/`.
-2. Add portfolio videos to the fixed slots in `public/videos/`.
-3. Edit portfolio text or paths in `data/portfolio-items.json`.
-4. Keep image and video files compressed for performance. For heavier videos, host them externally and link or embed them carefully.
-
-Helpful code comments are already included near the relevant media sections.
-
-## Editing Copy and Links
-
-Most visible landing page content lives in:
+Numbered filenames control portfolio order:
 
 ```text
-app/page.tsx
+07-product-demo.mp4
+08-travel-story.mp4
+09-skincare-testimonial.mp4
 ```
 
-Update this file to change:
+Every file appears automatically. The entire library remains available without making the page longer.
 
-- Navigation labels
-- Email, Instagram, TikTok, LinkedIn, and Upwork links
-- Services
-- Brand logo ticker items
-- Portfolio cards and proof/review cards
-
-## Contact CTA
-
-The main collaboration button uses:
+For an optional thumbnail, upload a JPG with the same base name:
 
 ```text
-mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry
+public/images/video-posters/07-product-demo.jpg
 ```
 
-## Notes
+See `MYSBAH_START_HERE.md` for the shortest editor workflow and `docs/MYSBAH_EDITING_GUIDE.md` for full instructions.
 
-- The public landing page uses the client-provided display name **Mysbah**.
-- Instagram uses `https://www.instagram.com/mysbahdoingugc/`.
-- TikTok uses `https://www.tiktok.com/@mysbah_ugc`.
-- No phone number or WhatsApp link is published on the website.
-- Brand logo ticker wording reflects client-provided content references.
-- Testimonials/proof copy uses public Upwork profile signals and avoids inventing client quotes.
+## Public Contact Links
+
+- Instagram: `https://www.instagram.com/mysbahdoingugc__/`
+- TikTok: `https://www.tiktok.com/@mysbah_ugc`
+- LinkedIn: `https://www.linkedin.com/in/misbah-ahmad-401076214/`
+- Upwork: `https://www.upwork.com/freelancers/~010ac3ca797266679e`
+- Email: `misbahugcwork@gmail.com`
+
+No phone number or WhatsApp link is published.

@@ -102,7 +102,7 @@ export function SocialLogo({ logo, className = "size-4" }: SocialLogoProps) {
           fontFamily="Arial, Helvetica, sans-serif"
           fontSize="19"
           fontWeight="800"
-          letterSpacing="-1"
+          letterSpacing="0"
           textAnchor="middle"
         >
           up

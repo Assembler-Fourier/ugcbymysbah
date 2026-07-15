@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = "https://ugcbymysbah.vercel.app";
+const siteUrl = "https://ugcbymysbah.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "UGC by Mysbah",
   title: {
-    default: "UGC by Mysbah | Lifestyle, Beauty & Travel UGC Creator",
+    default: "UGC Creator in Pakistan | UGC by Mysbah",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Short, creative UGC landing page for Mysbah, a lifestyle, beauty, and travel UGC creator making Instagram Reels, TikTok, and short-form content that feels real and performs like paid media.",
+    "Meet Mysbah Ahmad, a Pakistan-based UGC creator producing beauty, skincare, lifestyle, travel, TikTok, Reels, product demo, and testimonial videos for brands worldwide.",
   keywords: [
-    "UGC creator",
+    "UGC creator in Pakistan",
+    "Pakistan UGC creator",
+    "best UGC creator in Pakistan",
+    "top UGC creator in Pakistan",
     "TikTok ad creator",
     "Reels ad creator",
     "Instagram UGC creator",
@@ -25,40 +29,59 @@ export const metadata: Metadata = {
     "product demo videos",
     "testimonial videos",
     "UGC portfolio",
-    "Mysbah",
+    "Mysbah Ahmad",
+    "Mysbah Butt",
+    "UGC by Mysbah",
   ],
-  authors: [{ name: "Mysbah" }],
-  creator: "Mysbah",
-  publisher: "Mysbah",
+  authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
+  creator: "Mysbah Ahmad",
+  publisher: "UGC by Mysbah",
+  category: "Marketing",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
-    title: "UGC by Mysbah | Lifestyle, Beauty & Travel Creator",
+    title: "UGC Creator in Pakistan | UGC by Mysbah",
     description:
-      "Content that does not look like an ad, but performs like one. Lifestyle, beauty, travel, Instagram Reels, TikTok, product demos, testimonials, and short-form UGC.",
+      "Beauty, skincare, lifestyle, and travel UGC that feels natural and performs with paid-media clarity.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
     images: [
       {
-        url: "/images/00-main-profile-photo.jpeg",
-        width: 960,
-        height: 1280,
-        alt: "Mysbah UGC creator portfolio profile image",
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Mysbah Ahmad, UGC creator in Pakistan",
       },
     ],
-    locale: "en_US",
+    locale: "en_PK",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "UGC by Mysbah | Instagram Reels & TikTok UGC Creator",
+    title: "UGC Creator in Pakistan | UGC by Mysbah",
     description:
-      "Lifestyle, beauty, and travel UGC that feels real and performs like paid media.",
-    images: ["/images/00-main-profile-photo.jpeg"],
+      "Beauty, skincare, lifestyle, and travel UGC by Mysbah Ahmad.",
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: "/favicon.svg",
+  },
+  manifest: "/manifest.webmanifest",
+  other: {
+    "geo.region": "PK",
+    "geo.placename": "Pakistan",
   },
 };
 
@@ -68,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-PK" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

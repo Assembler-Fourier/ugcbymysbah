@@ -1,7 +1,7 @@
 export const contactEmail = "misbahugcwork@gmail.com";
 
 export const mailtoLink =
-  "mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry";
+  "mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry&body=Hi%20Mysbah%2C%0A%0ABrand%3A%20%0ACampaign%20goal%3A%20%0ADeliverables%3A%20%0ATimeline%3A%20%0A%0AThank%20you!";
 
 export const navItems = [
   { label: "About", href: "#about" },
@@ -282,7 +282,7 @@ export const testimonialPlaceholders = [
 export const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/mysbahdoingugc/",
+    href: "https://www.instagram.com/mysbahdoingugc__/",
   },
   { label: "TikTok", href: "https://www.tiktok.com/@mysbah_ugc" },
   {

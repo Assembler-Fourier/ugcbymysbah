@@ -22,7 +22,7 @@
 
 :root {
   color-scheme: light;
-  background: #fbf7f1;
+  background: #fffdf9;
 }
 
 html {
@@ -31,14 +31,26 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    linear-gradient(135deg, rgba(255, 138, 161, 0.18) 0%, transparent 32%),
-    linear-gradient(215deg, rgba(91, 184, 176, 0.16) 0%, transparent 30%),
-    linear-gradient(180deg, #fffdf9 0%, #fff6ed 44%, #ffffff 100%);
+  background: #fffdf9;
   color: #181513;
   font-family: var(--font-sans);
+  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+button,
+a,
+input,
+textarea,
+select,
+summary {
+  letter-spacing: 0;
+}
+
+button,
+summary {
+  cursor: pointer;
 }
 
 ::selection {
@@ -86,7 +98,7 @@ a {
   color: #b74362;
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -158,6 +170,47 @@ a {
   }
 }
 
+@keyframes portrait-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spark-turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes reveal-section {
+  from {
+    opacity: 0.35;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .marquee-window {
   mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
@@ -178,9 +231,214 @@ a {
   animation: portrait-reveal 1s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+.hero-canvas {
+  isolation: isolate;
+  background: #f6ebe6;
+}
+
+.hero-canvas::before {
+  content: "UGC";
+  position: absolute;
+  z-index: -1;
+  top: -5rem;
+  left: 50%;
+  color: rgba(183, 72, 104, 0.055);
+  font-family: Arial, sans-serif;
+  font-size: clamp(13rem, 32vw, 30rem);
+  font-weight: 900;
+  line-height: 1;
+  transform: translateX(-46%);
+  white-space: nowrap;
+}
+
+.hero-spark {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  background: #b54868;
+  clip-path: polygon(50% 0, 61% 36%, 100% 50%, 61% 64%, 50% 100%, 39% 64%, 0 50%, 39% 36%);
+  animation: spark-turn 18s linear infinite;
+}
+
+.hero-spark-one {
+  top: 6.5rem;
+  right: 3vw;
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+.hero-spark-two {
+  bottom: 16rem;
+  left: 2vw;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #76a955;
+  animation-direction: reverse;
+  animation-duration: 12s;
+}
+
+.portrait-float {
+  animation: portrait-float 6s ease-in-out 1.2s infinite;
+}
+
+.travel-frame img {
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.travel-frame:hover img {
+  transform: scale(1.035);
+}
+
+.portfolio-rail {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.8rem 0.2rem 2.5rem;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0.2rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.portfolio-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.video-card-width {
+  width: clamp(11rem, 67vw, 14rem);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.video-card:nth-child(even) {
+  margin-top: 0.75rem;
+}
+
+.video-poster-fallback {
+  isolation: isolate;
+  background: #473b3b;
+}
+
+.video-poster-fallback::before,
+.video-poster-fallback::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 72%;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-poster-fallback::before {
+  top: -18%;
+  right: -28%;
+  background: #b54868;
+  transform: rotate(18deg);
+}
+
+.video-poster-fallback::after {
+  bottom: -22%;
+  left: -26%;
+  background: #769f55;
+  transform: rotate(-14deg);
+}
+
+.video-modal-enter {
+  animation: modal-enter 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.service-pill {
+  transition: transform 220ms ease, background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.service-pill:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.cta-outline {
+  position: absolute;
+  top: -7rem;
+  right: -3rem;
+  width: 22rem;
+  aspect-ratio: 1;
+  border: 3px solid rgba(23, 18, 15, 0.14);
+  transform: rotate(18deg);
+}
+
+.proof-card::after {
+  content: "";
+  position: absolute;
+  top: -1.8rem;
+  right: -1.8rem;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  background: #a8c686;
+  transform: rotate(22deg);
+  transition: transform 260ms ease;
+}
+
+.proof-card:hover::after {
+  transform: rotate(38deg) scale(1.08);
+}
+
+.faq-item summary {
+  position: relative;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #b54868;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: reveal-section linear both;
+    animation-range: entry 0% entry 32%;
+    animation-timeline: view();
+  }
+}
+
 .marquee-track:hover,
 .review-marquee:hover {
   animation-play-state: paused;
+}
+
+@media (min-width: 640px) {
+  .video-card-width {
+    width: 12.5rem;
+  }
+
+  .portfolio-rail {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-spark-one {
+    top: 4.5rem;
+    right: -0.8rem;
+  }
+
+  .hero-spark-two {
+    display: none;
+  }
+
+  .cta-outline {
+    right: -12rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

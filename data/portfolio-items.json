@@ -1,20 +1,20 @@
 [
   {
-    "title": "Lifestyle",
-    "type": "Creator intro",
+    "title": "Lifestyle Creator Intro",
+    "type": "On-camera UGC",
     "color": "from-[#ff7aa2] to-[#ffbd59]",
     "imageSrc": "/images/00-main-profile-photo.jpeg",
     "videoSrc": "/videos/01-lifestyle-creator-intro.mp4"
   },
   {
-    "title": "Beauty",
-    "type": "Demo / routine",
+    "title": "Beauty Routine Demo",
+    "type": "Beauty UGC",
     "color": "from-[#1e1717] to-[#b54868]",
     "videoSrc": "/videos/02-beauty-demo-routine.mp4"
   },
   {
-    "title": "Travel",
-    "type": "Nomad story",
+    "title": "Travel Nomad Story",
+    "type": "Travel UGC",
     "color": "from-[#2a2721] to-[#4bb5b0]",
     "imageSrc": "/images/00-travel-profile-photo.jpeg",
     "videoSrc": "/videos/03-travel-nomad-story.mp4"
@@ -26,8 +26,8 @@
     "videoSrc": "/videos/04-wellness-testimonial-hook.mp4"
   },
   {
-    "title": "Skincare",
-    "type": "Texture shot",
+    "title": "Skincare Texture Demo",
+    "type": "Skincare UGC",
     "color": "from-[#b54868] to-[#f6c453]",
     "videoSrc": "/videos/05-skincare-texture-shot.mp4"
   },
