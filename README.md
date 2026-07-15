@@ -24,8 +24,9 @@ https://github.com/Assembler-Fourier/ugcbymysbah
 - Brand carousel and public Upwork proof
 - Correct Instagram, TikTok, LinkedIn, Upwork, and email links
 - SEO metadata for UGC creator searches in Pakistan
-- Person, service, website, and FAQ structured data
+- Person, profile page, service, website, and FAQ structured data
 - Dynamic Open Graph image, sitemap, and robots metadata
+- Privacy-friendly Vercel Web Analytics for first-party traffic reporting
 - Canonical custom-domain redirects
 - No database, paid service, or environment variable required
 
@@ -69,6 +70,30 @@ For a fresh Vercel import:
 4. Leave the output directory at its default.
 5. Set `main` as the production branch.
 6. Add `ugcbymysbah.com` and `www.ugcbymysbah.com` to the project domains.
+
+## Traffic And Search Visibility
+
+Vercel Web Analytics is installed in the site layout. In the Vercel project,
+open **Analytics** and select **Enable** once; new production visits will then
+appear there without an environment variable.
+
+For Google Search Console:
+
+1. Add the domain property `ugcbymysbah.com`.
+2. Verify only that domain with the TXT record Google provides.
+3. Submit `https://ugcbymysbah.com/sitemap.xml` under **Sitemaps**.
+4. Inspect `https://ugcbymysbah.com/` and request indexing after a meaningful update.
+
+After a real portfolio or copy update, notify participating IndexNow search
+engines with:
+
+```bash
+npm run seo:submit
+```
+
+Update the `lastModified` date in `app/sitemap.ts` only when the visible site
+changes. Search position is earned over time; metadata alone cannot guarantee a
+specific ranking.
 
 ## Add Videos
 

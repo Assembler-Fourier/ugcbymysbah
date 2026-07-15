@@ -9,9 +9,11 @@
     "prebuild": "npm run generate:videos",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "seo:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "2.0.1",
     "lucide-react": "1.24.0",
     "next": "16.2.10",
     "react": "19.2.7",

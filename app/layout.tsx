@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const siteUrl = "https://ugcbymysbah.com";
@@ -7,32 +8,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "UGC by Mysbah",
   title: {
-    default: "UGC Creator in Pakistan | UGC by Mysbah",
+    default: "Mysbah Ahmad | UGC Creator in Pakistan",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Meet Mysbah Ahmad, a Pakistan-based UGC creator producing beauty, skincare, lifestyle, travel, TikTok, Reels, product demo, and testimonial videos for brands worldwide.",
-  keywords: [
-    "UGC creator in Pakistan",
-    "Pakistan UGC creator",
-    "best UGC creator in Pakistan",
-    "top UGC creator in Pakistan",
-    "TikTok ad creator",
-    "Reels ad creator",
-    "Instagram UGC creator",
-    "Instagram Reels creator",
-    "short-form video creator",
-    "beauty UGC creator",
-    "skincare UGC creator",
-    "lifestyle content creator",
-    "travel UGC creator",
-    "product demo videos",
-    "testimonial videos",
-    "UGC portfolio",
-    "Mysbah Ahmad",
-    "Mysbah Butt",
-    "UGC by Mysbah",
-  ],
+    "Mysbah Ahmad is a Pakistan-based UGC creator making TikTok, Reels, product demo, beauty, skincare, lifestyle, and travel content for brands worldwide.",
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",
@@ -52,7 +32,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "UGC Creator in Pakistan | UGC by Mysbah",
+    title: "Mysbah Ahmad | UGC Creator in Pakistan",
     description:
       "Beauty, skincare, lifestyle, and travel UGC that feels natural and performs with paid-media clarity.",
     url: siteUrl,
@@ -70,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UGC Creator in Pakistan | UGC by Mysbah",
+    title: "Mysbah Ahmad | UGC Creator in Pakistan",
     description:
       "Beauty, skincare, lifestyle, and travel UGC by Mysbah Ahmad.",
     images: ["/opengraph-image"],
@@ -91,7 +71,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-PK" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

@@ -135,7 +135,7 @@ const faqItems = [
       "Yes. Mysbah is based in Pakistan and works remotely with brands worldwide across beauty, skincare, lifestyle, travel, hospitality, and consumer apps.",
   },
   {
-    question: "How do brands choose the best UGC creator in Pakistan?",
+    question: "What should brands look for in a UGC creator in Pakistan?",
     answer:
       "Look for relevant samples, natural on-camera delivery, native short-form pacing, reliable public work history, and an understanding of hooks and audience intent. Mysbah brings those creative and marketing skills together.",
   },
@@ -162,7 +162,13 @@ const structuredData = {
       name: "Mysbah Ahmad",
       alternateName: ["Mysbah Butt", "Misbah Ahmad", "UGC by Mysbah"],
       url: siteUrl,
-      image: `${siteUrl}/images/00-main-profile-photo.jpeg`,
+      mainEntityOfPage: { "@id": `${siteUrl}/#profile-page` },
+      image: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/images/00-main-profile-photo.jpeg`,
+        contentUrl: `${siteUrl}/images/00-main-profile-photo.jpeg`,
+        caption: "Mysbah Ahmad, UGC creator in Pakistan",
+      },
       email: contactEmail,
       jobTitle: [
         "UGC Content Creator",
@@ -175,6 +181,13 @@ const structuredData = {
       homeLocation: {
         "@type": "Country",
         name: "Pakistan",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: contactEmail,
+        contactType: "brand collaborations",
+        areaServed: "Worldwide",
+        availableLanguage: "English",
       },
       sameAs: [instagramUrl, tiktokUrl, linkedinUrl, upworkUrl],
       knowsAbout: [
@@ -196,7 +209,13 @@ const structuredData = {
       url: siteUrl,
       image: `${siteUrl}/images/00-main-profile-photo.jpeg`,
       founder: { "@id": `${siteUrl}/#mysbah` },
-      areaServed: "Worldwide",
+      provider: { "@id": `${siteUrl}/#mysbah` },
+      email: contactEmail,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "PK",
+      },
+      areaServed: ["Pakistan", "Worldwide"],
       serviceType: [
         "UGC video creation",
         "TikTok ad creation",
@@ -205,6 +224,37 @@ const structuredData = {
         "Beauty and skincare content",
         "Travel and hospitality content",
       ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "UGC content services",
+        itemListElement: [
+          "UGC video creation",
+          "TikTok and Instagram Reels ads",
+          "Product demos and unboxings",
+          "Testimonial-style videos",
+          "Beauty and skincare UGC",
+          "Lifestyle, travel, and hospitality UGC",
+        ].map((name) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name,
+            provider: { "@id": `${siteUrl}/#mysbah` },
+          },
+        })),
+      },
+      sameAs: [instagramUrl, tiktokUrl, linkedinUrl, upworkUrl],
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteUrl}/#profile-page`,
+      url: siteUrl,
+      name: "Mysbah Ahmad | UGC Creator in Pakistan",
+      description:
+        "The official portfolio of Mysbah Ahmad, a Pakistan-based UGC creator for beauty, skincare, lifestyle, travel, hospitality, and consumer brands.",
+      inLanguage: "en-PK",
+      mainEntity: { "@id": `${siteUrl}/#mysbah` },
+      isPartOf: { "@id": `${siteUrl}/#website` },
     },
     {
       "@type": "WebSite",
