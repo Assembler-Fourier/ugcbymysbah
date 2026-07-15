@@ -419,10 +419,10 @@ export default function Home() {
               <h1 className="font-black leading-none">
                 <span className="block pb-3 font-serif text-[4rem] font-normal italic leading-[1.04] sm:text-[6.3rem] lg:text-[7.4rem]">
                   Mysbah
-                </span>
+                </span>{" "}
                 <span className="block text-[4rem] uppercase leading-[0.94] sm:text-[6.3rem] lg:text-[7.4rem]">
                   UGC
-                </span>
+                </span>{" "}
                 <span className="mt-3 block text-sm uppercase leading-6 text-[#a23b57] sm:text-base">
                   Creator in Pakistan
                 </span>
