@@ -18,14 +18,14 @@ https://github.com/Assembler-Fourier/ugcbymysbah
 
 - Responsive, conversion-focused creator landing page
 - Custom pink, sage, charcoal, and white visual system
-- Automatic portfolio discovery from `public/videos`
+- Build-time portfolio discovery from `public/videos`
 - Lightweight poster-based cards with one-at-a-time video playback
 - Horizontal portfolio rail that stays compact as more videos are added
 - Brand carousel and public Upwork proof
 - Correct Instagram, TikTok, LinkedIn, Upwork, and email links
 - SEO metadata for UGC creator searches in Pakistan
 - Person, service, website, and FAQ structured data
-- Dynamic Open Graph image, sitemap, robots, and web manifest
+- Dynamic Open Graph image, sitemap, and robots metadata
 - Canonical custom-domain redirects
 - No database, paid service, or environment variable required
 
@@ -87,6 +87,8 @@ Numbered filenames control portfolio order:
 ```
 
 Every file appears automatically. The entire library remains available without making the page longer.
+
+Before local development and every production build, the site refreshes `data/generated-video-manifest.json` automatically. Mysbah only uploads the media files; she does not need to edit that generated file.
 
 For an optional thumbnail, upload a JPG with the same base name:
 

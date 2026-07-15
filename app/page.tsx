@@ -1,7 +1,4 @@
-import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -27,7 +24,7 @@ import {
   type VideoSample,
 } from "@/components/VideoShowcase";
 import { contactEmail, mailtoLink } from "@/data/site";
-import portfolioItems from "@/data/portfolio-items.json";
+import generatedVideoSamples from "@/data/generated-video-manifest.json";
 
 const siteUrl = "https://ugcbymysbah.com";
 const linkedinUrl = "https://www.linkedin.com/in/misbah-ahmad-401076214/";
@@ -63,73 +60,7 @@ const brandLogos = [
   { name: "Yango", label: "Mobility app", logo: "/logos/yango.png" },
 ];
 
-type ContentSample = {
-  title: string;
-  type: string;
-  imageSrc?: string;
-  videoSrc?: string;
-};
-
-const contentMetadata = portfolioItems as ContentSample[];
-
-function publicFileExists(src?: string) {
-  if (!src) {
-    return false;
-  }
-
-  return existsSync(join(process.cwd(), "public", src.replace(/^\//, "")));
-}
-
-function titleFromFilename(filename: string) {
-  return filename
-    .replace(/\.[^.]+$/, "")
-    .replace(/^\d+[\s_-]*/, "")
-    .replace(/[\s_-]+/g, " ")
-    .replace(/\b\w/g, (character) => character.toUpperCase());
-}
-
-function getVideoSamples(): VideoSample[] {
-  const videoDirectory = join(process.cwd(), "public", "videos");
-
-  if (!existsSync(videoDirectory)) {
-    return [];
-  }
-
-  return readdirSync(videoDirectory, { withFileTypes: true })
-    .filter(
-      (entry) => entry.isFile() && /\.(mp4|webm)$/i.test(entry.name),
-    )
-    .map((entry) => entry.name)
-    .sort((first, second) =>
-      first.localeCompare(second, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    )
-    .map((filename) => {
-      const videoSrc = `/videos/${filename}`;
-      const id = filename.replace(/\.[^.]+$/, "");
-      const configured = contentMetadata.find(
-        (sample) => sample.videoSrc === videoSrc,
-      );
-      const generatedPoster = `/images/video-posters/${id}.jpg`;
-      const configuredPoster = configured?.imageSrc;
-
-      return {
-        id,
-        title: configured?.title ?? titleFromFilename(filename),
-        type: configured?.type ?? "Short-form UGC sample",
-        videoSrc,
-        posterSrc: publicFileExists(generatedPoster)
-          ? generatedPoster
-          : publicFileExists(configuredPoster)
-            ? configuredPoster
-            : undefined,
-      };
-    });
-}
-
-const videoSamples = getVideoSamples();
+const videoSamples = generatedVideoSamples as VideoSample[];
 
 const services = [
   "Paid ad UGC",
@@ -327,7 +258,7 @@ function LogoTicker() {
                   className="h-auto w-auto max-h-11 max-w-[8.75rem] object-contain"
                 />
               </div>
-              <p className="max-w-full truncate text-[0.66rem] font-black uppercase text-[#b54868]">
+              <p className="max-w-full truncate text-[0.66rem] font-black uppercase text-[#a23b57]">
                 {brand.label}
               </p>
             </div>
@@ -385,21 +316,21 @@ export default function Home() {
         }}
       />
 
-      <main className="min-h-screen overflow-hidden bg-[#f6ebe6] text-[#17120f]">
+      <main className="min-h-screen overflow-x-clip bg-[#f6ebe6] text-[#17120f]">
         <header className="sticky top-0 z-50 border-b-4 border-[#a8c686] bg-[#473b3b]/96 text-white backdrop-blur">
           <div className="container-shell flex min-h-12 items-center justify-between gap-4">
-            <Link
+            <a
               href="#home"
               className="focus-ring shrink-0 font-serif text-2xl italic"
             >
               Mysbah
-            </Link>
+            </a>
             <nav
               aria-label="Main navigation"
               className="flex items-center justify-center gap-4 overflow-x-auto text-xs font-black uppercase sm:gap-7 sm:text-sm"
             >
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                   className={`focus-ring shrink-0 transition hover:text-[#a8c686] ${
@@ -409,10 +340,10 @@ export default function Home() {
                   }`}
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
             </nav>
-            <Link
+            <a
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
@@ -421,7 +352,7 @@ export default function Home() {
             >
               <SocialLogo logo="instagram" className="size-5 shrink-0" />
               @mysbahdoingugc__
-            </Link>
+            </a>
           </div>
         </header>
 
@@ -442,7 +373,7 @@ export default function Home() {
                 <span className="block text-[4rem] uppercase leading-[0.94] sm:text-[6.3rem] lg:text-[7.4rem]">
                   UGC
                 </span>
-                <span className="mt-3 block text-sm uppercase leading-6 text-[#b54868] sm:text-base">
+                <span className="mt-3 block text-sm uppercase leading-6 text-[#a23b57] sm:text-base">
                   Creator in Pakistan
                 </span>
               </h1>
@@ -454,37 +385,37 @@ export default function Home() {
               </p>
 
               <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
-                <Link
+                <a
                   href={mailtoLink}
                   className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#a8c686] px-3 text-sm font-black text-[#17120f] shadow-soft transition hover:-translate-y-1 hover:bg-white sm:px-5"
                 >
                   <Mail aria-hidden="true" size={18} />
                   Send Brief
                   <ArrowRight aria-hidden="true" size={17} />
-                </Link>
-                <WatchSamplesButton className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#17120f] px-3 text-sm font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-[#b54868] disabled:cursor-not-allowed disabled:opacity-50 sm:px-5" />
+                </a>
+                <WatchSamplesButton className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#17120f] px-3 text-sm font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-[#a23b57] disabled:cursor-not-allowed disabled:opacity-50 sm:px-5" />
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {socialLinks
                   .filter((link) => link.label !== "Email")
                   .map((link) => (
-                    <Link
+                    <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
                       className={`focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-4 text-xs font-black shadow-sm transition hover:-translate-y-1 ${
                         link.label === "Instagram"
-                          ? "bg-[#17120f] text-white hover:bg-[#b54868]"
-                          : "border border-[#17120f]/10 bg-white text-[#17120f] hover:border-[#b54868]/40"
+                          ? "bg-[#17120f] text-white hover:bg-[#a23b57]"
+                          : "border border-[#17120f]/10 bg-white text-[#17120f] hover:border-[#a23b57]/40"
                       }`}
                     >
                       <SocialLogo logo={link.logo} className="size-5 shrink-0" />
                       {link.label === "Instagram"
                         ? "@mysbahdoingugc__"
                         : link.label}
-                    </Link>
+                    </a>
                   ))}
               </div>
 
@@ -507,7 +438,7 @@ export default function Home() {
                 </span>
                 <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
                   <MapPin aria-hidden="true" size={16} />
-                  Pakistan to worldwide
+                  Pakistan based, available worldwide
                 </span>
               </div>
             </div>
@@ -526,7 +457,6 @@ export default function Home() {
                       sizes="(max-width: 768px) 86vw, 420px"
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_72%,rgba(23,18,15,0.18)_100%)]" />
                   </div>
                 </div>
               </div>
@@ -541,7 +471,7 @@ export default function Home() {
           <div className="container-shell">
             <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
               <div className="flex flex-col justify-center">
-                <p className="text-sm font-black uppercase text-[#b54868]">
+                <p className="text-sm font-black uppercase text-[#a23b57]">
                   UGC creator in Pakistan
                 </p>
                 <h2 className="mt-3 text-4xl font-black leading-tight sm:text-6xl">
@@ -564,6 +494,7 @@ export default function Home() {
                   src="/images/00-travel-profile-photo.jpeg"
                   alt="Mysbah enjoying a scenic travel setting"
                   fill
+                  quality={60}
                   sizes="(max-width: 1024px) 94vw, 560px"
                   className="object-cover"
                 />
@@ -574,19 +505,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-9 grid border-y border-[#17120f]/12 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-9 grid grid-cols-2 border-y border-[#17120f]/12 lg:grid-cols-4">
               {creatorAdvantages.map((item) => (
                 <article
                   key={item.title}
-                  className="border-b border-[#17120f]/12 px-0 py-6 sm:px-5 lg:border-b-0 lg:border-r lg:last:border-r-0"
+                  className="border-b border-[#17120f]/12 px-3 py-6 odd:border-r sm:px-5 lg:border-b-0 lg:border-r lg:odd:border-r lg:last:border-r-0"
                 >
                   <item.icon
                     aria-hidden="true"
                     size={23}
-                    className="text-[#b54868]"
+                    className="text-[#a23b57]"
                   />
-                  <h3 className="mt-4 text-lg font-black">{item.title}</h3>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-[#6b5a58]">
+                  <h3 className="mt-4 text-base font-black sm:text-lg">{item.title}</h3>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-[#6b5a58] sm:text-sm sm:leading-6">
                     {item.body}
                   </p>
                 </article>
@@ -598,7 +529,7 @@ export default function Home() {
         <section id="portfolio" className="reveal-on-scroll bg-white py-14">
           <div className="container-shell">
             <div className="mb-9 flex flex-col gap-3 text-center">
-              <p className="text-sm font-black uppercase text-[#b54868]">
+              <p className="text-sm font-black uppercase text-[#a23b57]">
                 Portfolio
               </p>
               <h2 className="text-5xl font-black sm:text-7xl">
@@ -660,15 +591,15 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Link
+              <a
                 href={mailtoLink}
-                className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#17120f] px-6 text-sm font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-[#b54868]"
+                className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#17120f] px-6 text-sm font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-[#a23b57]"
               >
                 <Mail aria-hidden="true" size={18} />
                 Send Your Brief
                 <ArrowRight aria-hidden="true" size={17} />
-              </Link>
-              <Link
+              </a>
+              <a
                 href={instagramUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -676,7 +607,7 @@ export default function Home() {
               >
                 <SocialLogo logo="instagram" className="size-5 shrink-0" />
                 @mysbahdoingugc__
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -685,39 +616,39 @@ export default function Home() {
           <div className="container-shell">
             <div className="grid gap-7 lg:grid-cols-[0.65fr_1.35fr] lg:items-start">
               <div>
-                <p className="text-sm font-black uppercase text-[#b54868]">
+                <p className="text-sm font-black uppercase text-[#a23b57]">
                   Verified profile proof
                 </p>
                 <h2 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">
                   Credibility brands can check in one click.
                 </h2>
-                <Link
+                <a
                   href={upworkUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="focus-ring mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#17120f] px-5 text-sm font-black text-white transition hover:-translate-y-1 hover:bg-[#b54868]"
+                  className="focus-ring mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#17120f] px-5 text-sm font-black text-white transition hover:-translate-y-1 hover:bg-[#a23b57]"
                 >
                   View Upwork Profile
                   <ExternalLink aria-hidden="true" size={16} />
-                </Link>
+                </a>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {verifiedProof.map((item) => (
                   <article
                     key={item.label}
-                    className="proof-card relative overflow-hidden rounded-lg border border-[#17120f]/7 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft"
+                    className="proof-card relative overflow-hidden rounded-lg border border-[#17120f]/7 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-5"
                   >
                     <item.icon
                       aria-hidden="true"
                       size={23}
-                      className="text-[#b54868]"
+                      className="text-[#a23b57]"
                     />
-                    <p className="mt-5 text-3xl font-black">{item.value}</p>
-                    <h3 className="mt-1 text-sm font-black uppercase text-[#b54868]">
+                    <p className="mt-5 text-2xl font-black sm:text-3xl">{item.value}</p>
+                    <h3 className="mt-1 text-xs font-black uppercase text-[#a23b57] sm:text-sm">
                       {item.label}
                     </h3>
-                    <p className="mt-3 text-sm font-semibold leading-6 text-[#6b5a58]">
+                    <p className="mt-3 text-xs font-semibold leading-5 text-[#6b5a58] sm:text-sm sm:leading-6">
                       {item.text}
                     </p>
                   </article>
@@ -726,7 +657,7 @@ export default function Home() {
             </div>
 
             <div className="mt-10 border-t border-[#17120f]/12 pt-9">
-              <p className="text-sm font-black uppercase text-[#b54868]">
+              <p className="text-sm font-black uppercase text-[#a23b57]">
                 Quick answers
               </p>
               <div className="mt-4 grid gap-3 lg:grid-cols-3">
@@ -764,7 +695,7 @@ export default function Home() {
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap justify-center gap-2 md:justify-end">
                 {socialLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.label}
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
@@ -773,20 +704,20 @@ export default function Home() {
                   >
                     <SocialLogo logo={link.logo} className="size-5 shrink-0" />
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end">
-                <Link
+                <a
                   href={mailtoLink}
                   className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-black text-[#17120f] transition hover:-translate-y-1 hover:bg-[#a8c686]"
                 >
                   <Mail aria-hidden="true" size={18} />
                   {contactEmail}
-                </Link>
+                </a>
                 <WatchSamplesButton className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#a8c686] px-5 text-sm font-black text-[#17120f] transition hover:-translate-y-1 hover:bg-white disabled:opacity-50" />
               </div>
-              <p className="text-xs font-bold text-white/48 md:text-right">
+              <p className="text-xs font-bold text-white/70 md:text-right">
                 ugcbymysbah.com / Copyright {currentYear} Mysbah Ahmad
               </p>
             </div>

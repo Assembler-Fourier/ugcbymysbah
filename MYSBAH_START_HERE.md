@@ -31,6 +31,8 @@ https://ugcbymysbah.com
 
 That is all. Every MP4 or WebM in the folder appears automatically. Adding more videos does not make the page longer because the portfolio stays in one horizontal showcase.
 
+Vercel creates the website's video index during deployment. Do not edit `data/generated-video-manifest.json`; it is refreshed automatically from the files you upload.
+
 ## Add A Video Thumbnail
 
 This is optional, but it makes the portfolio look strongest.

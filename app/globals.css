@@ -9,7 +9,7 @@
   --color-paper: #fffdf9;
   --color-linen: #f5e8dc;
   --color-blush: #ff8aa1;
-  --color-rosewood: #b74362;
+  --color-rosewood: #a23b57;
   --color-sage: #a8c686;
   --color-clay: #e07a5f;
   --color-gold: #f3bc50;
@@ -17,7 +17,7 @@
   --color-plum: #5f375f;
   --color-sunshine: #ffd166;
   --shadow-soft: 0 24px 70px rgba(69, 48, 38, 0.16);
-  --shadow-glow: 0 26px 90px rgba(183, 67, 98, 0.26);
+  --shadow-glow: 0 26px 90px rgba(162, 59, 87, 0.26);
 }
 
 :root {
@@ -27,6 +27,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 4rem;
 }
 
 body {
@@ -95,7 +100,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #b74362;
+  color: #a23b57;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -236,26 +241,11 @@ a {
   background: #f6ebe6;
 }
 
-.hero-canvas::before {
-  content: "UGC";
-  position: absolute;
-  z-index: -1;
-  top: -5rem;
-  left: 50%;
-  color: rgba(183, 72, 104, 0.055);
-  font-family: Arial, sans-serif;
-  font-size: clamp(13rem, 32vw, 30rem);
-  font-weight: 900;
-  line-height: 1;
-  transform: translateX(-46%);
-  white-space: nowrap;
-}
-
 .hero-spark {
   position: absolute;
   z-index: -1;
   display: block;
-  background: #b54868;
+  background: #a23b57;
   clip-path: polygon(50% 0, 61% 36%, 100% 50%, 61% 64%, 50% 100%, 39% 64%, 0 50%, 39% 36%);
   animation: spark-turn 18s linear infinite;
 }
@@ -332,7 +322,7 @@ a {
 .video-poster-fallback::before {
   top: -18%;
   right: -28%;
-  background: #b54868;
+  background: #a23b57;
   transform: rotate(18deg);
 }
 
@@ -393,7 +383,7 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  color: #b54868;
+  color: #a23b57;
   font-size: 1.25rem;
   line-height: 1;
   transition: transform 180ms ease;

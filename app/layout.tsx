@@ -78,7 +78,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
-  manifest: "/manifest.webmanifest",
   other: {
     "geo.region": "PK",
     "geo.placename": "Pakistan",

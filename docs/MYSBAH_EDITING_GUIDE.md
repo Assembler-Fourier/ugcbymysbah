@@ -20,7 +20,7 @@ Every commit to the `main` branch triggers a production deployment. There is no 
 
 ## Portfolio System
 
-The portfolio automatically scans `public/videos` for `.mp4` and `.webm` files. It sorts filenames naturally and keeps every file visible in the same compact horizontal showcase and video viewer.
+Before every development session and production build, the portfolio generator scans `public/videos` for `.mp4` and `.webm` files. It sorts filenames naturally and keeps every file visible in the same compact horizontal showcase and video viewer.
 
 Recommended filename pattern:
 
@@ -34,7 +34,7 @@ Recommended filename pattern:
 07-brand-campaign-name.mp4
 ```
 
-New filenames are converted into readable titles automatically. Existing six filenames can also use custom titles from `data/portfolio-items.json`.
+New filenames are converted into readable titles automatically. Configured filenames can also use custom titles from `data/portfolio-items.json`. Do not edit `data/generated-video-manifest.json`; Vercel refreshes it automatically during deployment.
 
 ## Poster Images
 

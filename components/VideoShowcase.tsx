@@ -13,6 +13,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useRef,
   useState,
   type ReactNode,
@@ -62,6 +63,8 @@ export function VideoShowcaseProvider({
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const viewerTitleId = useId();
+  const viewerIsOpen = activeIndex !== null;
 
   const openSample = useCallback((index: number) => {
     returnFocusRef.current =
@@ -91,7 +94,7 @@ export function VideoShowcaseProvider({
   }, [samples.length]);
 
   useEffect(() => {
-    if (activeIndex === null) {
+    if (!viewerIsOpen) {
       return;
     }
 
@@ -101,14 +104,19 @@ export function VideoShowcaseProvider({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         closeViewer();
       }
 
-      if (event.key === "ArrowLeft") {
+      const videoHasFocus = event.target instanceof HTMLVideoElement;
+
+      if (event.key === "ArrowLeft" && !videoHasFocus) {
+        event.preventDefault();
         showPrevious();
       }
 
-      if (event.key === "ArrowRight") {
+      if (event.key === "ArrowRight" && !videoHasFocus) {
+        event.preventDefault();
         showNext();
       }
 
@@ -137,7 +145,7 @@ export function VideoShowcaseProvider({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex, closeViewer, showNext, showPrevious]);
+  }, [closeViewer, showNext, showPrevious, viewerIsOpen]);
 
   const activeSample = activeIndex === null ? null : samples[activeIndex];
 
@@ -158,7 +166,7 @@ export function VideoShowcaseProvider({
         <div className="fixed inset-0 z-[100] grid place-items-center p-3 sm:p-6">
           <button
             type="button"
-            aria-label="Close video viewer"
+            aria-label="Dismiss video viewer backdrop"
             className="absolute inset-0 cursor-default bg-[#17120f]/88 backdrop-blur-md"
             onClick={closeViewer}
             tabIndex={-1}
@@ -168,7 +176,7 @@ export function VideoShowcaseProvider({
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="video-viewer-title"
+            aria-labelledby={viewerTitleId}
             className="video-modal-enter relative z-10 grid h-[94dvh] max-h-[900px] w-full max-w-5xl grid-rows-[minmax(0,1fr)_auto] overflow-hidden rounded-lg border border-white/15 bg-[#17120f] text-white shadow-[0_36px_120px_rgba(0,0,0,0.55)] lg:h-[min(88dvh,800px)] lg:grid-cols-[minmax(320px,440px)_1fr] lg:grid-rows-1"
           >
             <button
@@ -182,7 +190,7 @@ export function VideoShowcaseProvider({
               <X aria-hidden="true" size={20} />
             </button>
 
-            <div className="grid min-h-0 place-items-center bg-black p-2 sm:p-3">
+            <div className="grid min-h-0 place-items-center overflow-hidden bg-black p-2 sm:p-3">
               <video
                 key={activeSample.videoSrc}
                 src={activeSample.videoSrc}
@@ -191,17 +199,17 @@ export function VideoShowcaseProvider({
                 autoPlay
                 playsInline
                 preload="metadata"
-                className="size-full rounded-lg object-contain"
+                className="h-full min-h-0 w-full max-w-full rounded-lg object-contain"
               />
             </div>
 
             <div className="flex min-h-0 flex-col justify-between gap-5 overflow-y-auto p-4 sm:p-7">
-              <div>
+              <div aria-live="polite">
                 <p className="text-xs font-black uppercase text-[#a8c686]">
                   Sample {activeIndex + 1} of {samples.length}
                 </p>
                 <h2
-                  id="video-viewer-title"
+                  id={viewerTitleId}
                   className="mt-3 text-2xl font-black sm:mt-5 sm:text-5xl"
                 >
                   {activeSample.title}
@@ -309,6 +317,66 @@ function VideoCard({ sample, index }: { sample: VideoSample; index: number }) {
 export function FeaturedVideoGrid() {
   const { samples } = useVideoShowcase();
   const railRef = useRef<HTMLDivElement>(null);
+  const [railState, setRailState] = useState({
+    canScrollBack: false,
+    canScrollForward: false,
+    hasOverflow: false,
+  });
+
+  const updateRailState = useCallback(() => {
+    const rail = railRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const maxScrollLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const hasOverflow = maxScrollLeft > 2;
+
+    const nextState = {
+      canScrollBack: hasOverflow && rail.scrollLeft > 2,
+      canScrollForward:
+        hasOverflow && rail.scrollLeft < maxScrollLeft - 2,
+      hasOverflow,
+    };
+
+    setRailState((current) =>
+      current.canScrollBack === nextState.canScrollBack &&
+      current.canScrollForward === nextState.canScrollForward &&
+      current.hasOverflow === nextState.hasOverflow
+        ? current
+        : nextState,
+    );
+  }, []);
+
+  useEffect(() => {
+    const rail = railRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(updateRailState);
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        window.requestAnimationFrame(updateRailState);
+      }
+    });
+    const frame = window.requestAnimationFrame(updateRailState);
+
+    resizeObserver.observe(rail);
+    intersectionObserver.observe(rail);
+    rail.addEventListener("scroll", updateRailState, { passive: true });
+    window.addEventListener("resize", updateRailState);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+      rail.removeEventListener("scroll", updateRailState);
+      window.removeEventListener("resize", updateRailState);
+    };
+  }, [samples.length, updateRailState]);
 
   const scrollRail = (direction: -1 | 1) => {
     const rail = railRef.current;
@@ -333,29 +401,43 @@ export function FeaturedVideoGrid() {
 
   return (
     <div>
-      <div className="mb-5 flex justify-end gap-4">
-        <div className="flex gap-2">
+      <div className="mb-5 flex min-h-11 justify-end gap-4">
+        <div
+          aria-hidden={!railState.hasOverflow}
+          className={`flex gap-2 transition-opacity ${
+            railState.hasOverflow
+              ? "opacity-100"
+              : "pointer-events-none opacity-0"
+          }`}
+        >
           <button
             type="button"
             onClick={() => scrollRail(-1)}
+            disabled={!railState.canScrollBack}
             aria-label="Show previous portfolio videos"
             title="Previous videos"
-            className="focus-ring grid size-11 place-items-center rounded-full border border-[#17120f]/14 bg-white text-[#17120f] transition hover:-translate-y-0.5 hover:bg-[#a8c686]"
+            className="focus-ring grid size-11 place-items-center rounded-full border border-[#17120f]/14 bg-white text-[#17120f] transition hover:-translate-y-0.5 hover:bg-[#a8c686] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:bg-white"
           >
             <ArrowLeft aria-hidden="true" size={18} />
           </button>
           <button
             type="button"
             onClick={() => scrollRail(1)}
+            disabled={!railState.canScrollForward}
             aria-label="Show more portfolio videos"
             title="More videos"
-            className="focus-ring grid size-11 place-items-center rounded-full bg-[#17120f] text-white transition hover:-translate-y-0.5 hover:bg-[#b54868]"
+            className="focus-ring grid size-11 place-items-center rounded-full bg-[#17120f] text-white transition hover:-translate-y-0.5 hover:bg-[#a23b57] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:bg-[#17120f]"
           >
             <ArrowRight aria-hidden="true" size={18} />
           </button>
         </div>
       </div>
-      <div ref={railRef} className="portfolio-rail">
+      <div
+        ref={railRef}
+        aria-label="UGC video portfolio"
+        className="portfolio-rail"
+        role="region"
+      >
         {samples.map((sample, index) => (
           <VideoCard
             key={`${sample.id}-${sample.videoSrc}`}

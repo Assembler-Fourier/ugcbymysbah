@@ -9,7 +9,7 @@
   {
     "title": "Beauty Routine Demo",
     "type": "Beauty UGC",
-    "color": "from-[#1e1717] to-[#b54868]",
+    "color": "from-[#1e1717] to-[#a23b57]",
     "videoSrc": "/videos/02-beauty-demo-routine.mp4"
   },
   {
@@ -28,7 +28,7 @@
   {
     "title": "Skincare Texture Demo",
     "type": "Skincare UGC",
-    "color": "from-[#b54868] to-[#f6c453]",
+    "color": "from-[#a23b57] to-[#f6c453]",
     "videoSrc": "/videos/05-skincare-texture-shot.mp4"
   },
   {

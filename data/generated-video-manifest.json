@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01-lifestyle-creator-intro",
+    "title": "Lifestyle Creator Intro",
+    "type": "On-camera UGC",
+    "videoSrc": "/videos/01-lifestyle-creator-intro.mp4",
+    "posterSrc": "/images/video-posters/01-lifestyle-creator-intro.jpg"
+  },
+  {
+    "id": "02-beauty-demo-routine",
+    "title": "Beauty Routine Demo",
+    "type": "Beauty UGC",
+    "videoSrc": "/videos/02-beauty-demo-routine.mp4",
+    "posterSrc": "/images/video-posters/02-beauty-demo-routine.jpg"
+  },
+  {
+    "id": "03-travel-nomad-story",
+    "title": "Travel Nomad Story",
+    "type": "Travel UGC",
+    "videoSrc": "/videos/03-travel-nomad-story.mp4",
+    "posterSrc": "/images/video-posters/03-travel-nomad-story.jpg"
+  },
+  {
+    "id": "05-skincare-texture-shot",
+    "title": "Skincare Texture Demo",
+    "type": "Skincare UGC",
+    "videoSrc": "/videos/05-skincare-texture-shot.mp4",
+    "posterSrc": "/images/video-posters/05-skincare-texture-shot.jpg"
+  }
+]
