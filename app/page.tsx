@@ -6,9 +6,9 @@ import {
   Camera,
   Check,
   ExternalLink,
+  Globe2,
   Heart,
   Mail,
-  MapPin,
   ShieldCheck,
   Sparkles,
   Star,
@@ -117,7 +117,7 @@ const verifiedProof = [
   },
   {
     icon: BriefcaseBusiness,
-    value: "8",
+    value: "9",
     label: "Total Upwork jobs",
     text: "A real professional work history beyond social content alone.",
   },
@@ -130,12 +130,12 @@ const faqItems = [
       "A UGC creator produces natural, platform-ready videos that help a brand explain a product, build trust, and earn attention on TikTok, Instagram Reels, paid social, and product pages.",
   },
   {
-    question: "Can Mysbah create UGC for brands outside Pakistan?",
+    question: "Does Mysbah work with brands worldwide?",
     answer:
-      "Yes. Mysbah is based in Pakistan and works remotely with brands worldwide across beauty, skincare, lifestyle, travel, hospitality, and consumer apps.",
+      "Yes. Mysbah works remotely with brands worldwide across beauty, skincare, lifestyle, travel, hospitality, and consumer apps.",
   },
   {
-    question: "What should brands look for in a UGC creator in Pakistan?",
+    question: "What should brands look for in a UGC creator?",
     answer:
       "Look for relevant samples, natural on-camera delivery, native short-form pacing, reliable public work history, and an understanding of hooks and audience intent. Mysbah brings those creative and marketing skills together.",
   },
@@ -167,7 +167,7 @@ const structuredData = {
         "@type": "ImageObject",
         url: `${siteUrl}/images/00-main-profile-photo.jpeg`,
         contentUrl: `${siteUrl}/images/00-main-profile-photo.jpeg`,
-        caption: "Mysbah Ahmad, UGC creator in Pakistan",
+        caption: "Mysbah Ahmad, UGC creator and marketing strategist",
       },
       email: contactEmail,
       jobTitle: [
@@ -177,11 +177,7 @@ const structuredData = {
         "Marketing Strategist",
       ],
       description:
-        "Pakistan-based beauty, skincare, lifestyle, and travel UGC creator producing short-form videos for organic and paid social campaigns.",
-      homeLocation: {
-        "@type": "Country",
-        name: "Pakistan",
-      },
+        "Beauty, skincare, lifestyle, and travel UGC creator producing short-form videos for organic and paid social campaigns.",
       contactPoint: {
         "@type": "ContactPoint",
         email: contactEmail,
@@ -203,19 +199,14 @@ const structuredData = {
       ],
     },
     {
-      "@type": "ProfessionalService",
+      "@type": "Organization",
       "@id": `${siteUrl}/#service`,
       name: "UGC by Mysbah",
       url: siteUrl,
       image: `${siteUrl}/images/00-main-profile-photo.jpeg`,
       founder: { "@id": `${siteUrl}/#mysbah` },
-      provider: { "@id": `${siteUrl}/#mysbah` },
       email: contactEmail,
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "PK",
-      },
-      areaServed: ["Pakistan", "Worldwide"],
+      areaServed: "Worldwide",
       serviceType: [
         "UGC video creation",
         "TikTok ad creation",
@@ -249,10 +240,10 @@ const structuredData = {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: siteUrl,
-      name: "Mysbah Ahmad | UGC Creator in Pakistan",
+      name: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
       description:
-        "The official portfolio of Mysbah Ahmad, a Pakistan-based UGC creator for beauty, skincare, lifestyle, travel, hospitality, and consumer brands.",
-      inLanguage: "en-PK",
+        "The official portfolio of Mysbah Ahmad, a UGC creator for beauty, skincare, lifestyle, travel, hospitality, and consumer brands.",
+      inLanguage: "en",
       mainEntity: { "@id": `${siteUrl}/#mysbah` },
       isPartOf: { "@id": `${siteUrl}/#website` },
     },
@@ -291,7 +282,11 @@ function LogoTicker() {
         Plus short-form work for more beauty, lifestyle, travel, app, and
         hospitality brands.
       </p>
-      <div className="marquee-window">
+      <div
+        className="focus-ring marquee-window"
+        tabIndex={0}
+        aria-label="Brand portfolio carousel. Focus or hover to pause."
+      >
         <div className="marquee-track flex w-max gap-4">
           {logos.map((brand, index) => (
             <div
@@ -328,12 +323,16 @@ function ProofTicker() {
     "Beauty and skincare UGC",
     "Lifestyle and travel UGC",
     "TikTok and Reels ad creative",
-    "Pakistan based, available worldwide",
+    "Remote collaborations worldwide",
   ];
   const items = [...proofItems, ...proofItems];
 
   return (
-    <div className="overflow-hidden bg-[#f6ebe6] py-5">
+    <div
+      className="focus-ring review-marquee-shell overflow-hidden bg-[#f6ebe6] py-5"
+      tabIndex={0}
+      aria-label="Creator highlights. Focus or hover to pause."
+    >
       <div className="review-marquee flex w-max gap-4">
         {items.map((item, index) => (
           <div
@@ -366,7 +365,13 @@ export default function Home() {
         }}
       />
 
-      <main className="min-h-screen overflow-x-clip bg-[#f6ebe6] text-[#17120f]">
+      <div className="min-h-screen overflow-x-clip bg-[#f6ebe6] text-[#17120f]">
+        <a
+          href="#main-content"
+          className="focus-ring fixed left-4 top-4 z-[120] -translate-y-24 rounded-full bg-white px-4 py-3 text-sm font-black text-[#17120f] shadow-soft transition focus:translate-y-0"
+        >
+          Skip to content
+        </a>
         <header className="sticky top-0 z-50 border-b-4 border-[#a8c686] bg-[#473b3b]/96 text-white backdrop-blur">
           <div className="container-shell flex min-h-12 items-center justify-between gap-4">
             <a
@@ -406,7 +411,8 @@ export default function Home() {
           </div>
         </header>
 
-        <section id="home" className="hero-canvas relative overflow-hidden">
+        <main id="main-content">
+          <section id="home" className="hero-canvas relative overflow-hidden">
           <span aria-hidden="true" className="hero-spark hero-spark-one" />
           <span aria-hidden="true" className="hero-spark hero-spark-two" />
           <div className="container-shell relative grid gap-9 py-10 md:grid-cols-[1.02fr_0.98fr] md:items-center md:py-14">
@@ -424,7 +430,7 @@ export default function Home() {
                   UGC
                 </span>{" "}
                 <span className="mt-3 block text-sm uppercase leading-6 text-[#a23b57] sm:text-base">
-                  Creator in Pakistan
+                  Creator &amp; Marketing Strategist
                 </span>
               </h1>
 
@@ -487,8 +493,8 @@ export default function Home() {
                   100% Job Success
                 </span>
                 <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
-                  <MapPin aria-hidden="true" size={16} />
-                  Pakistan based, available worldwide
+                  <Globe2 aria-hidden="true" size={16} />
+                  Remote collaborations worldwide
                 </span>
               </div>
             </div>
@@ -501,7 +507,7 @@ export default function Home() {
                   <div className="relative aspect-[3/4] overflow-hidden rounded-[1.05rem] bg-[#f6ebe6]">
                     <Image
                       src="/images/00-main-profile-photo.jpeg"
-                      alt="Mysbah Ahmad, Pakistan-based UGC creator"
+                      alt="Mysbah Ahmad, UGC creator and marketing strategist"
                       fill
                       priority
                       sizes="(max-width: 768px) 86vw, 420px"
@@ -522,7 +528,7 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
               <div className="flex flex-col justify-center">
                 <p className="text-sm font-black uppercase text-[#a23b57]">
-                  UGC creator in Pakistan
+                  UGC creator &amp; marketing strategist
                 </p>
                 <h2 className="mt-3 text-4xl font-black leading-tight sm:text-6xl">
                   More than a pretty frame. Strategy in every story.
@@ -729,6 +735,8 @@ export default function Home() {
           </div>
         </section>
 
+        </main>
+
         <footer id="contact" className="bg-[#473b3b] py-12 text-white">
           <div className="container-shell flex flex-col gap-7 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <div>
@@ -738,7 +746,7 @@ export default function Home() {
               </p>
               <p className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white/82">
                 <Check aria-hidden="true" size={17} className="text-[#a8c686]" />
-                Pakistan based, available worldwide
+                Remote collaborations worldwide
               </p>
             </div>
 
@@ -773,7 +781,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
-      </main>
+      </div>
     </VideoShowcaseProvider>
   );
 }

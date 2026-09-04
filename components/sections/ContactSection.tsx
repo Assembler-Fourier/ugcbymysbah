@@ -16,8 +16,7 @@ export function ContactSection() {
           </h2>
           <p className="mt-5 text-lg leading-8 text-muted">
             Send a brief, product category, timeline, deliverables, and usage
-            needs. Misbah is based in Pakistan and open to remote collaborations
-            worldwide.
+            needs. Misbah works remotely with brands worldwide.
           </p>
           {/* Optional hidden phone section can be added here later if Misbah Ahmad chooses to show a phone number publicly. */}
         </div>

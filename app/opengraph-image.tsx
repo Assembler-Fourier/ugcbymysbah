@@ -1,9 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Mysbah Ahmad, UGC creator in Pakistan";
+export const alt = "UGC by Mysbah portfolio preview";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const runtime = "nodejs";
@@ -65,7 +64,7 @@ export default async function OpenGraphImage() {
             fontWeight: 800,
           }}
         >
-          UGC CREATOR IN PAKISTAN
+          UGC CREATOR &amp; STRATEGIST
         </div>
         <div
           style={{

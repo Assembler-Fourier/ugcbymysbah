@@ -13,7 +13,7 @@ export function Footer() {
             Misbah Ahmad
           </Link>
           <p className="mt-2 max-w-md text-sm leading-6 text-white/68">
-            UGC Creator & Marketing Strategist. Pakistan · Available Worldwide.
+            UGC Creator & Marketing Strategist · Available Worldwide.
           </p>
         </div>
 

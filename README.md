@@ -23,7 +23,7 @@ https://github.com/Assembler-Fourier/ugcbymysbah
 - Horizontal portfolio rail that stays compact as more videos are added
 - Brand carousel and public Upwork proof
 - Correct Instagram, TikTok, LinkedIn, Upwork, and email links
-- SEO metadata for UGC creator searches in Pakistan
+- SEO metadata for UGC creator and brand collaboration searches
 - Person, profile page, service, website, and FAQ structured data
 - Dynamic Open Graph image, sitemap, and robots metadata
 - Privacy-friendly Vercel Web Analytics for first-party traffic reporting

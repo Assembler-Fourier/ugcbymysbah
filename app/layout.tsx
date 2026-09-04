@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "UGC by Mysbah",
   title: {
-    default: "Mysbah Ahmad | UGC Creator in Pakistan",
+    default: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Mysbah Ahmad is a Pakistan-based UGC creator making TikTok, Reels, product demo, beauty, skincare, lifestyle, and travel content for brands worldwide.",
+    "Mysbah Ahmad creates authentic beauty, skincare, lifestyle, and travel UGC for organic social, paid campaigns, and product pages.",
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",
@@ -32,35 +32,30 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mysbah Ahmad | UGC Creator in Pakistan",
+    title: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
     description:
       "Beauty, skincare, lifestyle, and travel UGC that feels natural and performs with paid-media clarity.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/opengraph-image?v=20260905",
         width: 1200,
         height: 630,
-        alt: "Mysbah Ahmad, UGC creator in Pakistan",
+        alt: "UGC by Mysbah portfolio preview",
       },
     ],
-    locale: "en_PK",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mysbah Ahmad | UGC Creator in Pakistan",
+    title: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
     description:
       "Beauty, skincare, lifestyle, and travel UGC by Mysbah Ahmad.",
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image?v=20260905"],
   },
   icons: {
     icon: "/favicon.svg",
-  },
-  other: {
-    "geo.region": "PK",
-    "geo.placename": "Pakistan",
   },
 };
 
@@ -70,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-PK" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body>
         {children}
         <Analytics />

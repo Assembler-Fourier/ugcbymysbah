@@ -4,6 +4,7 @@ import { extname, join, parse } from "node:path";
 const root = process.cwd();
 const videoDirectory = join(root, "public", "videos");
 const posterDirectory = join(root, "public", "images", "video-posters");
+const captionDirectory = join(root, "public", "captions");
 const metadataPath = join(root, "data", "portfolio-items.json");
 const outputPath = join(root, "data", "generated-video-manifest.json");
 const videoExtensions = new Set([".mp4", ".webm"]);
@@ -56,6 +57,14 @@ async function findPoster(id, configuredPoster) {
   return undefined;
 }
 
+async function findCaptions(id) {
+  const filename = `${id}.en.vtt`;
+
+  return (await fileExists(join(captionDirectory, filename)))
+    ? `/captions/${filename}`
+    : undefined;
+}
+
 const metadata = await readMetadata();
 const entries = await readdir(videoDirectory, { withFileTypes: true }).catch(
   (error) => {
@@ -94,6 +103,7 @@ for (const filename of filenames) {
   const videoSrc = `/videos/${filename}`;
   const configured = metadata.find((item) => item.videoSrc === videoSrc);
   const posterSrc = await findPoster(id, configured?.imageSrc);
+  const captionSrc = await findCaptions(id);
 
   samples.push({
     id,
@@ -101,6 +111,7 @@ for (const filename of filenames) {
     type: configured?.type ?? "Short-form UGC sample",
     videoSrc,
     ...(posterSrc ? { posterSrc } : {}),
+    ...(captionSrc ? { captionSrc } : {}),
   });
 }
 

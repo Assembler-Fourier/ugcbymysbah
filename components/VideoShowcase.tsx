@@ -25,6 +25,7 @@ export type VideoSample = {
   type: string;
   videoSrc: string;
   posterSrc?: string;
+  captionSrc?: string;
 };
 
 type VideoShowcaseContextValue = {
@@ -200,7 +201,18 @@ export function VideoShowcaseProvider({
                 playsInline
                 preload="metadata"
                 className="h-full min-h-0 w-full max-w-full rounded-lg object-contain"
-              />
+              >
+                {activeSample.captionSrc ? (
+                  <track
+                    kind="captions"
+                    src={activeSample.captionSrc}
+                    srcLang="en"
+                    label="English"
+                  />
+                ) : null}
+                Your browser does not support HTML video. You can still view this
+                sample by opening the video file directly.
+              </video>
             </div>
 
             <div className="flex min-h-0 flex-col justify-between gap-5 overflow-y-auto p-4 sm:p-7">
@@ -278,9 +290,9 @@ function VideoCard({ sample, index }: { sample: VideoSample; index: number }) {
       <button
         type="button"
         onClick={() => openSample(index)}
-        aria-label={`Play ${sample.title} video sample`}
         className="focus-ring block w-full text-left"
       >
+        <span className="sr-only">Play </span>
         <span className="relative block aspect-[9/16] overflow-hidden rounded-lg border-[7px] border-[#17120f] bg-[#2a2220] shadow-[0_22px_55px_rgba(23,18,15,0.24)] transition duration-500 group-hover:-translate-y-2 group-hover:rotate-1 group-hover:shadow-[0_30px_75px_rgba(183,72,104,0.28)]">
           {sample.posterSrc ? (
             <Image
@@ -307,6 +319,14 @@ function VideoCard({ sample, index }: { sample: VideoSample; index: number }) {
 
           <span className="absolute right-3 top-3 grid size-11 place-items-center rounded-full bg-[#a8c686] text-[#17120f] shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-white">
             <Play aria-hidden="true" className="ml-0.5 fill-current" size={18} />
+          </span>
+        </span>
+        <span className="mt-3 block px-1">
+          <span className="block text-sm font-black leading-5 text-[#17120f]">
+            {sample.title}
+          </span>
+          <span className="mt-1 block text-xs font-semibold leading-5 text-[#6b5a58]">
+            {sample.type}
           </span>
         </span>
       </button>

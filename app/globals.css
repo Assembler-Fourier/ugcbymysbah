@@ -399,8 +399,10 @@ a {
   }
 }
 
-.marquee-track:hover,
-.review-marquee:hover {
+.marquee-window:hover .marquee-track,
+.marquee-window:focus-within .marquee-track,
+.review-marquee-shell:hover .review-marquee,
+.review-marquee-shell:focus-within .review-marquee {
   animation-play-state: paused;
 }
 
