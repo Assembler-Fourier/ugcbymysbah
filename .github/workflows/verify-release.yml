@@ -1,0 +1,38 @@
+name: Verify release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Show tool versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Audit production dependencies
+        run: npm audit --audit-level=high
+
+      - name: Build production site
+        run: npm run build
