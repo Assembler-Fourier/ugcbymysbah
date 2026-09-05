@@ -1,40 +1,76 @@
 [
   {
     "title": "Lifestyle Creator Intro",
-    "type": "On-camera UGC",
+    "type": "On-camera introduction",
+    "category": "Lifestyle",
+    "format": "Talking head",
+    "useCase": "Organic social",
     "color": "from-[#ff7aa2] to-[#ffbd59]",
     "imageSrc": "/images/00-main-profile-photo.jpeg",
     "videoSrc": "/videos/01-lifestyle-creator-intro.mp4"
   },
   {
     "title": "Beauty Routine Demo",
-    "type": "Beauty UGC",
+    "type": "Routine-led product demo",
+    "category": "Beauty",
+    "format": "Problem / solution",
+    "useCase": "Paid + organic",
     "color": "from-[#1e1717] to-[#a23b57]",
     "videoSrc": "/videos/02-beauty-demo-routine.mp4"
   },
   {
     "title": "Travel Nomad Story",
-    "type": "Travel UGC",
+    "type": "Story-led travel creative",
+    "category": "Travel",
+    "format": "Voiceover story",
+    "useCase": "Organic social",
     "color": "from-[#2a2721] to-[#4bb5b0]",
     "imageSrc": "/images/00-travel-profile-photo.jpeg",
     "videoSrc": "/videos/03-travel-nomad-story.mp4"
   },
   {
-    "title": "Wellness",
-    "type": "Testimonial hook",
+    "title": "Wellness Testimonial",
+    "type": "Experience-led testimonial",
+    "category": "Lifestyle",
+    "format": "Testimonial hook",
+    "useCase": "Paid social",
     "color": "from-[#45322e] to-[#8ab17d]",
     "videoSrc": "/videos/04-wellness-testimonial-hook.mp4"
   },
   {
     "title": "Skincare Texture Demo",
-    "type": "Skincare UGC",
+    "type": "Product detail creative",
+    "category": "Beauty",
+    "format": "Texture close-up",
+    "useCase": "Paid + product page",
     "color": "from-[#a23b57] to-[#f6c453]",
     "videoSrc": "/videos/05-skincare-texture-shot.mp4"
   },
   {
     "title": "Unboxing",
-    "type": "Friend-rec energy",
+    "type": "First-impression unboxing",
+    "category": "Lifestyle",
+    "format": "Friend recommendation",
+    "useCase": "Organic social",
     "color": "from-[#17120f] to-[#7d5fff]",
     "videoSrc": "/videos/06-unboxing-friend-rec-energy.mp4"
+  },
+  {
+    "title": "Rare Beauty ASMR",
+    "type": "Sensory product creative",
+    "category": "Beauty",
+    "format": "ASMR demo",
+    "useCase": "Organic social",
+    "color": "from-[#ff8aa1] to-[#302522]",
+    "videoSrc": "/videos/07-Rare Beauty ASMR.mp4"
+  },
+  {
+    "title": "Maybelline Foundation Review",
+    "type": "Review-led beauty creative",
+    "category": "Beauty",
+    "format": "Product review",
+    "useCase": "Paid + organic",
+    "color": "from-[#f3bc50] to-[#a23b57]",
+    "videoSrc": "/videos/08-Maybelline Super Stay Foundation Review.mp4"
   }
 ]

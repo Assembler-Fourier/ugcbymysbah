@@ -2,7 +2,10 @@
   {
     "id": "01-lifestyle-creator-intro",
     "title": "Lifestyle Creator Intro",
-    "type": "On-camera UGC",
+    "type": "On-camera introduction",
+    "category": "Lifestyle",
+    "format": "Talking head",
+    "useCase": "Organic social",
     "videoSrc": "/videos/01-lifestyle-creator-intro.mp4",
     "posterSrc": "/images/video-posters/01-lifestyle-creator-intro.jpg",
     "captionSrc": "/captions/01-lifestyle-creator-intro.en.vtt"
@@ -10,7 +13,10 @@
   {
     "id": "02-beauty-demo-routine",
     "title": "Beauty Routine Demo",
-    "type": "Beauty UGC",
+    "type": "Routine-led product demo",
+    "category": "Beauty",
+    "format": "Problem / solution",
+    "useCase": "Paid + organic",
     "videoSrc": "/videos/02-beauty-demo-routine.mp4",
     "posterSrc": "/images/video-posters/02-beauty-demo-routine.jpg",
     "captionSrc": "/captions/02-beauty-demo-routine.en.vtt"
@@ -18,15 +24,21 @@
   {
     "id": "03-travel-nomad-story",
     "title": "Travel Nomad Story",
-    "type": "Travel UGC",
+    "type": "Story-led travel creative",
+    "category": "Travel",
+    "format": "Voiceover story",
+    "useCase": "Organic social",
     "videoSrc": "/videos/03-travel-nomad-story.mp4",
     "posterSrc": "/images/video-posters/03-travel-nomad-story.jpg",
     "captionSrc": "/captions/03-travel-nomad-story.en.vtt"
   },
   {
     "id": "04-wellness-testimonial-hook",
-    "title": "Wellness",
-    "type": "Testimonial hook",
+    "title": "Wellness Testimonial",
+    "type": "Experience-led testimonial",
+    "category": "Lifestyle",
+    "format": "Testimonial hook",
+    "useCase": "Paid social",
     "videoSrc": "/videos/04-wellness-testimonial-hook.mp4",
     "posterSrc": "/images/video-posters/04-wellness-testimonial-hook.jpg",
     "captionSrc": "/captions/04-wellness-testimonial-hook.en.vtt"
@@ -34,7 +46,10 @@
   {
     "id": "05-skincare-texture-shot",
     "title": "Skincare Texture Demo",
-    "type": "Skincare UGC",
+    "type": "Product detail creative",
+    "category": "Beauty",
+    "format": "Texture close-up",
+    "useCase": "Paid + product page",
     "videoSrc": "/videos/05-skincare-texture-shot.mp4",
     "posterSrc": "/images/video-posters/05-skincare-texture-shot.jpg",
     "captionSrc": "/captions/05-skincare-texture-shot.en.vtt"
@@ -42,7 +57,10 @@
   {
     "id": "06-unboxing-friend-rec-energy",
     "title": "Unboxing",
-    "type": "Friend-rec energy",
+    "type": "First-impression unboxing",
+    "category": "Lifestyle",
+    "format": "Friend recommendation",
+    "useCase": "Organic social",
     "videoSrc": "/videos/06-unboxing-friend-rec-energy.mp4",
     "posterSrc": "/images/video-posters/06-unboxing-friend-rec-energy.jpg",
     "captionSrc": "/captions/06-unboxing-friend-rec-energy.en.vtt"
@@ -50,15 +68,21 @@
   {
     "id": "07-Rare Beauty ASMR",
     "title": "Rare Beauty ASMR",
-    "type": "Short-form UGC sample",
+    "type": "Sensory product creative",
+    "category": "Beauty",
+    "format": "ASMR demo",
+    "useCase": "Organic social",
     "videoSrc": "/videos/07-Rare Beauty ASMR.mp4",
     "posterSrc": "/images/video-posters/07-Rare Beauty ASMR.jpg",
     "captionSrc": "/captions/07-Rare Beauty ASMR.en.vtt"
   },
   {
     "id": "08-Maybelline Super Stay Foundation Review",
-    "title": "Maybelline Super Stay Foundation Review",
-    "type": "Short-form UGC sample",
+    "title": "Maybelline Foundation Review",
+    "type": "Review-led beauty creative",
+    "category": "Beauty",
+    "format": "Product review",
+    "useCase": "Paid + organic",
     "videoSrc": "/videos/08-Maybelline Super Stay Foundation Review.mp4",
     "posterSrc": "/images/video-posters/08-Maybelline Super Stay Foundation Review.jpg",
     "captionSrc": "/captions/08-Maybelline Super Stay Foundation Review.en.vtt"

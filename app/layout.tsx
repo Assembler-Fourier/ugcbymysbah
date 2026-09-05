@@ -2,40 +2,47 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const siteUrl = "https://ugcbymysbah.com";
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const canonicalUrl = "https://ugcbymysbah.com";
+const previewUrl =
+  isVercelPreview && process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : null;
+const metadataBaseUrl = previewUrl ?? canonicalUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(metadataBaseUrl),
   applicationName: "UGC by Mysbah",
   title: {
-    default: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
+    default: "UGC by Mysbah | Creator-Led Ads & Social Content",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Mysbah Ahmad creates authentic beauty, skincare, lifestyle, and travel UGC for organic social, paid campaigns, and product pages.",
-  authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
+    "Creator-led beauty, skincare, lifestyle, and travel UGC with natural delivery, hook-first thinking, and campaign-ready scope.",
+  authors: [{ name: "Mysbah Ahmad", url: canonicalUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",
   category: "Marketing",
   alternates: {
-    canonical: siteUrl,
+    canonical: canonicalUrl,
   },
   robots: {
-    index: true,
-    follow: true,
+    index: !isVercelPreview,
+    follow: !isVercelPreview,
+    noarchive: isVercelPreview,
     googleBot: {
-      index: true,
-      follow: true,
+      index: !isVercelPreview,
+      follow: !isVercelPreview,
       "max-image-preview": "large",
       "max-snippet": -1,
       "max-video-preview": -1,
     },
   },
   openGraph: {
-    title: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
+    title: "UGC by Mysbah | Creator-Led Ads & Social Content",
     description:
-      "Beauty, skincare, lifestyle, and travel UGC that feels natural and performs with paid-media clarity.",
-    url: siteUrl,
+      "Social-native UGC that feels human, looks sharp, and gives brands a clear creative system.",
+    url: previewUrl ?? canonicalUrl,
     siteName: "UGC by Mysbah",
     images: [
       {
@@ -49,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mysbah Ahmad | UGC Creator & Marketing Strategist",
+    title: "UGC by Mysbah | Creator-Led Ads & Social Content",
     description:
       "Beauty, skincare, lifestyle, and travel UGC by Mysbah Ahmad.",
     images: ["/opengraph-image?v=20260905"],
@@ -68,7 +75,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         {children}
-        <Analytics />
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );
