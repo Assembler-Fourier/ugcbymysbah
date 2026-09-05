@@ -22,11 +22,6 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
-    const previewHeaders =
-      process.env.VERCEL_ENV === "preview"
-        ? [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }]
-        : [];
-
     return [
       {
         source: "/:path*",
@@ -38,7 +33,7 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
-          ...previewHeaders,
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
         ],
       },
     ];

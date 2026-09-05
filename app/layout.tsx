@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const isVercelPreview = process.env.VERCEL_ENV === "preview";
 const canonicalUrl = "https://ugcbymysbah.com";
-const previewUrl =
-  isVercelPreview && process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : null;
-const metadataBaseUrl = previewUrl ?? canonicalUrl;
+const presentationHost =
+  process.env.VERCEL_ENV === "production"
+    ? process.env.VERCEL_PROJECT_PRODUCTION_URL
+    : process.env.VERCEL_URL;
+const presentationUrl = presentationHost
+  ? `https://${presentationHost}`
+  : canonicalUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(metadataBaseUrl),
+  metadataBase: new URL(presentationUrl),
   applicationName: "UGC by Mysbah",
   title: {
     default: "UGC by Mysbah | Creator-Led Ads & Social Content",
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   robots: {
-    index: !isVercelPreview,
-    follow: !isVercelPreview,
-    noarchive: isVercelPreview,
+    index: false,
+    follow: false,
+    noarchive: true,
     googleBot: {
-      index: !isVercelPreview,
-      follow: !isVercelPreview,
+      index: false,
+      follow: false,
       "max-image-preview": "large",
       "max-snippet": -1,
       "max-video-preview": -1,
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     title: "UGC by Mysbah | Creator-Led Ads & Social Content",
     description:
       "Social-native UGC that feels human, looks sharp, and gives brands a clear creative system.",
-    url: previewUrl ?? canonicalUrl,
+    url: presentationUrl,
     siteName: "UGC by Mysbah",
     images: [
       {
