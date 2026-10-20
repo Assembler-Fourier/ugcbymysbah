@@ -16,36 +16,46 @@ https://ugcbymysbah.com
 
 ## Add A Portfolio Video
 
-1. Open `public/videos` in GitHub.
-2. Click **Add file**, then **Upload files**.
-3. Name the new video with the next number, for example:
+1. Open the folder for the right section in GitHub:
 
 ```text
-07-new-product-demo.mp4
-08-travel-hotel-story.mp4
-09-skincare-testimonial.mp4
+public/videos/beauty
+public/videos/skincare
+public/videos/haircare
+public/videos/wellness
+public/videos/lifestyle
 ```
+
+2. Click **Add file**, then **Upload files**.
+3. Name the video `number-Brand - Format.mp4`, for example:
+
+```text
+09-Olaplex - Hair routine.mp4
+10-CeraVe - Texture demo.mp4
+```
+
+The brand appears in the pink label under the video, and the format appears underneath it.
 
 4. Click **Commit changes** and commit to `main`.
 5. Wait a few minutes for Vercel.
 
-That is all. Every MP4 or WebM in the folder appears automatically. Adding more videos does not make the page longer because the portfolio stays in one horizontal showcase.
+Videos flow down the page in rows, so adding more never needs arrows or swiping. A section with no videos stays hidden until you add one.
 
-Vercel creates the website's video index during deployment. Do not edit `data/generated-video-manifest.json`; it is refreshed automatically from the files you upload.
+Vercel creates the website's video list during deployment. Do not edit `data/generated-video-manifest.json`; it is refreshed automatically from the files you upload.
 
 ## Add A Video Thumbnail
 
 This is optional, but it makes the portfolio look strongest.
 
 1. Save a clear vertical frame as a JPG.
-2. Give it the exact same base name as the video.
+2. Give it the exact same name as the video (without `.mp4`).
 3. Upload it to `public/images/video-posters`.
 
 Example:
 
 ```text
-public/videos/07-new-product-demo.mp4
-public/images/video-posters/07-new-product-demo.jpg
+public/videos/haircare/09-Olaplex - Hair routine.mp4
+public/images/video-posters/09-Olaplex - Hair routine.jpg
 ```
 
 Without a JPG, the website uses a branded Mysbah cover.
@@ -58,7 +68,7 @@ Replace this file with another JPEG using the exact same name:
 public/images/00-main-profile-photo.jpeg
 ```
 
-## Change The Travel Picture
+## Change The About Picture
 
 Replace:
 
@@ -68,8 +78,8 @@ public/images/00-travel-profile-photo.jpeg
 
 ## Remember
 
-- Add new videos. Do not delete older ones unless they should leave the portfolio.
 - Use MP4 or WebM for videos and JPG for thumbnails.
+- Keep videos small (about 3 to 10 MB each) so the site loads fast on phones.
 - Number filenames to control their order.
 - Keep each video below GitHub's 100 MB per-file limit.
 - Commit to `main` to publish.

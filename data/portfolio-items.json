@@ -1,40 +1,42 @@
 [
   {
-    "title": "Lifestyle Creator Intro",
-    "type": "On-camera UGC",
-    "color": "from-[#ff7aa2] to-[#ffbd59]",
-    "imageSrc": "/images/00-main-profile-photo.jpeg",
-    "videoSrc": "/videos/01-lifestyle-creator-intro.mp4"
+    "id": "02-beauty-demo-routine",
+    "label": "Makeup routine",
+    "format": "Product demo"
   },
   {
-    "title": "Beauty Routine Demo",
-    "type": "Beauty UGC",
-    "color": "from-[#1e1717] to-[#a23b57]",
-    "videoSrc": "/videos/02-beauty-demo-routine.mp4"
+    "id": "07-Rare Beauty ASMR",
+    "label": "Rare Beauty",
+    "format": "ASMR"
   },
   {
-    "title": "Travel Nomad Story",
-    "type": "Travel UGC",
-    "color": "from-[#2a2721] to-[#4bb5b0]",
-    "imageSrc": "/images/00-travel-profile-photo.jpeg",
-    "videoSrc": "/videos/03-travel-nomad-story.mp4"
+    "id": "08-Maybelline Super Stay Foundation Review",
+    "label": "Maybelline",
+    "format": "Foundation review"
   },
   {
-    "title": "Wellness",
-    "type": "Testimonial hook",
-    "color": "from-[#45322e] to-[#8ab17d]",
-    "videoSrc": "/videos/04-wellness-testimonial-hook.mp4"
+    "id": "05-skincare-texture-shot",
+    "label": "Skincare texture",
+    "format": "Texture demo"
   },
   {
-    "title": "Skincare Texture Demo",
-    "type": "Skincare UGC",
-    "color": "from-[#a23b57] to-[#f6c453]",
-    "videoSrc": "/videos/05-skincare-texture-shot.mp4"
+    "id": "04-wellness-testimonial-hook",
+    "label": "Wellness",
+    "format": "Testimonial"
   },
   {
-    "title": "Unboxing",
-    "type": "Friend-rec energy",
-    "color": "from-[#17120f] to-[#7d5fff]",
-    "videoSrc": "/videos/06-unboxing-friend-rec-energy.mp4"
+    "id": "01-lifestyle-creator-intro",
+    "label": "Creator intro",
+    "format": "On-camera UGC"
+  },
+  {
+    "id": "03-travel-nomad-story",
+    "label": "Travel story",
+    "format": "Lifestyle UGC"
+  },
+  {
+    "id": "06-unboxing-friend-rec-energy",
+    "label": "Unboxing",
+    "format": "Friend-rec style"
   }
 ]

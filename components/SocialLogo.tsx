@@ -21,16 +21,8 @@ export function SocialLogo({ logo, className = "size-4" }: SocialLogoProps) {
         viewBox="0 0 48 48"
         role="img"
       >
-        <defs>
-          <radialGradient id="instagram-pink" cx="30%" cy="107%" r="115%">
-            <stop offset="0%" stopColor="#feda75" />
-            <stop offset="25%" stopColor="#fa7e1e" />
-            <stop offset="50%" stopColor="#d62976" />
-            <stop offset="75%" stopColor="#962fbf" />
-            <stop offset="100%" stopColor="#4f5bd5" />
-          </radialGradient>
-        </defs>
-        <rect width="48" height="48" rx="13" fill="url(#instagram-pink)" />
+        {/* Solid fill: a shared gradient id breaks when the first copy sits in a closed dialog. */}
+        <rect width="48" height="48" rx="13" fill="#d62976" />
         <path
           fill="#fff"
           fillRule="evenodd"

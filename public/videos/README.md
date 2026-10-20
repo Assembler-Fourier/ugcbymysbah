@@ -1,27 +1,35 @@
 # Portfolio Videos
 
-Every `.mp4` or `.webm` file in this folder appears automatically in the website portfolio.
+Videos live in one folder per portfolio section:
+
+```text
+public/videos/beauty
+public/videos/skincare
+public/videos/haircare
+public/videos/wellness     (shown as "Health & Wellness")
+public/videos/lifestyle
+```
+
+Every `.mp4` or `.webm` file inside one of these folders appears automatically in that section of the website. A section with no videos is hidden until you add one.
 
 ## Add A New Video
 
-1. Give the file the next number, such as `07-product-demo.mp4`.
-2. Upload it to this folder.
-3. Commit the upload to `main`.
-4. Vercel publishes the update automatically.
-
-The number controls the order. The rest of the filename becomes the title, so:
+1. Open the right category folder in GitHub, for example `public/videos/haircare`.
+2. Click **Add file**, then **Upload files**.
+3. Name the file like this: `number-Brand - Format.mp4`
 
 ```text
-07-pepsi-lifestyle-hook.mp4
+09-Olaplex - Hair routine.mp4
 ```
 
-appears as `Pepsi Lifestyle Hook`.
+appears with the pink label **Olaplex** and the small text **Hair routine**.
+The number controls the order inside the section.
 
-All videos remain in the portfolio. The website keeps them in a fixed-height horizontal showcase, and clients can move through every sample in the full-screen player.
+4. Commit the upload to `main`. Vercel publishes it automatically.
 
 ## Add A Thumbnail
 
-Upload a JPG with the same base name to:
+Upload a JPG with exactly the same name (without `.mp4`) to:
 
 ```text
 public/images/video-posters
@@ -30,18 +38,15 @@ public/images/video-posters
 Example:
 
 ```text
-Video:  public/videos/07-pepsi-lifestyle-hook.mp4
-Poster: public/images/video-posters/07-pepsi-lifestyle-hook.jpg
+Video:  public/videos/haircare/09-Olaplex - Hair routine.mp4
+Poster: public/images/video-posters/09-Olaplex - Hair routine.jpg
 ```
 
-The poster is optional. If it is missing, the website creates a branded cover and still plays the video normally.
+Without a thumbnail, the website shows a branded Mysbah cover.
 
 ## File Tips
 
-- Use portrait 9:16 MP4 where possible.
-- Keep the original file name after it is published so old links keep working.
-- Keep each web video reasonably compressed for faster client playback.
+- Use portrait 9:16 MP4 videos.
+- Keep each video small (about 3 to 10 MB). Big 4K files make the site slow on phones.
 - GitHub rejects individual files larger than 100 MB.
-- Do not delete the existing videos when adding new ones.
-
-For a very large future library, the same gallery can be connected to a video CDN. No change is needed for the current portfolio.
+- Every video name must be unique across all folders.

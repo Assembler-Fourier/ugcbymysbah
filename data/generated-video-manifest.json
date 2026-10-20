@@ -1,66 +1,74 @@
 [
   {
-    "id": "01-lifestyle-creator-intro",
-    "title": "Lifestyle Creator Intro",
-    "type": "On-camera UGC",
-    "videoSrc": "/videos/01-lifestyle-creator-intro.mp4",
-    "posterSrc": "/images/video-posters/01-lifestyle-creator-intro.jpg",
-    "captionSrc": "/captions/01-lifestyle-creator-intro.en.vtt"
-  },
-  {
     "id": "02-beauty-demo-routine",
-    "title": "Beauty Routine Demo",
-    "type": "Beauty UGC",
-    "videoSrc": "/videos/02-beauty-demo-routine.mp4",
+    "category": "beauty",
+    "label": "Makeup routine",
+    "format": "Product demo",
+    "videoSrc": "/videos/beauty/02-beauty-demo-routine.mp4",
     "posterSrc": "/images/video-posters/02-beauty-demo-routine.jpg",
     "captionSrc": "/captions/02-beauty-demo-routine.en.vtt"
   },
   {
-    "id": "03-travel-nomad-story",
-    "title": "Travel Nomad Story",
-    "type": "Travel UGC",
-    "videoSrc": "/videos/03-travel-nomad-story.mp4",
-    "posterSrc": "/images/video-posters/03-travel-nomad-story.jpg",
-    "captionSrc": "/captions/03-travel-nomad-story.en.vtt"
-  },
-  {
-    "id": "04-wellness-testimonial-hook",
-    "title": "Wellness",
-    "type": "Testimonial hook",
-    "videoSrc": "/videos/04-wellness-testimonial-hook.mp4",
-    "posterSrc": "/images/video-posters/04-wellness-testimonial-hook.jpg",
-    "captionSrc": "/captions/04-wellness-testimonial-hook.en.vtt"
-  },
-  {
-    "id": "05-skincare-texture-shot",
-    "title": "Skincare Texture Demo",
-    "type": "Skincare UGC",
-    "videoSrc": "/videos/05-skincare-texture-shot.mp4",
-    "posterSrc": "/images/video-posters/05-skincare-texture-shot.jpg",
-    "captionSrc": "/captions/05-skincare-texture-shot.en.vtt"
-  },
-  {
-    "id": "06-unboxing-friend-rec-energy",
-    "title": "Unboxing",
-    "type": "Friend-rec energy",
-    "videoSrc": "/videos/06-unboxing-friend-rec-energy.mp4",
-    "posterSrc": "/images/video-posters/06-unboxing-friend-rec-energy.jpg",
-    "captionSrc": "/captions/06-unboxing-friend-rec-energy.en.vtt"
-  },
-  {
     "id": "07-Rare Beauty ASMR",
-    "title": "Rare Beauty ASMR",
-    "type": "Short-form UGC sample",
-    "videoSrc": "/videos/07-Rare Beauty ASMR.mp4",
+    "category": "beauty",
+    "label": "Rare Beauty",
+    "format": "ASMR",
+    "videoSrc": "/videos/beauty/07-Rare Beauty ASMR.mp4",
     "posterSrc": "/images/video-posters/07-Rare Beauty ASMR.jpg",
     "captionSrc": "/captions/07-Rare Beauty ASMR.en.vtt"
   },
   {
     "id": "08-Maybelline Super Stay Foundation Review",
-    "title": "Maybelline Super Stay Foundation Review",
-    "type": "Short-form UGC sample",
-    "videoSrc": "/videos/08-Maybelline Super Stay Foundation Review.mp4",
+    "category": "beauty",
+    "label": "Maybelline",
+    "format": "Foundation review",
+    "videoSrc": "/videos/beauty/08-Maybelline Super Stay Foundation Review.mp4",
     "posterSrc": "/images/video-posters/08-Maybelline Super Stay Foundation Review.jpg",
     "captionSrc": "/captions/08-Maybelline Super Stay Foundation Review.en.vtt"
+  },
+  {
+    "id": "05-skincare-texture-shot",
+    "category": "skincare",
+    "label": "Skincare texture",
+    "format": "Texture demo",
+    "videoSrc": "/videos/skincare/05-skincare-texture-shot.mp4",
+    "posterSrc": "/images/video-posters/05-skincare-texture-shot.jpg",
+    "captionSrc": "/captions/05-skincare-texture-shot.en.vtt"
+  },
+  {
+    "id": "04-wellness-testimonial-hook",
+    "category": "wellness",
+    "label": "Wellness",
+    "format": "Testimonial",
+    "videoSrc": "/videos/wellness/04-wellness-testimonial-hook.mp4",
+    "posterSrc": "/images/video-posters/04-wellness-testimonial-hook.jpg",
+    "captionSrc": "/captions/04-wellness-testimonial-hook.en.vtt"
+  },
+  {
+    "id": "01-lifestyle-creator-intro",
+    "category": "lifestyle",
+    "label": "Creator intro",
+    "format": "On-camera UGC",
+    "videoSrc": "/videos/lifestyle/01-lifestyle-creator-intro.mp4",
+    "posterSrc": "/images/video-posters/01-lifestyle-creator-intro.jpg",
+    "captionSrc": "/captions/01-lifestyle-creator-intro.en.vtt"
+  },
+  {
+    "id": "03-travel-nomad-story",
+    "category": "lifestyle",
+    "label": "Travel story",
+    "format": "Lifestyle UGC",
+    "videoSrc": "/videos/lifestyle/03-travel-nomad-story.mp4",
+    "posterSrc": "/images/video-posters/03-travel-nomad-story.jpg",
+    "captionSrc": "/captions/03-travel-nomad-story.en.vtt"
+  },
+  {
+    "id": "06-unboxing-friend-rec-energy",
+    "category": "lifestyle",
+    "label": "Unboxing",
+    "format": "Friend-rec style",
+    "videoSrc": "/videos/lifestyle/06-unboxing-friend-rec-energy.mp4",
+    "posterSrc": "/images/video-posters/06-unboxing-friend-rec-energy.jpg",
+    "captionSrc": "/captions/06-unboxing-friend-rec-energy.en.vtt"
   }
 ]

@@ -17,8 +17,8 @@ export default async function OpenGraphImage() {
     <div
       style={{
         alignItems: "stretch",
-        background: "#f6ebe6",
-        color: "#17120f",
+        background: "#f9e1e4",
+        color: "#2b1e1c",
         display: "flex",
         fontFamily: "Arial, sans-serif",
         height: "100%",
@@ -29,7 +29,7 @@ export default async function OpenGraphImage() {
     >
       <div
         style={{
-          background: "#a8c686",
+          background: "#5e7d3a",
           height: 118,
           position: "absolute",
           right: 0,
@@ -39,7 +39,7 @@ export default async function OpenGraphImage() {
       />
       <div
         style={{
-          background: "#ff8aa1",
+          background: "#c8435f",
           bottom: 0,
           height: 94,
           left: 0,
@@ -58,13 +58,13 @@ export default async function OpenGraphImage() {
       >
         <div
           style={{
-            color: "#a23b57",
+            color: "#8e2343",
             display: "flex",
             fontSize: 24,
             fontWeight: 800,
           }}
         >
-          UGC CREATOR &amp; STRATEGIST
+          UGC CREATOR · 3 YEARS
         </div>
         <div
           style={{
@@ -81,25 +81,26 @@ export default async function OpenGraphImage() {
         </div>
         <div
           style={{
-            color: "#5f514f",
+            color: "#3e5626",
             display: "flex",
             fontSize: 25,
             fontWeight: 700,
             marginTop: 28,
           }}
         >
-          Beauty / Skincare / Lifestyle / Travel
+          Beauty / Skincare / Haircare / Wellness / Lifestyle
         </div>
       </div>
       <div
         style={{
-          background: "#17120f",
+          background: "#2b1e1c",
           display: "flex",
           padding: 10,
           transform: "rotate(1.5deg)",
           width: 404,
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse only renders plain img tags */}
         <img
           alt=""
           src={portraitSrc}

@@ -1,13 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Clapperboard,
-  Play,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Clapperboard, Play, X } from "lucide-react";
 import {
   createContext,
   useCallback,
@@ -16,25 +10,30 @@ import {
   useId,
   useRef,
   useState,
+  type CSSProperties,
+  type PointerEvent,
   type ReactNode,
 } from "react";
 
 export type VideoSample = {
   id: string;
-  title: string;
-  type: string;
+  category: string;
+  label: string;
+  format: string;
   videoSrc: string;
   posterSrc?: string;
   captionSrc?: string;
 };
 
+export type VideoCategory = {
+  id: string;
+  title: string;
+};
+
 type VideoShowcaseContextValue = {
-  activeIndex: number | null;
-  closeViewer: () => void;
+  categories: VideoCategory[];
   openSample: (index: number) => void;
   samples: VideoSample[];
-  showNext: () => void;
-  showPrevious: () => void;
 };
 
 const VideoShowcaseContext = createContext<VideoShowcaseContextValue | null>(
@@ -52,11 +51,13 @@ function useVideoShowcase() {
 }
 
 type VideoShowcaseProviderProps = {
+  categories: VideoCategory[];
   children: ReactNode;
   samples: VideoSample[];
 };
 
 export function VideoShowcaseProvider({
+  categories,
   children,
   samples,
 }: VideoShowcaseProviderProps) {
@@ -149,26 +150,20 @@ export function VideoShowcaseProvider({
   }, [closeViewer, showNext, showPrevious, viewerIsOpen]);
 
   const activeSample = activeIndex === null ? null : samples[activeIndex];
+  const activeCategory = categories.find(
+    (category) => category.id === activeSample?.category,
+  );
 
   return (
-    <VideoShowcaseContext.Provider
-      value={{
-        activeIndex,
-        closeViewer,
-        openSample,
-        samples,
-        showNext,
-        showPrevious,
-      }}
-    >
+    <VideoShowcaseContext.Provider value={{ categories, openSample, samples }}>
       {children}
 
       {activeSample && activeIndex !== null ? (
         <div className="fixed inset-0 z-[100] grid place-items-center p-3 sm:p-6">
           <button
             type="button"
-            aria-label="Dismiss video viewer backdrop"
-            className="absolute inset-0 cursor-default bg-[#17120f]/88 backdrop-blur-md"
+            aria-label="Close video"
+            className="absolute inset-0 cursor-default bg-cocoa/85 backdrop-blur-md"
             onClick={closeViewer}
             tabIndex={-1}
           />
@@ -178,15 +173,15 @@ export function VideoShowcaseProvider({
             role="dialog"
             aria-modal="true"
             aria-labelledby={viewerTitleId}
-            className="video-modal-enter relative z-10 grid h-[94dvh] max-h-[900px] w-full max-w-5xl grid-rows-[minmax(0,1fr)_auto] overflow-hidden rounded-lg border border-white/15 bg-[#17120f] text-white shadow-[0_36px_120px_rgba(0,0,0,0.55)] lg:h-[min(88dvh,800px)] lg:grid-cols-[minmax(320px,440px)_1fr] lg:grid-rows-1"
+            className="pop-modal relative z-10 grid h-[94dvh] max-h-[860px] w-full max-w-4xl grid-rows-[minmax(0,1fr)_auto] overflow-hidden rounded-[1.75rem] border-4 border-strawberry bg-cocoa text-cream shadow-[0_36px_120px_rgba(0,0,0,0.55)] lg:h-[min(88dvh,780px)] lg:grid-cols-[minmax(320px,420px)_1fr] lg:grid-rows-1"
           >
             <button
               ref={closeButtonRef}
               type="button"
               onClick={closeViewer}
-              aria-label="Close video viewer"
+              aria-label="Close video"
               title="Close"
-              className="focus-ring absolute right-3 top-3 z-20 grid size-11 place-items-center rounded-full border border-white/20 bg-[#17120f]/82 text-white shadow-lg backdrop-blur transition hover:rotate-6 hover:bg-white hover:text-[#17120f]"
+              className="focus-ring absolute right-3 top-3 z-20 grid size-11 place-items-center rounded-full bg-strawberry text-white shadow-lg transition hover:rotate-90 hover:bg-berry"
             >
               <X aria-hidden="true" size={20} />
             </button>
@@ -200,7 +195,7 @@ export function VideoShowcaseProvider({
                 autoPlay
                 playsInline
                 preload="metadata"
-                className="h-full min-h-0 w-full max-w-full rounded-lg object-contain"
+                className="h-full min-h-0 w-full max-w-full rounded-2xl object-contain"
               >
                 {activeSample.captionSrc ? (
                   <track
@@ -210,46 +205,47 @@ export function VideoShowcaseProvider({
                     label="English"
                   />
                 ) : null}
-                Your browser does not support HTML video. You can still view this
-                sample by opening the video file directly.
+                Your browser does not support HTML video.
               </video>
             </div>
 
-            <div className="flex min-h-0 flex-col justify-between gap-5 overflow-y-auto p-4 sm:p-7">
+            <div className="flex min-h-0 flex-col justify-between gap-5 overflow-y-auto p-5 sm:p-8">
               <div aria-live="polite">
-                <p className="text-xs font-black uppercase text-[#a8c686]">
-                  Sample {activeIndex + 1} of {samples.length}
-                </p>
+                {activeCategory ? (
+                  <span className="inline-block rounded-full bg-matcha px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                    {activeCategory.title}
+                  </span>
+                ) : null}
                 <h2
                   id={viewerTitleId}
-                  className="mt-3 text-2xl font-black sm:mt-5 sm:text-5xl"
+                  className="mt-4 font-display text-4xl leading-tight sm:text-5xl"
                 >
-                  {activeSample.title}
+                  {activeSample.label}
                 </h2>
-                <p className="mt-2 text-sm font-bold leading-6 text-white/65 sm:mt-3 sm:text-base sm:leading-7">
-                  {activeSample.type}
+                <p className="mt-2 font-script text-3xl text-strawberry-soft">
+                  {activeSample.format}
                 </p>
               </div>
 
-              <div className="flex items-center justify-between gap-3 border-t border-white/12 pt-5">
+              <div className="flex items-center justify-between gap-3 border-t border-cream/15 pt-5">
                 <button
                   type="button"
                   onClick={showPrevious}
-                  aria-label="Previous video sample"
-                  title="Previous sample"
-                  className="focus-ring grid size-11 place-items-center rounded-full border border-white/16 transition hover:bg-white hover:text-[#17120f]"
+                  aria-label="Previous video"
+                  title="Previous video"
+                  className="focus-ring grid size-11 place-items-center rounded-full border border-cream/25 transition hover:bg-cream hover:text-cocoa"
                 >
                   <ArrowLeft aria-hidden="true" size={17} />
                 </button>
-                <p className="text-center text-xs font-black uppercase text-white/54">
+                <p className="text-center text-xs font-bold uppercase tracking-wide text-cream/60">
                   {activeIndex + 1} / {samples.length}
                 </p>
                 <button
                   type="button"
                   onClick={showNext}
-                  aria-label="Next video sample"
-                  title="Next sample"
-                  className="focus-ring grid size-11 place-items-center rounded-full bg-[#a8c686] text-[#17120f] transition hover:bg-white"
+                  aria-label="Next video"
+                  title="Next video"
+                  className="focus-ring grid size-11 place-items-center rounded-full bg-strawberry text-white transition hover:bg-berry"
                 >
                   <ArrowRight aria-hidden="true" size={17} />
                 </button>
@@ -262,210 +258,189 @@ export function VideoShowcaseProvider({
   );
 }
 
-type WatchSamplesButtonProps = {
-  className?: string;
-};
-
-export function WatchSamplesButton({ className }: WatchSamplesButtonProps) {
-  const { openSample, samples } = useVideoShowcase();
-
-  return (
-    <button
-      type="button"
-      onClick={() => openSample(0)}
-      disabled={samples.length === 0}
-      className={className}
-    >
-      <Play aria-hidden="true" className="fill-current" size={17} />
-      Watch Samples
-    </button>
-  );
-}
-
-function VideoCard({ sample, index }: { sample: VideoSample; index: number }) {
+function PhoneVideoCard({
+  sample,
+  index,
+  order,
+}: {
+  sample: VideoSample;
+  index: number;
+  order: number;
+}) {
   const { openSample } = useVideoShowcase();
+  const previewRef = useRef<HTMLVideoElement>(null);
+  const [previewing, setPreviewing] = useState(false);
+
+  const startPreview = (event: PointerEvent) => {
+    if (event.pointerType !== "mouse" || !previewRef.current) {
+      return;
+    }
+
+    previewRef.current.currentTime = 0;
+    previewRef.current.play().then(
+      () => setPreviewing(true),
+      () => setPreviewing(false),
+    );
+  };
+
+  const stopPreview = () => {
+    previewRef.current?.pause();
+    setPreviewing(false);
+  };
 
   return (
-    <article className="video-card-width video-card group relative">
+    <article
+      data-pop
+      style={{ "--pop-delay": `${order * 70}ms` } as CSSProperties}
+      className="video-tile group"
+    >
       <button
         type="button"
         onClick={() => openSample(index)}
-        className="focus-ring block w-full text-left"
+        onPointerEnter={startPreview}
+        onPointerLeave={stopPreview}
+        className="focus-ring block w-full rounded-[1.6rem] text-left"
       >
-        <span className="sr-only">Play </span>
-        <span className="relative block aspect-[9/16] overflow-hidden rounded-lg border-[7px] border-[#17120f] bg-[#2a2220] shadow-[0_22px_55px_rgba(23,18,15,0.24)] transition duration-500 group-hover:-translate-y-2 group-hover:rotate-1 group-hover:shadow-[0_30px_75px_rgba(183,72,104,0.28)]">
-          {sample.posterSrc ? (
-            <Image
-              src={sample.posterSrc}
-              alt=""
-              fill
-              sizes="(max-width: 640px) 44vw, (max-width: 1024px) 29vw, 180px"
-              className="object-cover transition duration-700 group-hover:scale-[1.04]"
-            />
-          ) : (
-            <span className="video-poster-fallback absolute inset-0 grid place-items-center px-5 text-center text-white">
-              <span>
-                <Clapperboard
-                  aria-hidden="true"
-                  className="mx-auto text-[#a8c686]"
-                  size={32}
-                />
-                <span className="mt-3 block font-serif text-3xl italic">
-                  Mysbah
+        <span className="sr-only">
+          Play {sample.label}, {sample.format}
+        </span>
+        <span className="phone-frame block">
+          <span className="phone-notch" aria-hidden="true" />
+          <span className="relative block aspect-[9/16] overflow-hidden rounded-[1.15rem] bg-cocoa">
+            {sample.posterSrc ? (
+              <Image
+                src={sample.posterSrc}
+                alt=""
+                fill
+                sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw, 240px"
+                className="object-cover"
+              />
+            ) : (
+              <span className="absolute inset-0 grid place-items-center bg-berry text-cream">
+                <span className="text-center">
+                  <Clapperboard aria-hidden="true" className="mx-auto" size={30} />
+                  <span className="mt-2 block font-display text-2xl">
+                    Mysbah
+                  </span>
                 </span>
               </span>
-            </span>
-          )}
+            )}
 
-          <span className="absolute right-3 top-3 grid size-11 place-items-center rounded-full bg-[#a8c686] text-[#17120f] shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-white">
-            <Play aria-hidden="true" className="ml-0.5 fill-current" size={18} />
-          </span>
-        </span>
-        <span className="mt-3 block px-1">
-          <span className="block text-sm font-black leading-5 text-[#17120f]">
-            {sample.title}
-          </span>
-          <span className="mt-1 block text-xs font-semibold leading-5 text-[#6b5a58]">
-            {sample.type}
+            <video
+              ref={previewRef}
+              src={sample.videoSrc}
+              muted
+              loop
+              playsInline
+              preload="none"
+              aria-hidden="true"
+              tabIndex={-1}
+              className={`absolute inset-0 size-full object-cover transition-opacity duration-300 ${
+                previewing ? "opacity-100" : "opacity-0"
+              }`}
+            />
+
+            <span
+              aria-hidden="true"
+              className={`absolute inset-0 grid place-items-center transition-opacity duration-300 ${
+                previewing ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              <span className="grid size-14 place-items-center rounded-full bg-cream/90 text-berry shadow-lg transition duration-300 group-hover:scale-110">
+                <Play aria-hidden="true" className="ml-1 fill-current" size={22} />
+              </span>
+            </span>
           </span>
         </span>
       </button>
+      <p className="mt-3 text-center">
+        <span className="inline-block rounded-full bg-strawberry px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+          {sample.label}
+        </span>
+        <span className="mt-1 block text-xs font-medium text-cocoa/70">
+          {sample.format}
+        </span>
+      </p>
     </article>
   );
 }
 
-export function FeaturedVideoGrid() {
-  const { samples } = useVideoShowcase();
-  const railRef = useRef<HTMLDivElement>(null);
-  const [railState, setRailState] = useState({
-    canScrollBack: false,
-    canScrollForward: false,
-    hasOverflow: false,
-  });
+export function CategoryJumpMenu() {
+  const { categories, samples } = useVideoShowcase();
+  const filled = categories.filter((category) =>
+    samples.some((sample) => sample.category === category.id),
+  );
 
-  const updateRailState = useCallback(() => {
-    const rail = railRef.current;
+  return (
+    <nav
+      aria-label="Portfolio categories"
+      className="flex flex-wrap justify-center gap-2"
+    >
+      {filled.map((category) => (
+        <a
+          key={category.id}
+          href={`#work-${category.id}`}
+          className="focus-ring rounded-full border-2 border-matcha px-4 py-2 text-sm font-bold text-matcha-deep transition hover:-translate-y-0.5 hover:bg-matcha hover:text-white"
+        >
+          {category.title}
+        </a>
+      ))}
+    </nav>
+  );
+}
 
-    if (!rail) {
-      return;
-    }
-
-    const maxScrollLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
-    const hasOverflow = maxScrollLeft > 2;
-
-    const nextState = {
-      canScrollBack: hasOverflow && rail.scrollLeft > 2,
-      canScrollForward:
-        hasOverflow && rail.scrollLeft < maxScrollLeft - 2,
-      hasOverflow,
-    };
-
-    setRailState((current) =>
-      current.canScrollBack === nextState.canScrollBack &&
-      current.canScrollForward === nextState.canScrollForward &&
-      current.hasOverflow === nextState.hasOverflow
-        ? current
-        : nextState,
-    );
-  }, []);
-
-  useEffect(() => {
-    const rail = railRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const resizeObserver = new ResizeObserver(updateRailState);
-    const intersectionObserver = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        window.requestAnimationFrame(updateRailState);
-      }
-    });
-    const frame = window.requestAnimationFrame(updateRailState);
-
-    resizeObserver.observe(rail);
-    intersectionObserver.observe(rail);
-    rail.addEventListener("scroll", updateRailState, { passive: true });
-    window.addEventListener("resize", updateRailState);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      resizeObserver.disconnect();
-      intersectionObserver.disconnect();
-      rail.removeEventListener("scroll", updateRailState);
-      window.removeEventListener("resize", updateRailState);
-    };
-  }, [samples.length, updateRailState]);
-
-  const scrollRail = (direction: -1 | 1) => {
-    const rail = railRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    rail.scrollBy({
-      left: direction * Math.max(280, rail.clientWidth * 0.72),
-      behavior: "smooth",
-    });
-  };
+export function CategoryPortfolio() {
+  const { categories, samples } = useVideoShowcase();
 
   if (samples.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-[#17120f]/20 bg-[#f6ebe6] p-8 text-center text-sm font-bold text-[#6b5a58]">
-        Portfolio videos are being prepared.
-      </div>
+      <p className="rounded-2xl border-2 border-dashed border-matcha/40 p-8 text-center font-medium text-cocoa/70">
+        New videos are on their way.
+      </p>
     );
   }
 
   return (
-    <div>
-      <div className="mb-5 flex min-h-11 justify-end gap-4">
-        <div
-          aria-hidden={!railState.hasOverflow}
-          className={`flex gap-2 transition-opacity ${
-            railState.hasOverflow
-              ? "opacity-100"
-              : "pointer-events-none opacity-0"
-          }`}
-        >
-          <button
-            type="button"
-            onClick={() => scrollRail(-1)}
-            disabled={!railState.canScrollBack}
-            aria-label="Show previous portfolio videos"
-            title="Previous videos"
-            className="focus-ring grid size-11 place-items-center rounded-full border border-[#17120f]/14 bg-white text-[#17120f] transition hover:-translate-y-0.5 hover:bg-[#a8c686] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:bg-white"
+    <div className="space-y-16 sm:space-y-20">
+      {categories.map((category) => {
+        const items = samples
+          .map((sample, index) => ({ sample, index }))
+          .filter(({ sample }) => sample.category === category.id);
+
+        if (items.length === 0) {
+          return null;
+        }
+
+        return (
+          <section
+            key={category.id}
+            id={`work-${category.id}`}
+            aria-labelledby={`work-${category.id}-title`}
           >
-            <ArrowLeft aria-hidden="true" size={18} />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollRail(1)}
-            disabled={!railState.canScrollForward}
-            aria-label="Show more portfolio videos"
-            title="More videos"
-            className="focus-ring grid size-11 place-items-center rounded-full bg-[#17120f] text-white transition hover:-translate-y-0.5 hover:bg-[#a23b57] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:bg-[#17120f]"
-          >
-            <ArrowRight aria-hidden="true" size={18} />
-          </button>
-        </div>
-      </div>
-      <div
-        ref={railRef}
-        aria-label="UGC video portfolio"
-        className="portfolio-rail"
-        role="region"
-      >
-        {samples.map((sample, index) => (
-          <VideoCard
-            key={`${sample.id}-${sample.videoSrc}`}
-            sample={sample}
-            index={index}
-          />
-        ))}
-      </div>
+            <div data-pop className="mb-8 text-center">
+              <h3
+                id={`work-${category.id}-title`}
+                className="font-display text-5xl text-berry sm:text-6xl"
+              >
+                {category.title}
+              </h3>
+              <p className="-mt-1 font-script text-2xl text-matcha sm:text-3xl">
+                Short form UGC videos
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-8 sm:gap-x-6">
+              {items.map(({ sample, index }, order) => (
+                <PhoneVideoCard
+                  key={sample.id}
+                  sample={sample}
+                  index={index}
+                  order={order}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

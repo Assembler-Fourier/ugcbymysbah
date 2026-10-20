@@ -20,21 +20,16 @@ Every commit to the `main` branch triggers a production deployment. There is no 
 
 ## Portfolio System
 
-Before every development session and production build, the portfolio generator scans `public/videos` for `.mp4` and `.webm` files. It sorts filenames naturally and keeps every file visible in the same compact horizontal showcase and video viewer.
+Before every development session and production build, the portfolio generator scans the category folders in `public/videos` (`beauty`, `skincare`, `haircare`, `wellness`, `lifestyle`, listed in `data/categories.json`) for `.mp4` and `.webm` files. Each folder becomes one portfolio section, in that order, with videos in rows that flow down the page. Empty sections are hidden.
 
-Recommended filename pattern:
+Recommended filename pattern, `number-Brand - Format.mp4`:
 
 ```text
-01-lifestyle-creator-intro.mp4
-02-beauty-demo-routine.mp4
-03-travel-nomad-story.mp4
-04-wellness-testimonial-hook.mp4
-05-skincare-texture-shot.mp4
-06-unboxing-friend-rec-energy.mp4
-07-brand-campaign-name.mp4
+public/videos/beauty/07-Rare Beauty ASMR.mp4
+public/videos/haircare/09-Olaplex - Hair routine.mp4
 ```
 
-New filenames are converted into readable titles automatically. Configured filenames can also use custom titles from `data/portfolio-items.json`. Do not edit `data/generated-video-manifest.json`; Vercel refreshes it automatically during deployment.
+The part before ` - ` becomes the pink brand label and the part after it becomes the format line. Labels for existing videos can also be set by id in `data/portfolio-items.json`. Videos placed directly in `public/videos` still appear, under Lifestyle. Do not edit `data/generated-video-manifest.json`; Vercel refreshes it automatically during deployment.
 
 ## Poster Images
 
@@ -43,8 +38,8 @@ For the best client presentation, each video should have a clear poster JPG show
 The poster must use the same base filename:
 
 ```text
-public/videos/07-brand-campaign-name.mp4
-public/images/video-posters/07-brand-campaign-name.jpg
+public/videos/haircare/09-Olaplex - Hair routine.mp4
+public/images/video-posters/09-Olaplex - Hair routine.jpg
 ```
 
 If a poster is missing, a branded cover is shown. The site does not preload every full video, so a growing library stays fast.
@@ -56,7 +51,7 @@ Use these exact paths:
 | File | Website location |
 | --- | --- |
 | `public/images/00-main-profile-photo.jpeg` | Hero, social preview source, and main creator image |
-| `public/images/00-travel-profile-photo.jpeg` | About and travel image |
+| `public/images/00-travel-profile-photo.jpeg` | About section image |
 
 Use portrait JPEG files and keep the same filenames.
 
@@ -69,9 +64,10 @@ app/page.tsx
 data/site.ts
 ```
 
-Portfolio labels for the original named slots are in:
+Portfolio sections and labels are in:
 
 ```text
+data/categories.json
 data/portfolio-items.json
 ```
 

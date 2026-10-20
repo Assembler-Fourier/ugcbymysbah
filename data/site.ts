@@ -1,5 +1,12 @@
 export const contactEmail = "misbahugcwork@gmail.com";
 
+export const profileLinks = {
+  instagram: "https://www.instagram.com/mysbahdoingugc__/",
+  tiktok: "https://www.tiktok.com/@mysbah_ugc",
+  linkedin: "https://www.linkedin.com/in/misbah-ahmad-401076214/",
+  upwork: "https://www.upwork.com/freelancers/~010ac3ca797266679e",
+};
+
 export const mailtoLink =
   "mailto:misbahugcwork@gmail.com?subject=UGC%20Collaboration%20Inquiry&body=Hi%20Mysbah%2C%0A%0ABrand%3A%20%0ACampaign%20goal%3A%20%0ADeliverables%3A%20%0ATimeline%3A%20%0A%0AThank%20you!";
 
