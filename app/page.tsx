@@ -589,7 +589,7 @@ export default function Home() {
                 Portfolio
               </p>
               <h2 className="text-5xl font-black sm:text-7xl">
-                <span className="font-serif font-normal italic">Real</span> WORK
+                <span className="font-serif font-normal italic">UGC</span> Ads
               </h2>
               <p className="mx-auto max-w-2xl text-sm font-semibold leading-6 text-[#6b5a58]">
                 Product-led, personality-led, and native short-form creative
