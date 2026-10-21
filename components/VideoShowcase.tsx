@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Clapperboard, Play, X } from "lucide-react";
-import { BeautyStage } from "@/components/BeautyStage";
 import {
   createContext,
   useCallback,
@@ -432,26 +431,18 @@ export function CategoryPortfolio() {
             id={`work-${category.id}`}
             aria-labelledby={titleId}
           >
-            {category.id === "beauty" ? (
-              <BeautyStage title={category.title} titleId={titleId}>
-                {grid}
-              </BeautyStage>
-            ) : (
-              <>
-                <div data-pop className="mb-8 text-center">
-                  <h3
-                    id={titleId}
-                    className="font-display text-5xl text-berry sm:text-6xl"
-                  >
-                    {category.title}
-                  </h3>
-                  <p className="-mt-1 font-script text-2xl text-matcha sm:text-3xl">
-                    Short form UGC videos
-                  </p>
-                </div>
-                {grid}
-              </>
-            )}
+            <div data-pop className="mb-8 text-center">
+              <h3
+                id={titleId}
+                className="font-display text-5xl text-berry sm:text-6xl"
+              >
+                {category.title}
+              </h3>
+              <p className="-mt-1 font-script text-2xl text-matcha sm:text-3xl">
+                Short form UGC videos
+              </p>
+            </div>
+            {grid}
           </section>
         );
       })}

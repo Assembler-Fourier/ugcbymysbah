@@ -450,39 +450,8 @@ export default function Home() {
             </div>
           </section>
 
-          <section
-            id="portfolio"
-            className="relative overflow-hidden bg-strawberry-milk py-16 sm:py-20"
-          >
-            <span
-              aria-hidden="true"
-              className="absolute -left-28 top-28 size-80 rounded-full bg-matcha-latte"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -right-32 top-[30%] size-96 rounded-full bg-cream/70"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -left-24 top-[58%] size-72 rounded-full bg-strawberry-soft/45"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -right-24 bottom-24 size-80 rounded-full bg-matcha-latte"
-            />
-            <span
-              aria-hidden="true"
-              className="berry-spark absolute left-[7%] top-[22%] size-8 bg-strawberry"
-            />
-            <span
-              aria-hidden="true"
-              className="berry-spark absolute right-[6%] top-[47%] size-10 bg-matcha"
-            />
-            <span
-              aria-hidden="true"
-              className="berry-spark absolute left-[10%] bottom-[18%] size-7 bg-berry"
-            />
-            <div className="container-shell relative">
+          <section id="portfolio" className="bg-strawberry-milk py-16 sm:py-20">
+            <div className="container-shell">
               <SectionTitle script="my work" title="Portfolio" />
               <div className="mt-8">
                 <CategoryJumpMenu />
