@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Clapperboard, Play, X } from "lucide-react";
+import { BeautyStage } from "@/components/BeautyStage";
 import {
   createContext,
   useCallback,
@@ -411,33 +412,46 @@ export function CategoryPortfolio() {
           return null;
         }
 
+        const titleId = `work-${category.id}-title`;
+        const grid = (
+          <div className="mx-auto flex max-w-[52rem] flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-6">
+            {items.map(({ sample, index }, order) => (
+              <PhoneVideoCard
+                key={sample.id}
+                sample={sample}
+                index={index}
+                order={order}
+              />
+            ))}
+          </div>
+        );
+
         return (
           <section
             key={category.id}
             id={`work-${category.id}`}
-            aria-labelledby={`work-${category.id}-title`}
+            aria-labelledby={titleId}
           >
-            <div data-pop className="mb-8 text-center">
-              <h3
-                id={`work-${category.id}-title`}
-                className="font-display text-5xl text-berry sm:text-6xl"
-              >
-                {category.title}
-              </h3>
-              <p className="-mt-1 font-script text-2xl text-matcha sm:text-3xl">
-                Short form UGC videos
-              </p>
-            </div>
-            <div className="mx-auto flex max-w-[52rem] flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-6">
-              {items.map(({ sample, index }, order) => (
-                <PhoneVideoCard
-                  key={sample.id}
-                  sample={sample}
-                  index={index}
-                  order={order}
-                />
-              ))}
-            </div>
+            {category.id === "beauty" ? (
+              <BeautyStage title={category.title} titleId={titleId}>
+                {grid}
+              </BeautyStage>
+            ) : (
+              <>
+                <div data-pop className="mb-8 text-center">
+                  <h3
+                    id={titleId}
+                    className="font-display text-5xl text-berry sm:text-6xl"
+                  >
+                    {category.title}
+                  </h3>
+                  <p className="-mt-1 font-script text-2xl text-matcha sm:text-3xl">
+                    Short form UGC videos
+                  </p>
+                </div>
+                {grid}
+              </>
+            )}
           </section>
         );
       })}
