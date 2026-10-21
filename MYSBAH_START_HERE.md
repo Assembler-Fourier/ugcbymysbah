@@ -72,9 +72,8 @@ Replace any of these with a JPEG using the exact same name:
 
 ```text
 public/images/hero-wink.jpg        small polaroid at the top
-public/images/about-main.jpg       main About photo
-public/images/about-beach.jpg      About polaroid, top right
-public/images/about-working.jpg    About polaroid, bottom left
+public/images/about-beach.jpg      About polaroid, top left
+public/images/about-working.jpg    About polaroid, bottom right
 ```
 
 ## Change The Brand Logos

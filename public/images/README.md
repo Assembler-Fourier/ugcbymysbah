@@ -6,9 +6,8 @@ Replace these exact files to change the website photos.
 | --- | --- |
 | `00-main-profile-photo.jpeg` | Big arch photo at the top, and the social preview image |
 | `hero-wink.jpg` | Small polaroid next to the top photo ("beauty mode") |
-| `about-main.jpg` | Main photo in the About section |
-| `about-beach.jpg` | About polaroid, top right ("off duty") |
-| `about-working.jpg` | About polaroid, bottom left ("on set") |
+| `about-beach.jpg` | About photo, left ("off duty") |
+| `about-working.jpg` | About photo, right ("on set") |
 
 Use portrait photos (4:5 works best, for example 1200 x 1500).
 

@@ -30,6 +30,7 @@ const siteUrl = "https://ugcbymysbah.com";
 const navItems = [
   { label: "Work", href: "#portfolio" },
   { label: "About", href: "#about" },
+  { label: "Reviews", href: "#reviews" },
   { label: "Brands", href: "#brands" },
   { label: "Contact", href: "#contact" },
 ];
@@ -81,13 +82,40 @@ const aboutPolaroids = [
     src: "/images/about-beach.jpg",
     alt: "Mysbah on a beach in a white outfit",
     caption: "off duty",
-    className: "-right-3 -top-4 rotate-6",
+    className: "left-0 top-0 -rotate-6",
   },
   {
     src: "/images/about-working.jpg",
     alt: "Mysbah on a call while working on her laptop",
     caption: "on set",
-    className: "-bottom-4 -left-3 -rotate-6",
+    className: "bottom-0 right-0 z-10 rotate-6",
+  },
+];
+
+// Verbatim 5-star client reviews from Mysbah's public Upwork profile.
+const testimonials = [
+  {
+    quote:
+      "Working with Misbah Ahmed has been an absolute pleasure! As a talented UGC creator, Misbah consistently delivers high-quality, engaging content that feels authentic and aligned with the brand’s voice. Their creativity, attention to detail, and ability to understand the target audience really set them apart.",
+    project: "TikTok-style UGC video",
+    date: "Mar 2026",
+  },
+  {
+    quote:
+      "Misbah knows her work and she understood the content real quick. She is very efficient and creative with the ugc videos. I would love to work with her again.",
+    project: "UGC videos for new products",
+    date: "Nov 2024",
+  },
+  {
+    quote:
+      "Misbah understood the task quickly and she made an excellent testimonial within a few minutes. I am truly impressed with her passion and dedication to video creation. I hope to work with her soon",
+    project: "Short video testimonial",
+    date: "Jan 2025",
+  },
+  {
+    quote: "Great to work with!",
+    project: "Video testimonial recording",
+    date: "Feb 2025",
   },
 ];
 
@@ -276,7 +304,9 @@ export default function Home() {
                   key={item.href}
                   href={item.href}
                   className={`focus-ring transition hover:text-strawberry-soft ${
-                    item.href === "#about" || item.href === "#brands"
+                    item.href === "#about" ||
+                    item.href === "#brands" ||
+                    item.href === "#reviews"
                       ? "hidden sm:inline"
                       : ""
                   }`}
@@ -451,32 +481,22 @@ export default function Home() {
 
           <section id="about" className="bg-matcha-latte py-16 sm:py-20">
             <div className="container-shell grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-              <div data-pop className="relative mx-auto aspect-[4/5] w-[calc(100%-3rem)] max-w-sm">
-                <div className="absolute inset-x-6 bottom-6 top-2 rotate-3 rounded-[2rem] bg-strawberry" />
-                <div className="absolute inset-x-6 bottom-6 top-2 -rotate-2 overflow-hidden rounded-[2rem] border-8 border-cream shadow-soft">
-                  <Image
-                    src="/images/about-main.jpg"
-                    alt="Mysbah smiling with a bouquet of yellow flowers"
-                    fill
-                    sizes="(max-width: 768px) 80vw, 340px"
-                    className="object-cover"
-                  />
-                </div>
+              <div data-pop className="relative mx-auto aspect-square w-[calc(100%-2rem)] max-w-sm">
                 {aboutPolaroids.map((photo) => (
                   <figure
                     key={photo.src}
-                    className={`absolute w-[44%] rounded-xl bg-white p-1.5 pb-6 shadow-berry sm:p-2 sm:pb-7 ${photo.className}`}
+                    className={`absolute w-[58%] rounded-xl bg-white p-2 pb-8 shadow-berry sm:p-2.5 sm:pb-9 ${photo.className}`}
                   >
                     <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
                       <Image
                         src={photo.src}
                         alt={photo.alt}
                         fill
-                        sizes="180px"
+                        sizes="(max-width: 768px) 55vw, 230px"
                         className="object-cover"
                       />
                     </span>
-                    <figcaption className="absolute inset-x-0 bottom-0.5 text-center font-script text-base text-berry sm:bottom-1 sm:text-lg">
+                    <figcaption className="absolute inset-x-0 bottom-1 text-center font-script text-lg text-berry sm:bottom-1.5 sm:text-xl">
                       {photo.caption}
                     </figcaption>
                   </figure>
@@ -505,6 +525,60 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            <div id="reviews" className="container-shell mt-20 scroll-mt-20 sm:mt-24">
+              <SectionTitle script="kind words" title="What clients say" />
+              <div className="mx-auto mt-10 grid max-w-4xl items-start gap-5 md:grid-cols-2">
+                {testimonials.map((review, index) => (
+                  <figure
+                    key={review.project}
+                    data-pop
+                    style={{ "--pop-delay": `${index * 80}ms` } as CSSProperties}
+                    className="relative rounded-3xl border-4 border-cream bg-white p-6 shadow-soft sm:p-7"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-5 top-1 font-display text-8xl leading-none text-strawberry-milk"
+                    >
+                      &rdquo;
+                    </span>
+                    <p
+                      className="flex gap-0.5 text-strawberry"
+                      aria-label="5 out of 5 stars"
+                    >
+                      {[0, 1, 2, 3, 4].map((star) => (
+                        <Star
+                          key={star}
+                          aria-hidden="true"
+                          size={17}
+                          className="fill-current"
+                        />
+                      ))}
+                    </p>
+                    <blockquote className="relative mt-3 text-base leading-7 text-cocoa/85">
+                      &ldquo;{review.quote}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-5 flex items-center gap-2 border-t border-strawberry-milk pt-4 text-xs font-bold uppercase tracking-wide text-matcha-deep">
+                      <SocialLogo logo="upwork" className="size-5 shrink-0" />
+                      <span>
+                        Upwork client · {review.project} · {review.date}
+                      </span>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <a
+                  href={profileLinks.upwork}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-full bg-matcha-deep px-5 text-sm font-bold text-cream transition hover:-translate-y-1 hover:bg-berry"
+                >
+                  <BadgeCheck aria-hidden="true" size={17} />
+                  Read all reviews on Upwork
+                </a>
               </div>
             </div>
           </section>

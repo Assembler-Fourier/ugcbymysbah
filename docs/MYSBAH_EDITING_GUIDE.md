@@ -52,9 +52,8 @@ Use these exact paths:
 | --- | --- |
 | `public/images/00-main-profile-photo.jpeg` | Hero, social preview source, and main creator image |
 | `public/images/hero-wink.jpg` | Hero polaroid |
-| `public/images/about-main.jpg` | About section main photo |
-| `public/images/about-beach.jpg` | About polaroid, top right |
-| `public/images/about-working.jpg` | About polaroid, bottom left |
+| `public/images/about-beach.jpg` | About polaroid, top left |
+| `public/images/about-working.jpg` | About polaroid, bottom right |
 
 Use portrait JPEG files and keep the same filenames.
 
