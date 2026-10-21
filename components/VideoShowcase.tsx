@@ -342,12 +342,12 @@ function PhoneVideoCard({
 
             <span
               aria-hidden="true"
-              className={`absolute inset-0 grid place-items-center transition-opacity duration-300 ${
+              className={`absolute bottom-2.5 right-2.5 transition-opacity duration-300 sm:bottom-3.5 sm:right-3.5 ${
                 previewing ? "opacity-0" : "opacity-100"
               }`}
             >
-              <span className="grid size-10 place-items-center rounded-full bg-cream/90 text-berry shadow-lg transition duration-300 group-hover:scale-110 sm:size-14">
-                <Play aria-hidden="true" className="ml-0.5 size-4 fill-current sm:ml-1 sm:size-[22px]" />
+              <span className="grid size-8 place-items-center rounded-full bg-cream/90 text-berry shadow-lg transition duration-300 group-hover:scale-110 sm:size-11">
+                <Play aria-hidden="true" className="ml-0.5 size-3.5 fill-current sm:size-[18px]" />
               </span>
             </span>
           </span>
