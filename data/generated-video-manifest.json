@@ -1,74 +1,106 @@
 [
   {
-    "id": "02-beauty-demo-routine",
-    "category": "beauty",
-    "label": "Makeup routine",
-    "format": "Product demo",
-    "videoSrc": "/videos/beauty/02-beauty-demo-routine.mp4",
-    "posterSrc": "/images/video-posters/02-beauty-demo-routine.jpg",
-    "captionSrc": "/captions/02-beauty-demo-routine.en.vtt"
+    "id": "01-Skindulge - Voiceover",
+    "category": "skincare",
+    "label": "Skindulge",
+    "format": "Voiceover",
+    "videoSrc": "/videos/skincare/01-Skindulge - Voiceover.mp4",
+    "posterSrc": "/images/video-posters/01-Skindulge - Voiceover.jpg"
   },
   {
-    "id": "07-Rare Beauty ASMR",
+    "id": "02-CeraVe - Review",
+    "category": "skincare",
+    "label": "CeraVe",
+    "format": "Review",
+    "videoSrc": "/videos/skincare/02-CeraVe - Review.mp4",
+    "posterSrc": "/images/video-posters/02-CeraVe - Review.jpg"
+  },
+  {
+    "id": "03-Fully Global - Talking head",
+    "category": "skincare",
+    "label": "Fully Global",
+    "format": "Talking Head",
+    "videoSrc": "/videos/skincare/03-Fully Global - Talking head.mp4",
+    "posterSrc": "/images/video-posters/03-Fully Global - Talking head.jpg"
+  },
+  {
+    "id": "04-Anua - Product review",
+    "category": "skincare",
+    "label": "Anua",
+    "format": "Product Review",
+    "videoSrc": "/videos/skincare/04-Anua - Product review.mp4",
+    "posterSrc": "/images/video-posters/04-Anua - Product review.jpg"
+  },
+  {
+    "id": "01-Rare Beauty - Talking head",
     "category": "beauty",
     "label": "Rare Beauty",
-    "format": "ASMR",
-    "videoSrc": "/videos/beauty/07-Rare Beauty ASMR.mp4",
-    "posterSrc": "/images/video-posters/07-Rare Beauty ASMR.jpg",
-    "captionSrc": "/captions/07-Rare Beauty ASMR.en.vtt"
+    "format": "Talking Head",
+    "videoSrc": "/videos/beauty/01-Rare Beauty - Talking head.mp4",
+    "posterSrc": "/images/video-posters/01-Rare Beauty - Talking head.jpg"
   },
   {
-    "id": "08-Maybelline Super Stay Foundation Review",
+    "id": "02-Maybelline - Foundation review",
     "category": "beauty",
     "label": "Maybelline",
-    "format": "Foundation review",
-    "videoSrc": "/videos/beauty/08-Maybelline Super Stay Foundation Review.mp4",
-    "posterSrc": "/images/video-posters/08-Maybelline Super Stay Foundation Review.jpg",
-    "captionSrc": "/captions/08-Maybelline Super Stay Foundation Review.en.vtt"
+    "format": "Foundation Review",
+    "videoSrc": "/videos/beauty/02-Maybelline - Foundation review.mp4",
+    "posterSrc": "/images/video-posters/02-Maybelline - Foundation review.jpg"
   },
   {
-    "id": "05-skincare-texture-shot",
-    "category": "skincare",
-    "label": "Skincare texture",
-    "format": "Texture demo",
-    "videoSrc": "/videos/skincare/05-skincare-texture-shot.mp4",
-    "posterSrc": "/images/video-posters/05-skincare-texture-shot.jpg",
-    "captionSrc": "/captions/05-skincare-texture-shot.en.vtt"
+    "id": "03-Essence - Product review",
+    "category": "beauty",
+    "label": "Essence",
+    "format": "Product Review",
+    "videoSrc": "/videos/beauty/03-Essence - Product review.mp4",
+    "posterSrc": "/images/video-posters/03-Essence - Product review.jpg"
   },
   {
-    "id": "04-wellness-testimonial-hook",
-    "category": "wellness",
-    "label": "Wellness",
-    "format": "Testimonial",
-    "videoSrc": "/videos/wellness/04-wellness-testimonial-hook.mp4",
-    "posterSrc": "/images/video-posters/04-wellness-testimonial-hook.jpg",
-    "captionSrc": "/captions/04-wellness-testimonial-hook.en.vtt"
+    "id": "04-Makeup - Get ready with me",
+    "category": "beauty",
+    "label": "Makeup",
+    "format": "Get Ready With Me",
+    "videoSrc": "/videos/beauty/04-Makeup - Get ready with me.mp4",
+    "posterSrc": "/images/video-posters/04-Makeup - Get ready with me.jpg"
   },
   {
-    "id": "01-lifestyle-creator-intro",
-    "category": "lifestyle",
-    "label": "Creator intro",
-    "format": "On-camera UGC",
-    "videoSrc": "/videos/lifestyle/01-lifestyle-creator-intro.mp4",
-    "posterSrc": "/images/video-posters/01-lifestyle-creator-intro.jpg",
-    "captionSrc": "/captions/01-lifestyle-creator-intro.en.vtt"
+    "id": "01-Rare Beauty - ASMR",
+    "category": "asmr",
+    "label": "Rare Beauty",
+    "format": "ASMR",
+    "videoSrc": "/videos/asmr/01-Rare Beauty - ASMR.mp4",
+    "posterSrc": "/images/video-posters/01-Rare Beauty - ASMR.jpg"
   },
   {
-    "id": "03-travel-nomad-story",
-    "category": "lifestyle",
-    "label": "Travel story",
-    "format": "Lifestyle UGC",
-    "videoSrc": "/videos/lifestyle/03-travel-nomad-story.mp4",
-    "posterSrc": "/images/video-posters/03-travel-nomad-story.jpg",
-    "captionSrc": "/captions/03-travel-nomad-story.en.vtt"
+    "id": "02-Essence - ASMR",
+    "category": "asmr",
+    "label": "Essence",
+    "format": "ASMR",
+    "videoSrc": "/videos/asmr/02-Essence - ASMR.mp4",
+    "posterSrc": "/images/video-posters/02-Essence - ASMR.jpg"
   },
   {
-    "id": "06-unboxing-friend-rec-energy",
-    "category": "lifestyle",
-    "label": "Unboxing",
-    "format": "Friend-rec style",
-    "videoSrc": "/videos/lifestyle/06-unboxing-friend-rec-energy.mp4",
-    "posterSrc": "/images/video-posters/06-unboxing-friend-rec-energy.jpg",
-    "captionSrc": "/captions/06-unboxing-friend-rec-energy.en.vtt"
+    "id": "03-Fino - ASMR",
+    "category": "asmr",
+    "label": "Fino",
+    "format": "ASMR",
+    "videoSrc": "/videos/asmr/03-Fino - ASMR.mp4",
+    "posterSrc": "/images/video-posters/03-Fino - ASMR.jpg"
+  },
+  {
+    "id": "04-ReelTodo - App review",
+    "category": "asmr",
+    "label": "ReelTodo",
+    "format": "App Review",
+    "videoSrc": "/videos/asmr/04-ReelTodo - App review.mp4",
+    "posterSrc": "/images/video-posters/04-ReelTodo - App review.jpg"
+  },
+  {
+    "id": "05-Lifestyle - B-roll",
+    "category": "asmr",
+    "label": "Lifestyle",
+    "format": "B-roll",
+    "videoSrc": "/videos/asmr/05-Lifestyle - B-roll.mp4",
+    "posterSrc": "/images/video-posters/05-Lifestyle - B-roll.jpg"
   }
 ]

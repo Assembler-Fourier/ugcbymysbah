@@ -10,7 +10,7 @@ const metadataPath = join(root, "data", "portfolio-items.json");
 const outputPath = join(root, "data", "generated-video-manifest.json");
 const videoExtensions = new Set([".mp4", ".webm"]);
 const posterExtensions = [".jpg", ".jpeg", ".webp", ".png", ".avif"];
-const fallbackCategory = "lifestyle";
+const fallbackCategory = "asmr";
 
 // "09-Olaplex - Hair routine.mp4" -> label "Olaplex", format "Hair routine"
 function labelsFromFilename(filename) {
@@ -133,7 +133,7 @@ for (const category of categories) {
   }
 }
 
-// Videos uploaded straight into public/videos still appear, under Lifestyle.
+// Videos uploaded straight into public/videos still appear, under ASMR & Product.
 for (const filename of await listVideos(videoDirectory)) {
   console.warn(
     `Note: ${filename} is not inside a category folder, so it is shown under ${fallbackCategory}.`,

@@ -88,7 +88,7 @@ export default async function OpenGraphImage() {
             marginTop: 28,
           }}
         >
-          Beauty / Skincare / Haircare / Wellness / Lifestyle
+          Skincare / Beauty / ASMR / Product
         </div>
       </div>
       <div

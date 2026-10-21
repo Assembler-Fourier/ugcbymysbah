@@ -19,19 +19,17 @@ https://ugcbymysbah.com
 1. Open the folder for the right section in GitHub:
 
 ```text
-public/videos/beauty
 public/videos/skincare
-public/videos/haircare
-public/videos/wellness
-public/videos/lifestyle
+public/videos/beauty
+public/videos/asmr       (ASMR & Product: ASMR, B-roll, app and product videos)
 ```
 
 2. Click **Add file**, then **Upload files**.
 3. Name the video `number-Brand - Format.mp4`, for example:
 
 ```text
-09-Olaplex - Hair routine.mp4
-10-CeraVe - Texture demo.mp4
+05-CeraVe - Texture demo.mp4
+06-Essence - Unboxing.mp4
 ```
 
 The brand appears in the pink label under the video, and the format appears underneath it.
@@ -54,8 +52,8 @@ This is optional, but it makes the portfolio look strongest.
 Example:
 
 ```text
-public/videos/haircare/09-Olaplex - Hair routine.mp4
-public/images/video-posters/09-Olaplex - Hair routine.jpg
+public/videos/skincare/05-CeraVe - Texture demo.mp4
+public/images/video-posters/05-CeraVe - Texture demo.jpg
 ```
 
 Without a JPG, the website uses a branded Mysbah cover.

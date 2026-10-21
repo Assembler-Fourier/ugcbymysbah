@@ -131,7 +131,7 @@ const structuredData = {
         "TikTok and Reels Ad Creator",
       ],
       description:
-        "UGC creator with 3 years of experience making beauty, skincare, haircare, wellness, and lifestyle videos for organic and paid social campaigns.",
+        "UGC creator with 3 years of experience making skincare, beauty, ASMR, and product videos for organic and paid social campaigns.",
       contactPoint: {
         "@type": "ContactPoint",
         email: contactEmail,
@@ -146,9 +146,8 @@ const structuredData = {
         "Instagram Reels",
         "Beauty UGC",
         "Skincare UGC",
-        "Haircare UGC",
-        "Wellness UGC",
-        "Lifestyle UGC",
+        "ASMR UGC",
+        "Product UGC",
         "Product demo videos",
         "Testimonial videos",
       ],
@@ -167,8 +166,8 @@ const structuredData = {
         "TikTok ad creation",
         "Instagram Reels creation",
         "Product demo videos",
-        "Beauty, skincare, and haircare content",
-        "Wellness and lifestyle content",
+        "Skincare and beauty content",
+        "ASMR and product content",
       ],
       sameAs,
     },
@@ -176,9 +175,9 @@ const structuredData = {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: siteUrl,
-      name: "Mysbah Ahmad | UGC Creator for Beauty, Skincare & Lifestyle Brands",
+      name: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
       description:
-        "The official portfolio of Mysbah Ahmad, a UGC creator for beauty, skincare, haircare, wellness, and lifestyle brands.",
+        "The official portfolio of Mysbah Ahmad, a UGC creator for skincare, beauty, and product brands.",
       inLanguage: "en",
       mainEntity: { "@id": `${siteUrl}/#mysbah` },
       isPartOf: { "@id": `${siteUrl}/#website` },
@@ -307,8 +306,8 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-5 max-w-md text-lg font-medium leading-8 text-cocoa/80">
-                  3 years of beauty, skincare and lifestyle videos that feel like
-                  a friend&apos;s recommendation.
+                  3 years of skincare, beauty and ASMR videos that feel like a
+                  friend&apos;s recommendation.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -548,7 +547,7 @@ export default function Home() {
               </p>
               <p className="mt-1 inline-flex items-center gap-1.5 text-sm text-cream/70">
                 <Star aria-hidden="true" size={14} className="text-strawberry-soft" />
-                UGC creator for beauty, skincare and lifestyle brands
+                UGC creator for skincare, beauty and product brands
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 sm:items-end">

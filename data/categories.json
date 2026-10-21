@@ -1,7 +1,5 @@
 [
-  { "id": "beauty", "title": "Beauty" },
   { "id": "skincare", "title": "Skincare" },
-  { "id": "haircare", "title": "Haircare" },
-  { "id": "wellness", "title": "Health & Wellness" },
-  { "id": "lifestyle", "title": "Lifestyle" }
+  { "id": "beauty", "title": "Beauty" },
+  { "id": "asmr", "title": "ASMR & Product" }
 ]

@@ -1,42 +1,7 @@
 [
   {
-    "id": "02-beauty-demo-routine",
-    "label": "Makeup routine",
-    "format": "Product demo"
-  },
-  {
-    "id": "07-Rare Beauty ASMR",
-    "label": "Rare Beauty",
-    "format": "ASMR"
-  },
-  {
-    "id": "08-Maybelline Super Stay Foundation Review",
-    "label": "Maybelline",
-    "format": "Foundation review"
-  },
-  {
-    "id": "05-skincare-texture-shot",
-    "label": "Skincare texture",
-    "format": "Texture demo"
-  },
-  {
-    "id": "04-wellness-testimonial-hook",
-    "label": "Wellness",
-    "format": "Testimonial"
-  },
-  {
-    "id": "01-lifestyle-creator-intro",
-    "label": "Creator intro",
-    "format": "On-camera UGC"
-  },
-  {
-    "id": "03-travel-nomad-story",
-    "label": "Travel story",
-    "format": "Lifestyle UGC"
-  },
-  {
-    "id": "06-unboxing-friend-rec-energy",
-    "label": "Unboxing",
-    "format": "Friend-rec style"
+    "id": "05-Lifestyle - B-roll",
+    "label": "Lifestyle",
+    "format": "B-roll"
   }
 ]

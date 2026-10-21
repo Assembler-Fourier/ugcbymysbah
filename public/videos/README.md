@@ -3,26 +3,24 @@
 Videos live in one folder per portfolio section:
 
 ```text
-public/videos/beauty
 public/videos/skincare
-public/videos/haircare
-public/videos/wellness     (shown as "Health & Wellness")
-public/videos/lifestyle
+public/videos/beauty
+public/videos/asmr       (shown as "ASMR & Product": ASMR, B-roll, app and product videos)
 ```
 
 Every `.mp4` or `.webm` file inside one of these folders appears automatically in that section of the website. A section with no videos is hidden until you add one.
 
 ## Add A New Video
 
-1. Open the right category folder in GitHub, for example `public/videos/haircare`.
+1. Open the right category folder in GitHub, for example `public/videos/skincare`.
 2. Click **Add file**, then **Upload files**.
 3. Name the file like this: `number-Brand - Format.mp4`
 
 ```text
-09-Olaplex - Hair routine.mp4
+05-CeraVe - Texture demo.mp4
 ```
 
-appears with the pink label **Olaplex** and the small text **Hair routine**.
+appears with the pink label **CeraVe** and the small text **Texture demo**.
 The number controls the order inside the section.
 
 4. Commit the upload to `main`. Vercel publishes it automatically.
@@ -38,8 +36,8 @@ public/images/video-posters
 Example:
 
 ```text
-Video:  public/videos/haircare/09-Olaplex - Hair routine.mp4
-Poster: public/images/video-posters/09-Olaplex - Hair routine.jpg
+Video:  public/videos/skincare/05-CeraVe - Texture demo.mp4
+Poster: public/images/video-posters/05-CeraVe - Texture demo.jpg
 ```
 
 Without a thumbnail, the website shows a branded Mysbah cover.

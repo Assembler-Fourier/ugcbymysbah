@@ -20,16 +20,16 @@ Every commit to the `main` branch triggers a production deployment. There is no 
 
 ## Portfolio System
 
-Before every development session and production build, the portfolio generator scans the category folders in `public/videos` (`beauty`, `skincare`, `haircare`, `wellness`, `lifestyle`, listed in `data/categories.json`) for `.mp4` and `.webm` files. Each folder becomes one portfolio section, in that order, with videos in rows that flow down the page. Empty sections are hidden.
+Before every development session and production build, the portfolio generator scans the category folders in `public/videos` (`skincare`, `beauty`, `asmr`, listed in `data/categories.json`; `asmr` is shown as "ASMR & Product") for `.mp4` and `.webm` files. Each folder becomes one portfolio section, in that order, with videos in rows that flow down the page. Empty sections are hidden.
 
 Recommended filename pattern, `number-Brand - Format.mp4`:
 
 ```text
-public/videos/beauty/07-Rare Beauty ASMR.mp4
-public/videos/haircare/09-Olaplex - Hair routine.mp4
+public/videos/asmr/01-Rare Beauty - ASMR.mp4
+public/videos/skincare/05-CeraVe - Texture demo.mp4
 ```
 
-The part before ` - ` becomes the pink brand label and the part after it becomes the format line. Labels for existing videos can also be set by id in `data/portfolio-items.json`. Videos placed directly in `public/videos` still appear, under Lifestyle. Do not edit `data/generated-video-manifest.json`; Vercel refreshes it automatically during deployment.
+The part before ` - ` becomes the pink brand label and the part after it becomes the format line. Labels for existing videos can also be set by id in `data/portfolio-items.json`. Videos placed directly in `public/videos` still appear, under ASMR & Product. Do not edit `data/generated-video-manifest.json`; Vercel refreshes it automatically during deployment.
 
 ## Poster Images
 
@@ -38,8 +38,8 @@ For the best client presentation, each video should have a clear poster JPG show
 The poster must use the same base filename:
 
 ```text
-public/videos/haircare/09-Olaplex - Hair routine.mp4
-public/images/video-posters/09-Olaplex - Hair routine.jpg
+public/videos/skincare/05-CeraVe - Texture demo.mp4
+public/images/video-posters/05-CeraVe - Texture demo.jpg
 ```
 
 If a poster is missing, a branded cover is shown. The site does not preload every full video, so a growing library stays fast.

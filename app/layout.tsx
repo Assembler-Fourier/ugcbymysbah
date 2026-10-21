@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "UGC by Mysbah",
   title: {
-    default: "Mysbah Ahmad | UGC Creator for Beauty, Skincare & Lifestyle Brands",
+    default: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Mysbah Ahmad is a UGC creator with 3 years of experience making beauty, skincare, haircare, wellness, and lifestyle videos for brands in the US, UK, and worldwide.",
+    "Mysbah Ahmad is a UGC creator with 3 years of experience making skincare, beauty, ASMR, and product videos for brands in the US, UK, and worldwide.",
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mysbah Ahmad | UGC Creator for Beauty, Skincare & Lifestyle Brands",
+    title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
     description:
-      "3 years of beauty, skincare, haircare, wellness, and lifestyle UGC that feels like a real recommendation.",
+      "3 years of skincare, beauty, ASMR, and product UGC that feels like a real recommendation.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
     images: [
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mysbah Ahmad | UGC Creator for Beauty, Skincare & Lifestyle Brands",
+    title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
     description:
-      "Beauty, skincare, haircare, wellness, and lifestyle UGC by Mysbah Ahmad.",
+      "Skincare, beauty, ASMR, and product UGC by Mysbah Ahmad.",
     images: ["/opengraph-image?v=20261021"],
   },
   icons: {
