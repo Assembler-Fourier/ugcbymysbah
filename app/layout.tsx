@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dancing_Script, DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { serviceKeywords } from "@/data/services";
 import "./globals.css";
 
 const bodyFont = Plus_Jakarta_Sans({
@@ -31,6 +32,16 @@ export const metadata: Metadata = {
   },
   description:
     "Mysbah Ahmad is a UGC creator with 4 years of experience in skincare and beauty, making product, ASMR, and review videos for brands in the US, UK, and worldwide.",
+  keywords: [
+    "UGC creator",
+    "UGC content creator",
+    "skincare UGC creator",
+    "beauty UGC creator",
+    "female UGC creator",
+    "South Asian UGC creator",
+    "hire UGC creator",
+    ...serviceKeywords,
+  ],
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",

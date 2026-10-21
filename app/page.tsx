@@ -27,6 +27,7 @@ import {
 } from "@/components/VideoShowcase";
 import categoryList from "@/data/categories.json";
 import generatedVideoSamples from "@/data/generated-video-manifest.json";
+import { serviceGroups, serviceKeywords } from "@/data/services";
 import { contactEmail, mailtoLink, profileLinks } from "@/data/site";
 
 const siteUrl = "https://ugcbymysbah.com";
@@ -114,16 +115,6 @@ const strengths = [
   { icon: Target, text: "A marketing brain behind every video" },
 ];
 
-const services = [
-  "Product demos",
-  "Testimonials",
-  "Unboxings",
-  "ASMR",
-  "Get ready with me",
-  "Voiceovers",
-  "Paid ad UGC",
-  "Hook variations",
-];
 
 const proofStats = [
   { value: "4 yrs", label: "skincare and beauty" },
@@ -181,8 +172,7 @@ const structuredData = {
         "Skincare UGC",
         "ASMR UGC",
         "Product UGC",
-        "Product demo videos",
-        "Testimonial videos",
+        ...serviceKeywords,
       ],
     },
     {
@@ -201,6 +191,7 @@ const structuredData = {
         "Product demo videos",
         "Skincare and beauty content",
         "ASMR and product content",
+        ...serviceKeywords,
       ],
       sameAs,
     },
@@ -535,25 +526,34 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="bg-cocoa py-16 text-cream sm:py-20">
+          <section id="services" className="bg-cocoa py-16 text-cream sm:py-20">
             <div className="container-shell">
               <SectionTitle script="what I make" title="My services" light />
-              <ul className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-3">
-                {services.map((service, index) => (
-                  <li
-                    key={service}
-                    data-pop
-                    style={{ "--pop-delay": `${index * 60}ms` } as CSSProperties}
-                    className={`service-pill rounded-full px-5 py-3 text-sm font-bold ${
-                      index % 2 === 0
-                        ? "bg-strawberry text-white"
-                        : "bg-matcha text-white"
-                    }`}
-                  >
-                    {service}
-                  </li>
+              <div className="mx-auto mt-10 max-w-4xl space-y-10">
+                {serviceGroups.map((group) => (
+                  <div key={group.title}>
+                    <h3 className="text-center font-display text-2xl text-strawberry-soft sm:text-3xl">
+                      {group.title}
+                    </h3>
+                    <ul className="mt-4 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+                      {group.items.map((service, index) => (
+                        <li
+                          key={service}
+                          data-pop
+                          style={{ "--pop-delay": `${index * 40}ms` } as CSSProperties}
+                          className={`service-pill rounded-full px-4 py-2.5 text-sm font-bold sm:px-5 sm:py-3 ${
+                            index % 2 === 0
+                              ? "bg-strawberry text-white"
+                              : "bg-matcha text-white"
+                          }`}
+                        >
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </section>
 
