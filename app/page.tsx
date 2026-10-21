@@ -15,6 +15,10 @@ import { BookMeButton } from "@/components/BookMeButton";
 import { PopInObserver } from "@/components/PopInObserver";
 import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
 import {
+  TestimonialRotator,
+  type Testimonial,
+} from "@/components/TestimonialRotator";
+import {
   CategoryJumpMenu,
   CategoryPortfolio,
   VideoShowcaseProvider,
@@ -77,23 +81,8 @@ const heroStickers = [
   },
 ];
 
-const aboutPolaroids = [
-  {
-    src: "/images/about-beach.jpg",
-    alt: "Mysbah on a beach in a white outfit",
-    caption: "off duty",
-    className: "left-0 top-0 -rotate-6",
-  },
-  {
-    src: "/images/about-working.jpg",
-    alt: "Mysbah on a call while working on her laptop",
-    caption: "on set",
-    className: "bottom-0 right-0 z-10 rotate-6",
-  },
-];
-
 // Verbatim 5-star client reviews from Mysbah's public Upwork profile.
-const testimonials = [
+const testimonials: Testimonial[] = [
   {
     quote:
       "Working with Misbah Ahmed has been an absolute pleasure! As a talented UGC creator, Misbah consistently delivers high-quality, engaging content that feels authentic and aligned with the brand’s voice. Their creativity, attention to detail, and ability to understand the target audience really set them apart.",
@@ -339,7 +328,10 @@ export default function Home() {
               <div className="hero-pop">
                 <p className="inline-flex items-center gap-2 rounded-full bg-cream px-4 py-2 text-xs font-bold uppercase tracking-wide shadow-sm">
                   <span className="size-2 rounded-full bg-matcha shadow-[0_0_0_4px_rgba(94,125,58,0.25)]" />
-                  Available for brand collabs
+                  <span className="sm:hidden">Available for UGC work worldwide</span>
+                  <span className="hidden sm:inline">
+                    Available for UGC and content creation worldwide
+                  </span>
                 </p>
 
                 <h1 className="mt-6">
@@ -480,96 +472,75 @@ export default function Home() {
           </section>
 
           <section id="about" className="bg-matcha-latte py-16 sm:py-20">
-            <div className="container-shell grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-              <div data-pop className="relative mx-auto aspect-square w-[calc(100%-2rem)] max-w-sm">
-                {aboutPolaroids.map((photo) => (
-                  <figure
-                    key={photo.src}
-                    className={`absolute w-[58%] rounded-xl bg-white p-2 pb-8 shadow-berry sm:p-2.5 sm:pb-9 ${photo.className}`}
+            <div data-pop className="container-shell mx-auto max-w-3xl text-center">
+              <p className="font-script text-3xl text-berry">hey, I&apos;m Mysbah</p>
+              <h2 className="mt-1 font-display text-5xl leading-tight text-matcha-deep sm:text-6xl">
+                Videos that feel real and sell
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg leading-8 text-cocoa/80">
+                I&apos;ve spent 4 years making skincare and beauty UGC for
+                brands in the US, UK and beyond.
+              </p>
+              <ul className="mt-8 grid gap-3 text-left sm:grid-cols-3 sm:text-center">
+                {strengths.map((item) => (
+                  <li
+                    key={item.text}
+                    className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 font-bold shadow-sm sm:flex-col sm:gap-2 sm:py-5"
                   >
-                    <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="(max-width: 768px) 55vw, 230px"
-                        className="object-cover"
-                      />
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-strawberry text-white">
+                      <item.icon aria-hidden="true" size={19} />
                     </span>
-                    <figcaption className="absolute inset-x-0 bottom-1 text-center font-script text-lg text-berry sm:bottom-1.5 sm:text-xl">
-                      {photo.caption}
-                    </figcaption>
-                  </figure>
+                    {item.text}
+                  </li>
                 ))}
-              </div>
-
-              <div data-pop>
-                <p className="font-script text-3xl text-berry">hey, I&apos;m Mysbah</p>
-                <h2 className="mt-1 font-display text-5xl leading-tight text-matcha-deep sm:text-6xl">
-                  Videos that feel real and sell
-                </h2>
-                <p className="mt-4 max-w-lg text-lg leading-8 text-cocoa/80">
-                  I&apos;ve spent 4 years making skincare and beauty UGC for
-                  brands in the US, UK and beyond.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {strengths.map((item) => (
-                    <li
-                      key={item.text}
-                      className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 font-bold shadow-sm"
-                    >
-                      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-strawberry text-white">
-                        <item.icon aria-hidden="true" size={19} />
-                      </span>
-                      {item.text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </ul>
             </div>
 
             <div id="reviews" className="container-shell mt-20 scroll-mt-20 sm:mt-24">
               <SectionTitle script="kind words" title="What clients say" />
-              <div className="mx-auto mt-10 grid max-w-4xl items-start gap-5 md:grid-cols-2">
-                {testimonials.map((review, index) => (
-                  <figure
-                    key={review.project}
-                    data-pop
-                    style={{ "--pop-delay": `${index * 80}ms` } as CSSProperties}
-                    className="relative rounded-3xl border-4 border-cream bg-white p-6 shadow-soft sm:p-7"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute right-5 top-1 font-display text-8xl leading-none text-strawberry-milk"
-                    >
-                      &rdquo;
-                    </span>
-                    <p
-                      className="flex gap-0.5 text-strawberry"
-                      aria-label="5 out of 5 stars"
-                    >
-                      {[0, 1, 2, 3, 4].map((star) => (
-                        <Star
-                          key={star}
-                          aria-hidden="true"
-                          size={17}
-                          className="fill-current"
-                        />
-                      ))}
-                    </p>
-                    <blockquote className="relative mt-3 text-base leading-7 text-cocoa/85">
-                      &ldquo;{review.quote}&rdquo;
-                    </blockquote>
-                    <figcaption className="mt-5 flex items-center gap-2 border-t border-strawberry-milk pt-4 text-xs font-bold uppercase tracking-wide text-matcha-deep">
-                      <SocialLogo logo="upwork" className="size-5 shrink-0" />
-                      <span>
-                        Upwork client · {review.project} · {review.date}
-                      </span>
-                    </figcaption>
-                  </figure>
-                ))}
+              <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-x-4 gap-y-8 [grid-template-areas:'beach_work''quote_quote'] md:grid-cols-[1fr_1.7fr_1fr] md:items-start md:gap-x-8 md:[grid-template-areas:'beach_quote_work']">
+                <figure data-pop className="relative mx-auto w-full max-w-[13rem] [grid-area:beach]">
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-6 top-[18%] rounded-t-full bg-strawberry-milk"
+                  />
+                  <span className="relative block aspect-[513/1200] w-[78%] mx-auto">
+                    <Image
+                      src="/images/about-beach-cutout.png"
+                      alt="Mysbah standing on the beach in a white outfit"
+                      fill
+                      sizes="(max-width: 768px) 40vw, 170px"
+                      className="object-contain object-bottom"
+                    />
+                  </span>
+                  <figcaption className="relative -mt-1 text-center font-script text-xl text-berry">
+                    off duty
+                  </figcaption>
+                </figure>
+
+                <div className="[grid-area:quote]">
+                  <TestimonialRotator items={testimonials} />
+                </div>
+
+                <figure
+                  data-pop
+                  className="relative mx-auto w-full max-w-[13rem] rotate-6 self-start rounded-xl bg-white p-2 pb-8 shadow-berry [grid-area:work] sm:p-2.5 sm:pb-9"
+                >
+                  <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
+                    <Image
+                      src="/images/about-working.jpg"
+                      alt="Mysbah on a call while working on her laptop"
+                      fill
+                      sizes="(max-width: 768px) 40vw, 200px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <figcaption className="absolute inset-x-0 bottom-1 text-center font-script text-lg text-berry sm:bottom-1.5 sm:text-xl">
+                    on set
+                  </figcaption>
+                </figure>
               </div>
-              <div className="mt-8 text-center">
+              <div className="mt-10 text-center">
                 <a
                   href={profileLinks.upwork}
                   target="_blank"

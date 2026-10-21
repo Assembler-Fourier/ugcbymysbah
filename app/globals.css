@@ -251,6 +251,24 @@ summary {
   backdrop-filter: blur(6px);
 }
 
+/* ---------- Rotating reviews ---------- */
+
+.review-card {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(18px) scale(0.94) rotate(-1deg);
+  transition:
+    opacity 0.45s ease,
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0.6s;
+}
+
+.review-card.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- Services ---------- */
 
 .service-pill {
