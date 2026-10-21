@@ -346,18 +346,18 @@ function PhoneVideoCard({
                 previewing ? "opacity-0" : "opacity-100"
               }`}
             >
-              <span className="grid size-14 place-items-center rounded-full bg-cream/90 text-berry shadow-lg transition duration-300 group-hover:scale-110">
-                <Play aria-hidden="true" className="ml-1 fill-current" size={22} />
+              <span className="grid size-10 place-items-center rounded-full bg-cream/90 text-berry shadow-lg transition duration-300 group-hover:scale-110 sm:size-14">
+                <Play aria-hidden="true" className="ml-0.5 size-4 fill-current sm:ml-1 sm:size-[22px]" />
               </span>
             </span>
           </span>
         </span>
       </button>
       <p className="mt-3 text-center">
-        <span className="inline-block rounded-full bg-strawberry px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+        <span className="inline-block max-w-full rounded-full bg-strawberry px-2 py-1 text-[0.62rem] font-bold uppercase leading-tight tracking-wide text-white sm:px-3 sm:text-xs">
           {sample.label}
         </span>
-        <span className="mt-1 block text-xs font-medium text-cocoa/70">
+        <span className="mt-1 block text-[0.68rem] font-medium leading-tight text-cocoa/70 sm:text-xs">
           {sample.format}
         </span>
       </p>
@@ -428,7 +428,7 @@ export function CategoryPortfolio() {
                 Short form UGC videos
               </p>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-8 sm:gap-x-6">
+            <div className="mx-auto flex max-w-[52rem] flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-6">
               {items.map(({ sample, index }, order) => (
                 <PhoneVideoCard
                   key={sample.id}

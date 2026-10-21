@@ -34,17 +34,18 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const brandLogos = [
-  { name: "Pepsi", logo: "/logos/pepsi.png" },
-  { name: "L'Oréal", logo: "/logos/loreal.png" },
-  { name: "Maybelline", logo: "/logos/maybelline.png" },
-  { name: "Anua", logo: "/logos/anua.png" },
-  { name: "AccuFix", logo: "/logos/accufix.png" },
-  { name: "Agoda", logo: "/logos/agoda.png" },
-  { name: "Orbitz", logo: "/logos/orbitz.png" },
+// Brands without a logo file show their name inside the bubble instead.
+const brands: Array<{ name: string; logo?: string; square?: boolean }> = [
+  { name: "L'Oréal", logo: "/logos/loreal.svg" },
+  { name: "Garnier", logo: "/logos/garnier.png" },
+  { name: "Maybelline", logo: "/logos/maybelline.svg" },
+  { name: "Essence", logo: "/logos/essence.png" },
+  { name: "Miss Rose", logo: "/logos/missrose.png" },
+  { name: "Anua", logo: "/logos/anua.jpg", square: true },
+  { name: "Pureclans", logo: "/logos/pureclans.png" },
+  { name: "Promise Skin", logo: "/logos/promiseskin.png" },
+  { name: "inDrive", logo: "/logos/indrive.svg", square: true },
   { name: "Yango", logo: "/logos/yango.png" },
-  { name: "ReelTodo", logo: "/logos/reeltodo.png" },
-  { name: "Hotels & Resorts", logo: "/logos/hotel-resorts.svg" },
 ];
 
 const categories = categoryList as VideoCategory[];
@@ -56,13 +57,13 @@ const videoSamples = categories.flatMap((category) =>
 
 const heroStickers = [
   {
-    text: "3 years creating UGC",
+    text: "4 years creating UGC",
     className: "left-0 top-[12%] bg-cream text-cocoa",
     tilt: "-6deg",
     delay: "0.55s",
   },
   {
-    text: "100+ videos made",
+    text: "50+ creative ads",
     className: "right-0 top-[44%] bg-strawberry text-white",
     tilt: "5deg",
     delay: "0.75s",
@@ -72,6 +73,21 @@ const heroStickers = [
     className: "bottom-[8%] left-[4%] bg-cocoa text-cream",
     tilt: "-3deg",
     delay: "0.95s",
+  },
+];
+
+const aboutPolaroids = [
+  {
+    src: "/images/about-beach.jpg",
+    alt: "Mysbah on a beach in a white outfit",
+    caption: "off duty",
+    className: "-right-3 -top-4 rotate-6",
+  },
+  {
+    src: "/images/about-working.jpg",
+    alt: "Mysbah on a call while working on her laptop",
+    caption: "on set",
+    className: "-bottom-4 -left-3 -rotate-6",
   },
 ];
 
@@ -93,8 +109,8 @@ const services = [
 ];
 
 const proofStats = [
-  { value: "3 yrs", label: "creating UGC" },
-  { value: "100+", label: "videos made" },
+  { value: "4 yrs", label: "skincare and beauty" },
+  { value: "50+", label: "creative ads" },
   { value: "5.0 ★", label: "Upwork rating" },
   { value: "100%", label: "job success" },
 ];
@@ -131,7 +147,7 @@ const structuredData = {
         "TikTok and Reels Ad Creator",
       ],
       description:
-        "UGC creator with 3 years of experience making skincare, beauty, ASMR, and product videos for organic and paid social campaigns.",
+        "UGC creator with 4 years of experience in skincare and beauty, making product, ASMR, and review videos for organic and paid social campaigns.",
       contactPoint: {
         "@type": "ContactPoint",
         email: contactEmail,
@@ -306,7 +322,7 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-5 max-w-md text-lg font-medium leading-8 text-cocoa/80">
-                  3 years of skincare, beauty and ASMR videos that feel like a
+                  4 years of skincare and beauty videos that feel like a
                   friend&apos;s recommendation.
                 </p>
 
@@ -348,9 +364,23 @@ export default function Home() {
                     fill
                     priority
                     sizes="(max-width: 768px) 80vw, 380px"
-                    className="object-cover object-top"
+                    className="object-cover"
                   />
                 </div>
+                <figure className="hero-pop absolute -bottom-8 -right-1 w-[36%] rotate-6 rounded-xl bg-white p-1.5 pb-6 shadow-berry [animation-delay:0.4s] sm:-right-3 sm:p-2 sm:pb-7">
+                  <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
+                    <Image
+                      src="/images/hero-wink.jpg"
+                      alt="Mysbah winking while holding a lip product"
+                      fill
+                      sizes="160px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <figcaption className="absolute inset-x-0 bottom-0.5 text-center font-script text-base text-berry sm:bottom-1 sm:text-lg">
+                    beauty mode
+                  </figcaption>
+                </figure>
                 {heroStickers.map((sticker) => (
                   <span
                     key={sticker.text}
@@ -372,24 +402,33 @@ export default function Home() {
           <section id="brands" className="bg-cream py-16">
             <div className="container-shell">
               <SectionTitle script="brands I've created for" title="Trusted by" />
-              <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-5">
-                {brandLogos.map((brand, index) => (
+              <ul className="mx-auto mt-10 flex max-w-[22rem] flex-wrap justify-center gap-x-4 gap-y-5 sm:max-w-[42rem] sm:gap-x-6 sm:gap-y-6">
+                {brands.map((brand, index) => (
                   <li
                     key={brand.name}
                     data-pop
                     style={{ "--pop-delay": `${index * 60}ms` } as CSSProperties}
-                    className="flex flex-col items-center gap-2"
+                    className="flex w-24 flex-col items-center gap-2 sm:w-28"
                   >
-                    <span className="brand-bubble grid size-20 place-items-center rounded-full border-4 border-strawberry-milk bg-white shadow-soft sm:size-24">
-                      <Image
-                        src={brand.logo}
-                        alt=""
-                        width={48}
-                        height={48}
-                        className="h-auto max-h-11 w-auto max-w-12 object-contain"
-                      />
+                    <span className="brand-bubble grid size-24 place-items-center rounded-full border-4 border-strawberry-milk bg-white px-3 text-center font-display text-[0.95rem] leading-tight text-berry shadow-soft sm:size-28 sm:text-lg">
+                      {brand.logo ? (
+                        <Image
+                          src={brand.logo}
+                          alt={`${brand.name} logo`}
+                          width={160}
+                          height={160}
+                          unoptimized
+                          className={`h-auto w-auto object-contain ${
+                            brand.square
+                              ? "max-h-14 max-w-14 sm:max-h-16 sm:max-w-16"
+                              : "max-h-8 max-w-[3.9rem] sm:max-h-9 sm:max-w-[4.6rem]"
+                          }`}
+                        />
+                      ) : (
+                        brand.name
+                      )}
                     </span>
-                    <span className="text-center text-xs font-bold uppercase tracking-wide text-cocoa/75">
+                    <span className="text-center text-[0.7rem] font-bold uppercase tracking-wide text-cocoa/70">
                       {brand.name}
                     </span>
                   </li>
@@ -412,17 +451,36 @@ export default function Home() {
 
           <section id="about" className="bg-matcha-latte py-16 sm:py-20">
             <div className="container-shell grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-              <div data-pop className="relative mx-auto w-[calc(100%-1.5rem)] max-w-sm">
-                <div className="absolute -inset-3 rotate-3 rounded-[2rem] bg-strawberry" />
-                <div className="relative aspect-[4/5] -rotate-2 overflow-hidden rounded-[2rem] border-8 border-cream shadow-soft">
+              <div data-pop className="relative mx-auto aspect-[4/5] w-[calc(100%-3rem)] max-w-sm">
+                <div className="absolute inset-x-6 bottom-6 top-2 rotate-3 rounded-[2rem] bg-strawberry" />
+                <div className="absolute inset-x-6 bottom-6 top-2 -rotate-2 overflow-hidden rounded-[2rem] border-8 border-cream shadow-soft">
                   <Image
-                    src="/images/00-travel-profile-photo.jpeg"
-                    alt="Mysbah outdoors on a sunny day"
+                    src="/images/about-main.jpg"
+                    alt="Mysbah smiling with a bouquet of yellow flowers"
                     fill
-                    sizes="(max-width: 768px) 90vw, 380px"
+                    sizes="(max-width: 768px) 80vw, 340px"
                     className="object-cover"
                   />
                 </div>
+                {aboutPolaroids.map((photo) => (
+                  <figure
+                    key={photo.src}
+                    className={`absolute w-[44%] rounded-xl bg-white p-1.5 pb-6 shadow-berry sm:p-2 sm:pb-7 ${photo.className}`}
+                  >
+                    <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="180px"
+                        className="object-cover"
+                      />
+                    </span>
+                    <figcaption className="absolute inset-x-0 bottom-0.5 text-center font-script text-base text-berry sm:bottom-1 sm:text-lg">
+                      {photo.caption}
+                    </figcaption>
+                  </figure>
+                ))}
               </div>
 
               <div data-pop>
@@ -431,8 +489,8 @@ export default function Home() {
                   Videos that feel real and sell
                 </h2>
                 <p className="mt-4 max-w-lg text-lg leading-8 text-cocoa/80">
-                  I&apos;ve spent 3 years making UGC for brands in the US, UK and
-                  beyond, from skincare launches to apps and hotels.
+                  I&apos;ve spent 4 years making skincare and beauty UGC for
+                  brands in the US, UK and beyond.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {strengths.map((item) => (

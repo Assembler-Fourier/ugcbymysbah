@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Mysbah Ahmad is a UGC creator with 3 years of experience making skincare, beauty, ASMR, and product videos for brands in the US, UK, and worldwide.",
+    "Mysbah Ahmad is a UGC creator with 4 years of experience in skincare and beauty, making product, ASMR, and review videos for brands in the US, UK, and worldwide.",
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
   creator: "Mysbah Ahmad",
   publisher: "UGC by Mysbah",
@@ -52,12 +52,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
     description:
-      "3 years of skincare, beauty, ASMR, and product UGC that feels like a real recommendation.",
+      "4 years of skincare and beauty UGC that feels like a friend's recommendation.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
     images: [
       {
-        url: "/opengraph-image?v=20261021",
+        url: "/opengraph-image?v=20261021b",
         width: 1200,
         height: 630,
         alt: "UGC by Mysbah portfolio preview",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
     description:
       "Skincare, beauty, ASMR, and product UGC by Mysbah Ahmad.",
-    images: ["/opengraph-image?v=20261021"],
+    images: ["/opengraph-image?v=20261021b"],
   },
   icons: {
     icon: "/favicon.svg",

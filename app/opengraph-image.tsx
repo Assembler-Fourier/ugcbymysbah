@@ -64,7 +64,7 @@ export default async function OpenGraphImage() {
             fontWeight: 800,
           }}
         >
-          UGC CREATOR · 3 YEARS
+          UGC CREATOR · 4 YEARS
         </div>
         <div
           style={{

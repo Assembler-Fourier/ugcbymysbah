@@ -66,13 +66,20 @@ Replace this file with another JPEG using the exact same name:
 public/images/00-main-profile-photo.jpeg
 ```
 
-## Change The About Picture
+## Change The Other Pictures
 
-Replace:
+Replace any of these with a JPEG using the exact same name:
 
 ```text
-public/images/00-travel-profile-photo.jpeg
+public/images/hero-wink.jpg        small polaroid at the top
+public/images/about-main.jpg       main About photo
+public/images/about-beach.jpg      About polaroid, top right
+public/images/about-working.jpg    About polaroid, bottom left
 ```
+
+## Change The Brand Logos
+
+Logos live in `public/logos`. The list of brands is near the top of `app/page.tsx`.
 
 ## Remember
 

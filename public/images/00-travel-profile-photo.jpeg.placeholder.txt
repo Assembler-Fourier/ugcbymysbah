@@ -1,5 +1,0 @@
-Replace this slot by uploading a real JPEG named:
-
-00-travel-profile-photo.jpeg
-
-This appears in the Travel portfolio card.

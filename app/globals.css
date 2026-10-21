@@ -163,20 +163,14 @@ summary {
 
 /* ---------- Phone frames ---------- */
 
-/* 2 per row on phones, 3 on tablets, 4 on laptops; short rows stay centered */
+/* Always 3 per row; extra videos start a new centered row underneath */
 .video-tile {
-  width: calc((100% - 1rem) / 2);
+  width: calc((100% - 1.5rem) / 3);
 }
 
 @media (min-width: 640px) {
   .video-tile {
     width: calc((100% - 3rem) / 3);
-  }
-}
-
-@media (min-width: 1024px) {
-  .video-tile {
-    width: calc((100% - 4.5rem) / 4);
   }
 }
 

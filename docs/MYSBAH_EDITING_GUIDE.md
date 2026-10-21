@@ -51,7 +51,10 @@ Use these exact paths:
 | File | Website location |
 | --- | --- |
 | `public/images/00-main-profile-photo.jpeg` | Hero, social preview source, and main creator image |
-| `public/images/00-travel-profile-photo.jpeg` | About section image |
+| `public/images/hero-wink.jpg` | Hero polaroid |
+| `public/images/about-main.jpg` | About section main photo |
+| `public/images/about-beach.jpg` | About polaroid, top right |
+| `public/images/about-working.jpg` | About polaroid, bottom left |
 
 Use portrait JPEG files and keep the same filenames.
 
