@@ -498,33 +498,14 @@ export default function Home() {
 
             <div id="reviews" className="container-shell mt-20 scroll-mt-20 sm:mt-24">
               <SectionTitle script="kind words" title="What clients say" />
-              <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-x-4 gap-y-8 [grid-template-areas:'beach_work''quote_quote'] md:grid-cols-[1fr_1.7fr_1fr] md:items-start md:gap-x-8 md:[grid-template-areas:'beach_quote_work']">
-                <figure data-pop className="relative mx-auto w-full max-w-[13rem] [grid-area:beach]">
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 bottom-6 top-[18%] rounded-t-full bg-strawberry-milk"
-                  />
-                  <span className="relative block aspect-[513/1200] w-[78%] mx-auto">
-                    <Image
-                      src="/images/about-beach-cutout.png"
-                      alt="Mysbah standing on the beach in a white outfit"
-                      fill
-                      sizes="(max-width: 768px) 40vw, 170px"
-                      className="object-contain object-bottom"
-                    />
-                  </span>
-                  <figcaption className="relative -mt-1 text-center font-script text-xl text-berry">
-                    off duty
-                  </figcaption>
-                </figure>
-
+              <div className="mx-auto mt-10 grid max-w-4xl gap-y-10 [grid-template-areas:'work''quote'] md:grid-cols-[1.8fr_1fr] md:items-start md:gap-x-10 md:[grid-template-areas:'quote_work']">
                 <div className="[grid-area:quote]">
                   <TestimonialRotator items={testimonials} />
                 </div>
 
                 <figure
                   data-pop
-                  className="relative mx-auto w-full max-w-[13rem] rotate-6 self-start rounded-xl bg-white p-2 pb-8 shadow-berry [grid-area:work] sm:p-2.5 sm:pb-9"
+                  className="relative mx-auto w-full max-w-[11rem] rotate-6 self-start rounded-xl bg-white p-2 pb-8 shadow-berry [grid-area:work] sm:p-2.5 sm:pb-9 md:max-w-[15rem]"
                 >
                   <span className="relative block aspect-[4/5] overflow-hidden rounded-lg">
                     <Image

@@ -52,7 +52,6 @@ Use these exact paths:
 | --- | --- |
 | `public/images/00-main-profile-photo.jpeg` | Hero, social preview source, and main creator image |
 | `public/images/hero-wink.jpg` | Hero polaroid |
-| `public/images/about-beach-cutout.png` | Beach cutout next to the reviews (transparent PNG) |
 | `public/images/about-working.jpg` | Headphones polaroid next to the reviews |
 
 Use portrait JPEG files and keep the same filenames.

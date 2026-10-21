@@ -6,7 +6,6 @@ Replace these exact files to change the website photos.
 | --- | --- |
 | `00-main-profile-photo.jpeg` | Big arch photo at the top, and the social preview image |
 | `hero-wink.jpg` | Small polaroid next to the top photo ("beauty mode") |
-| `about-beach-cutout.png` | Beach cutout (no background) next to the reviews ("off duty"). Use a PNG with a transparent background |
 | `about-working.jpg` | Headphones polaroid next to the reviews ("on set") |
 
 Use portrait photos (4:5 works best, for example 1200 x 1500).
