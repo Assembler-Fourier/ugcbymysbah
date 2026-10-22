@@ -2,6 +2,7 @@ export const contactEmail = "misbahugcwork@gmail.com";
 
 export const profileLinks = {
   instagram: "https://www.instagram.com/mysbahdoingugc__/",
+  instagramMain: "https://www.instagram.com/mysbah_butt/",
   tiktok: "https://www.tiktok.com/@mysbah_ugc",
   linkedin: "https://www.linkedin.com/in/misbah-ahmad-401076214/",
   upwork: "https://www.upwork.com/freelancers/~010ac3ca797266679e",

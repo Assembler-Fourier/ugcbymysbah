@@ -12,6 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { BookMeButton } from "@/components/BookMeButton";
+import { HangingPhone } from "@/components/HangingPhone";
 import { PopInObserver } from "@/components/PopInObserver";
 import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
 import {
@@ -123,12 +124,61 @@ const proofStats = [
   { value: "100%", label: "job success" },
 ];
 
-const socialLinks = [
-  { label: "Instagram", href: profileLinks.instagram, logo: "instagram" },
+const socialLinks: Array<{
+  label: string;
+  href: string;
+  logo: SocialLogoName;
+  handle?: string;
+  note?: string;
+}> = [
+  {
+    label: "Instagram (@mysbah_butt)",
+    href: profileLinks.instagramMain,
+    logo: "instagram",
+    handle: "@mysbah_butt",
+    note: "69.2K",
+  },
+  {
+    label: "Instagram (@mysbahdoingugc__)",
+    href: profileLinks.instagram,
+    logo: "instagram",
+    handle: "@mysbahdoingugc__",
+  },
   { label: "TikTok", href: profileLinks.tiktok, logo: "tiktok" },
   { label: "LinkedIn", href: profileLinks.linkedin, logo: "linkedin" },
   { label: "Upwork", href: profileLinks.upwork, logo: "upwork" },
-] satisfies Array<{ label: string; href: string; logo: SocialLogoName }>;
+];
+
+const instagramAccounts = [
+  {
+    handle: "@mysbah_butt",
+    href: profileLinks.instagramMain,
+    tag: "My main account · verified",
+    stats: [
+      { value: "69.2K", label: "followers" },
+      { value: "916K", label: "views in 30 days" },
+      { value: "1.4M", label: "views on one reel" },
+    ],
+    shots: [
+      { src: "/images/instagram/mysbah-butt-profile.jpg", alt: "Instagram profile of @mysbah_butt with 69.2K followers" },
+      { src: "/images/instagram/mysbah-butt-reel.jpg", alt: "Reel insights showing 1,401,780 views" },
+    ],
+  },
+  {
+    handle: "@mysbahdoingugc__",
+    href: profileLinks.instagram,
+    tag: "My UGC account · skincare and beauty",
+    stats: [
+      { value: "UGC", label: "portfolio in English" },
+      { value: "4.1K", label: "views in 30 days" },
+      { value: "3.2K", label: "views on one reel" },
+    ],
+    shots: [
+      { src: "/images/instagram/ugc-account-profile.jpg", alt: "Instagram profile of @mysbahdoingugc__, the UGC account" },
+      { src: "/images/instagram/ugc-account-reel.jpg", alt: "Reel insights from the UGC account showing 3,285 views" },
+    ],
+  },
+];
 
 const sameAs = socialLinks.map((link) => link.href);
 
@@ -306,10 +356,7 @@ export default function Home() {
             id="home"
             className="relative overflow-hidden bg-strawberry-milk"
           >
-            <span
-              aria-hidden="true"
-              className="berry-spark absolute right-[6%] top-10 size-10 bg-strawberry sm:size-14"
-            />
+            <HangingPhone />
             <span
               aria-hidden="true"
               className="berry-spark absolute bottom-16 left-[3%] hidden size-8 bg-matcha md:block"
@@ -329,14 +376,22 @@ export default function Home() {
                   <span className="block font-display text-[5.2rem] italic leading-[0.95] text-berry sm:text-[7rem] lg:text-[8rem]">
                     Mysbah
                   </span>
-                  <span className="mt-4 block text-4xl font-extrabold uppercase tracking-tight text-cocoa sm:text-5xl">
-                    UGC Creator
+                  <span className="mt-4 block text-[1.7rem] font-extrabold uppercase leading-tight tracking-tight text-cocoa sm:text-4xl">
+                    <span className="block">
+                      UGC Creator <span className="text-strawberry">/</span>
+                    </span>
+                    <span className="block">Content Creator</span>
                   </span>
                 </h1>
 
-                <p className="mt-5 max-w-md text-lg font-medium leading-8 text-cocoa/80">
-                  4 years of skincare and beauty videos that feel like a
-                  friend&apos;s recommendation.
+                <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-matcha px-4 py-1.5 text-sm font-bold text-white">
+                  <BadgeCheck aria-hidden="true" size={16} />
+                  4 years of work experience
+                </p>
+
+                <p className="mt-4 max-w-md text-lg font-medium leading-8 text-cocoa/80">
+                  Skincare and beauty videos that feel like a friend&apos;s
+                  recommendation.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -353,19 +408,38 @@ export default function Home() {
                   </BookMeButton>
                 </div>
 
-                <div className="mt-7 flex gap-2">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Mysbah on ${link.label}`}
-                      className="focus-ring grid size-11 place-items-center rounded-full bg-cream shadow-sm transition hover:-translate-y-1 hover:scale-110"
-                    >
-                      <SocialLogo logo={link.logo} className="size-6" />
-                    </a>
-                  ))}
+                <div className="mt-7 flex flex-wrap gap-1.5 sm:gap-2">
+                  {socialLinks.map((link) =>
+                    link.handle ? (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Mysbah on ${link.label}`}
+                        className="focus-ring inline-flex min-h-10 items-center gap-1.5 rounded-full bg-cream py-1 pl-1 pr-3 text-[0.8rem] font-bold text-cocoa shadow-sm transition hover:-translate-y-1"
+                      >
+                        <SocialLogo logo={link.logo} className="size-7" />
+                        {link.handle}
+                        {link.note ? (
+                          <span className="rounded-full bg-strawberry px-2 py-0.5 text-xs text-white">
+                            {link.note}
+                          </span>
+                        ) : null}
+                      </a>
+                    ) : (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Mysbah on ${link.label}`}
+                        className="focus-ring grid size-10 place-items-center rounded-full bg-cream shadow-sm transition hover:-translate-y-1 hover:scale-110"
+                      >
+                        <SocialLogo logo={link.logo} className="size-5" />
+                      </a>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -587,6 +661,74 @@ export default function Home() {
                   <BadgeCheck aria-hidden="true" size={17} />
                   See my Upwork reviews
                 </a>
+              </div>
+            </div>
+          </section>
+
+          <section id="instagram" className="bg-cream py-16 sm:py-20">
+            <div className="container-shell">
+              <SectionTitle script="two accounts, real audiences" title="Find me on Instagram" />
+              <div className="mx-auto mt-10 grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                {instagramAccounts.map((account, index) => (
+                  <article
+                    key={account.handle}
+                    data-pop
+                    style={{ "--pop-delay": `${index * 100}ms` } as CSSProperties}
+                    className="rounded-3xl border-4 border-strawberry-milk bg-white p-5 shadow-soft sm:p-6"
+                  >
+                    <div className="flex items-center gap-3">
+                      <SocialLogo logo="instagram" className="size-11 shrink-0" />
+                      <div className="min-w-0">
+                        <h3 className="truncate text-[0.95rem] font-extrabold text-cocoa sm:text-lg">
+                          {account.handle}
+                        </h3>
+                        <p className="text-sm text-cocoa/65">{account.tag}</p>
+                      </div>
+                      <a
+                        href={account.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Follow ${account.handle} on Instagram`}
+                        className="focus-ring ml-auto shrink-0 rounded-full bg-strawberry px-4 py-2 text-xs font-bold text-white transition hover:bg-berry"
+                      >
+                        Follow
+                      </a>
+                    </div>
+                    <dl className="mt-5 grid grid-cols-[repeat(3,minmax(0,1fr))] gap-2 text-center">
+                      {account.stats.map((stat) => (
+                        <div key={stat.label} className="rounded-2xl bg-strawberry-milk px-2 py-3">
+                          <dt className="sr-only">{stat.label}</dt>
+                          <dd className="font-display text-2xl text-berry sm:text-3xl">
+                            {stat.value}
+                          </dd>
+                          <dd className="text-[0.7rem] font-bold uppercase leading-tight tracking-wide text-matcha-deep">
+                            {stat.label}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <div className="mt-5 grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3">
+                      {account.shots.map((shot) => (
+                        <a
+                          key={shot.src}
+                          href={account.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="focus-ring block overflow-hidden rounded-2xl border-4 border-cocoa bg-cocoa transition hover:-translate-y-1"
+                        >
+                          <Image
+                            src={shot.src}
+                            alt={shot.alt}
+                            width={720}
+                            height={700}
+                            sizes="(max-width: 768px) 45vw, 240px"
+                            className="h-auto w-full"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
           </section>
