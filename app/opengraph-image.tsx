@@ -100,7 +100,6 @@ export default async function OpenGraphImage() {
           width: 404,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse only renders plain img tags */}
         <img
           alt=""
           src={portraitSrc}
