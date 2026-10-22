@@ -253,67 +253,6 @@ summary {
   backdrop-filter: blur(6px);
 }
 
-/* ---------- Hanging phone ---------- */
-
-.hanging-phone {
-  position: absolute;
-  top: 0;
-  right: 0.75rem;
-  z-index: 20;
-  height: 12rem;
-}
-
-@media (min-width: 640px) {
-  .hanging-phone {
-    right: 2.5%;
-    height: 19rem;
-  }
-}
-
-.phone-swing {
-  transform-origin: 50% 0;
-  animation: phone-swing 4.5s ease-in-out infinite;
-}
-
-@keyframes phone-swing {
-  0%,
-  100% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(4deg);
-  }
-}
-
-.phone-ring {
-  transform-box: view-box;
-  transform-origin: 90px 192px;
-}
-
-.group:hover .phone-ring,
-.group:focus-visible .phone-ring {
-  animation: phone-ring 0.45s ease-in-out 2;
-}
-
-@keyframes phone-ring {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(-9deg);
-  }
-  40% {
-    transform: rotate(8deg);
-  }
-  60% {
-    transform: rotate(-6deg);
-  }
-  80% {
-    transform: rotate(5deg);
-  }
-}
-
 /* ---------- Rotating reviews ---------- */
 
 .review-card {

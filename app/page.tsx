@@ -12,7 +12,6 @@ import {
   Zap,
 } from "lucide-react";
 import { BookMeButton } from "@/components/BookMeButton";
-import { HangingPhone } from "@/components/HangingPhone";
 import { PopInObserver } from "@/components/PopInObserver";
 import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
 import {
@@ -356,7 +355,6 @@ export default function Home() {
             id="home"
             className="relative overflow-hidden bg-strawberry-milk"
           >
-            <HangingPhone />
             <span
               aria-hidden="true"
               className="berry-spark absolute bottom-16 left-[3%] hidden size-8 bg-matcha md:block"
