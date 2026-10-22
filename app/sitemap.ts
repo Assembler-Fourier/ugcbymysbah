@@ -4,7 +4,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://ugcbymysbah.com",
-      lastModified: new Date("2026-09-05"),
+      // Set at build time, so every publish tells search engines the page changed.
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },

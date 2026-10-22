@@ -1,7 +1,7 @@
 "use client";
 
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { SocialLogo } from "@/components/SocialLogo";
 
 export type Testimonial = {
@@ -10,17 +10,18 @@ export type Testimonial = {
   date: string;
 };
 
-// Long reviews stay on screen longer so they can be read in full.
-function readingTime(quote: string) {
-  return Math.min(12000, 4000 + quote.length * 35);
-}
+// How long each review stays on screen before the next one slides in.
+const SHOW_MS = 6500;
 
 export function TestimonialRotator({ items }: { items: Testimonial[] }) {
   const [active, setActive] = useState(0);
-  // Bumped on every dot click so the reading timer always restarts.
-  const [restarts, setRestarts] = useState(0);
+  const [leaving, setLeaving] = useState<number | null>(null);
+  // Bumped whenever the timer restarts (dot click, resume after hover) so the bar restarts too.
+  const [cycle, setCycle] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -30,35 +31,65 @@ export function TestimonialRotator({ items }: { items: Testimonial[] }) {
     return () => query.removeEventListener("change", update);
   }, []);
 
+  // Only rotate while the reviews are on screen, and start a fresh cycle when
+  // they scroll into view so the first review gets its full time.
   useEffect(() => {
-    if (paused || reducedMotion || items.length < 2) {
+    const root = rootRef.current;
+    if (!root) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setCycle((count) => count + 1);
+        }
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
+
+  const running = inView && !paused && !reducedMotion;
+
+  const goTo = (next: number) => {
+    setLeaving(active === next ? null : active);
+    setActive(next);
+    setCycle((count) => count + 1);
+  };
+
+  useEffect(() => {
+    if (!running || items.length < 2) {
       return;
     }
 
-    const timer = window.setTimeout(
-      () => setActive((current) => (current + 1) % items.length),
-      readingTime(items[active].quote),
-    );
+    const timer = window.setTimeout(() => {
+      setLeaving(active);
+      setActive((active + 1) % items.length);
+      setCycle((count) => count + 1);
+    }, SHOW_MS);
     return () => window.clearTimeout(timer);
-  }, [active, items, paused, reducedMotion, restarts]);
+  }, [active, cycle, items.length, running]);
+
+  const pause = () => setPaused(true);
+  const resume = () => {
+    setPaused(false);
+    setCycle((count) => count + 1);
+  };
 
   return (
-    <div
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-    >
-      <div className="grid">
+    <div ref={rootRef} onMouseEnter={pause} onMouseLeave={resume} onFocus={pause} onBlur={resume}>
+      <div className="grid overflow-hidden px-1 py-2">
         {items.map((review, index) => {
-          const isActive = index === active;
+          const state = index === active ? "is-active" : index === leaving ? "is-leaving" : "";
 
           return (
             <figure
               key={review.project}
-              aria-hidden={!isActive}
-              className={`review-card relative rounded-3xl border-4 border-cream bg-white p-6 shadow-soft [grid-area:1/1] sm:p-8 ${
-                isActive ? "is-active" : "pointer-events-none"
+              aria-hidden={index !== active}
+              className={`review-card relative rounded-3xl border-4 border-cream bg-white p-6 shadow-soft [grid-area:1/1] sm:p-8 ${state} ${
+                index === active ? "" : "pointer-events-none"
               }`}
             >
               <span
@@ -86,15 +117,22 @@ export function TestimonialRotator({ items }: { items: Testimonial[] }) {
         })}
       </div>
 
-      <div className="mt-5 flex justify-center gap-2">
+      {!reducedMotion ? (
+        <div aria-hidden="true" className="mx-auto mt-4 h-1.5 w-40 overflow-hidden rounded-full bg-matcha/20">
+          <div
+            key={`${active}-${cycle}`}
+            className="review-progress h-full rounded-full bg-strawberry"
+            style={{ "--show-ms": `${SHOW_MS}ms`, animationPlayState: running ? "running" : "paused" } as CSSProperties}
+          />
+        </div>
+      ) : null}
+
+      <div className="mt-4 flex justify-center gap-2">
         {items.map((review, index) => (
           <button
             key={review.project}
             type="button"
-            onClick={() => {
-              setActive(index);
-              setRestarts((count) => count + 1);
-            }}
+            onClick={() => goTo(index)}
             aria-label={`Show review ${index + 1} of ${items.length}`}
             aria-current={index === active}
             className={`focus-ring h-2.5 rounded-full transition-all duration-300 ${

@@ -27,6 +27,7 @@ import {
 } from "@/components/VideoShowcase";
 import categoryList from "@/data/categories.json";
 import generatedVideoSamples from "@/data/generated-video-manifest.json";
+import { areaServed, marketLabels } from "@/data/seo";
 import { serviceGroups, serviceKeywords } from "@/data/services";
 import { contactEmail, mailtoLink, profileLinks } from "@/data/site";
 
@@ -75,7 +76,7 @@ const heroStickers = [
     delay: "0.75s",
   },
   {
-    text: "4.9 ★ on Upwork",
+    text: "★★★★★ 4.9 on Upwork",
     className: "bottom-[8%] left-[4%] bg-cocoa text-cream",
     tilt: "-3deg",
     delay: "0.95s",
@@ -119,7 +120,7 @@ const strengths = [
 const proofStats = [
   { value: "4 yrs", label: "skincare and beauty" },
   { value: "50+", label: "creative ads" },
-  { value: "4.9 ★", label: "Upwork rating" },
+  { value: "★★★★★", label: "4.9 on Upwork" },
   { value: "100%", label: "job success" },
 ];
 
@@ -189,13 +190,14 @@ const structuredData = {
         "TikTok and Reels Ad Creator",
       ],
       description:
-        "UGC creator with 4 years of experience in skincare and beauty, making product, ASMR, and review videos for organic and paid social campaigns.",
+        "UGC creator with 4 years of experience in skincare and beauty, making affordable product, ASMR, and review videos for brands in the US, UK, Ireland, Europe, Canada, Malaysia and Indonesia.",
+      knowsLanguage: ["en", "ur"],
       contactPoint: {
         "@type": "ContactPoint",
         email: contactEmail,
         contactType: "brand collaborations",
-        areaServed: "Worldwide",
-        availableLanguage: "English",
+        areaServed,
+        availableLanguage: ["English", "Urdu"],
       },
       sameAs,
       knowsAbout: [
@@ -217,25 +219,61 @@ const structuredData = {
       image: `${siteUrl}/images/00-main-profile-photo.jpeg`,
       founder: { "@id": `${siteUrl}/#mysbah` },
       email: contactEmail,
-      areaServed: "Worldwide",
-      serviceType: [
-        "UGC video creation",
-        "TikTok ad creation",
-        "Instagram Reels creation",
-        "Product demo videos",
-        "Skincare and beauty content",
-        "ASMR and product content",
-        ...serviceKeywords,
-      ],
+      areaServed,
       sameAs,
+    },
+    {
+      "@type": "Service",
+      "@id": `${siteUrl}/#ugc-service`,
+      name: "Skincare and beauty UGC video creation",
+      serviceType: "User-generated content (UGC) video creation",
+      description:
+        "Affordable UGC video ads, product demos, testimonials, ASMR and talking-head videos for skincare, beauty and lifestyle brands in the US, UK, Ireland, Europe, Canada, Malaysia and Indonesia.",
+      provider: { "@id": `${siteUrl}/#service` },
+      areaServed,
+      availableLanguage: ["English", "Urdu"],
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Skincare, beauty and lifestyle brands",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "UGC services",
+        itemListElement: serviceKeywords.map((name) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name },
+        })),
+      },
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${siteUrl}/#portfolio-videos`,
+      name: "UGC video portfolio",
+      itemListElement: videoSamples.map((sample, index) => {
+        const category = categories.find((item) => item.id === sample.category)?.title ?? "UGC";
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "VideoObject",
+            name: `${sample.label} ${sample.format} – ${category} UGC video`,
+            description: `${category} UGC video by Mysbah Ahmad: ${sample.format.toLowerCase()} for ${sample.label}.`,
+            thumbnailUrl: encodeURI(`${siteUrl}${sample.posterSrc ?? "/images/00-main-profile-photo.jpeg"}`),
+            contentUrl: encodeURI(`${siteUrl}${sample.videoSrc}`),
+            uploadDate: "2026-10-21",
+            inLanguage: "en",
+            creator: { "@id": `${siteUrl}/#mysbah` },
+          },
+        };
+      }),
     },
     {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#profile-page`,
       url: siteUrl,
-      name: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
+      name: "Skincare & Beauty UGC Creator | US, UK & Europe | Mysbah Ahmad",
       description:
-        "The official portfolio of Mysbah Ahmad, a UGC creator for skincare, beauty, and product brands.",
+        "The official portfolio of Mysbah Ahmad, an affordable UGC creator for skincare, beauty, and product brands in the US, UK, Ireland, Europe, Canada, Malaysia and Indonesia.",
       inLanguage: "en",
       mainEntity: { "@id": `${siteUrl}/#mysbah` },
       isPartOf: { "@id": `${siteUrl}/#website` },
@@ -531,7 +569,8 @@ export default function Home() {
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg leading-8 text-cocoa/80">
                 I&apos;ve spent 4 years making skincare and beauty UGC for
-                brands in the US, UK and beyond.
+                brands in the US, UK, Ireland and across Europe, at rates that
+                work for growing brands.
               </p>
               <ul className="mt-8 grid gap-3 text-left sm:grid-cols-3 sm:text-center">
                 {strengths.map((item) => (
@@ -725,6 +764,19 @@ export default function Home() {
                   {contactEmail}
                 </a>
               </div>
+              <p className="mt-10 text-sm font-bold uppercase tracking-wide text-cream/70">
+                Working remotely with brands in
+              </p>
+              <ul className="mx-auto mt-3 flex max-w-2xl flex-wrap justify-center gap-2">
+                {marketLabels.map((market) => (
+                  <li
+                    key={market}
+                    className="rounded-full border border-cream/25 px-3 py-1 text-sm text-cream/90"
+                  >
+                    {market}
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         </main>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dancing_Script, DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { regionKeywords } from "@/data/seo";
 import { serviceKeywords } from "@/data/services";
 import "./globals.css";
 
@@ -27,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "UGC by Mysbah",
   title: {
-    default: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
+    default: "Skincare & Beauty UGC Creator | US, UK & Europe | Mysbah Ahmad",
     template: "%s | UGC by Mysbah",
   },
   description:
-    "Mysbah Ahmad is a UGC creator with 4 years of experience in skincare and beauty, making product, ASMR, and review videos for brands in the US, UK, and worldwide.",
+    "Hire a skincare & beauty UGC creator with 4 years' experience. Affordable video ads for brands in the US, UK, Ireland, Europe, Canada, Malaysia & Indonesia.",
   keywords: [
     "UGC creator",
     "UGC content creator",
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
     "female UGC creator",
     "South Asian UGC creator",
     "hire UGC creator",
+    ...regionKeywords,
     ...serviceKeywords,
   ],
   authors: [{ name: "Mysbah Ahmad", url: siteUrl }],
@@ -61,11 +63,13 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
+    title: "Skincare & Beauty UGC Creator for US, UK & European Brands",
     description:
-      "4 years of skincare and beauty UGC that feels like a friend's recommendation.",
+      "4 years of skincare and beauty UGC that feels like a friend's recommendation. Affordable rates, working worldwide.",
     url: siteUrl,
     siteName: "UGC by Mysbah",
+    locale: "en_US",
+    alternateLocale: ["en_GB", "en_IE", "en_CA"],
     images: [
       {
         url: "/opengraph-image?v=20261021b",
@@ -78,9 +82,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mysbah Ahmad | UGC Creator for Skincare & Beauty Brands",
+    title: "Skincare & Beauty UGC Creator for US, UK & European Brands",
     description:
-      "Skincare, beauty, ASMR, and product UGC by Mysbah Ahmad.",
+      "Affordable skincare, beauty, ASMR and product UGC by Mysbah Ahmad.",
     images: ["/opengraph-image?v=20261021b"],
   },
   icons: {

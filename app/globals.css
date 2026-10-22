@@ -255,20 +255,36 @@ summary {
 
 /* ---------- Rotating reviews ---------- */
 
+/* Waiting cards sit off to the right; the leaving card slides out to the left */
 .review-card {
   visibility: hidden;
   opacity: 0;
-  transform: translateY(18px) scale(0.94) rotate(-1deg);
+  transform: translateX(60px) scale(0.96);
   transition:
     opacity 0.45s ease,
-    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-    visibility 0.6s;
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.65s;
+}
+
+.review-card.is-leaving {
+  transform: translateX(-60px) scale(0.96);
 }
 
 .review-card.is-active {
   visibility: visible;
   opacity: 1;
   transform: none;
+}
+
+.review-progress {
+  width: 0;
+  animation: review-progress var(--show-ms, 6500ms) linear forwards;
+}
+
+@keyframes review-progress {
+  to {
+    width: 100%;
+  }
 }
 
 /* ---------- Services ---------- */
