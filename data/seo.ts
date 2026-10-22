@@ -12,17 +12,6 @@ export const affordableMarkets = [
   { name: "Indonesia", code: "ID" },
 ];
 
-// Shown on the page as well, because search engines rank visible text.
-export const marketLabels = [
-  "United States",
-  "United Kingdom",
-  "Ireland",
-  "Europe",
-  "Canada",
-  "Malaysia",
-  "Indonesia",
-];
-
 // schema.org areaServed: countries plus Europe as a whole.
 export const areaServed = [
   ...[...mainMarkets, ...affordableMarkets].map((country) => ({

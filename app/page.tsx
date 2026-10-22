@@ -27,7 +27,7 @@ import {
 } from "@/components/VideoShowcase";
 import categoryList from "@/data/categories.json";
 import generatedVideoSamples from "@/data/generated-video-manifest.json";
-import { areaServed, marketLabels } from "@/data/seo";
+import { areaServed } from "@/data/seo";
 import { serviceGroups, serviceKeywords } from "@/data/services";
 import { contactEmail, mailtoLink, profileLinks } from "@/data/site";
 
@@ -764,19 +764,6 @@ export default function Home() {
                   {contactEmail}
                 </a>
               </div>
-              <p className="mt-10 text-sm font-bold uppercase tracking-wide text-cream/70">
-                Working remotely with brands in
-              </p>
-              <ul className="mx-auto mt-3 flex max-w-2xl flex-wrap justify-center gap-2">
-                {marketLabels.map((market) => (
-                  <li
-                    key={market}
-                    className="rounded-full border border-cream/25 px-3 py-1 text-sm text-cream/90"
-                  >
-                    {market}
-                  </li>
-                ))}
-              </ul>
             </div>
           </section>
         </main>
