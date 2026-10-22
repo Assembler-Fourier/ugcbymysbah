@@ -148,19 +148,27 @@ const socialLinks: Array<{
   { label: "Upwork", href: profileLinks.upwork, logo: "upwork" },
 ];
 
-// Combined public numbers from both Instagram accounts (checked Oct 2026):
-// followers 69.2K + 326; views summed over each account's latest 12 public reels;
-// likes and comments on the top reels; engagement = (likes + comments) / views on those reels.
+// Combined Instagram numbers for both accounts (Oct 2026, from Mysbah):
+// followers 69.2K + 326; views 154,352,627 across 320 reels on @mysbah_butt
+// + 18,273 on @mysbahdoingugc__ = 154,370,900. 33 reels past 1M, 104 past 100K.
+// Engagement = (likes + comments) / views on the top public reels.
 const instagramStats = [
   { value: "69.5K", label: "followers" },
-  { value: "13.7M+", label: "views" },
-  { value: "920K+", label: "likes and comments" },
+  { value: "154M+", label: "views" },
+  { value: "33", label: "reels past 1M views" },
   { value: "6.7%", label: "engagement rate" },
 ];
 
+const instagramHighlights = [
+  { value: "19.5M", label: "views on my top reel" },
+  { value: "11.7M", label: "on my second" },
+  { value: "104", label: "reels past 100K" },
+  { value: "320", label: "reels posted" },
+];
+
 const instagramAccounts = [
-  { handle: "@mysbah_butt", href: profileLinks.instagramMain, tag: "Main account · 3 reels past 1M views" },
-  { handle: "@mysbahdoingugc__", href: profileLinks.instagram, tag: "UGC account · skincare and beauty" },
+  { handle: "@mysbah_butt", href: profileLinks.instagramMain, tag: "Verified · 33 reels past 1M views" },
+  { handle: "@mysbahdoingugc__", href: profileLinks.instagram, tag: "UGC account · 18.3K views" },
 ];
 
 const sameAs = socialLinks.map((link) => link.href);
@@ -670,9 +678,20 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
-              <p className="mt-4 text-center text-xs text-cocoa/60">
+              <p className="mt-3 text-center text-xs text-cocoa/60">
                 Combined across both accounts
               </p>
+              <ul className="mx-auto mt-5 flex max-w-4xl flex-wrap justify-center gap-2">
+                {instagramHighlights.map((item) => (
+                  <li
+                    key={item.label}
+                    className="rounded-full bg-strawberry-milk px-4 py-2 text-sm text-cocoa"
+                  >
+                    <span className="font-extrabold text-berry">{item.value}</span>{" "}
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
               <div className="mx-auto mt-8 grid max-w-3xl grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                 {instagramAccounts.map((account) => (
                   <a
