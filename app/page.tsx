@@ -357,6 +357,10 @@ export default function Home() {
           >
             <span
               aria-hidden="true"
+              className="berry-spark absolute right-[6%] top-10 size-10 bg-strawberry sm:size-14"
+            />
+            <span
+              aria-hidden="true"
               className="berry-spark absolute bottom-16 left-[3%] hidden size-8 bg-matcha md:block"
             />
 
