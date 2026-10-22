@@ -75,7 +75,7 @@ const heroStickers = [
     delay: "0.75s",
   },
   {
-    text: "5.0 ★ on Upwork",
+    text: "4.9 ★ on Upwork",
     className: "bottom-[8%] left-[4%] bg-cocoa text-cream",
     tilt: "-3deg",
     delay: "0.95s",
@@ -119,7 +119,7 @@ const strengths = [
 const proofStats = [
   { value: "4 yrs", label: "skincare and beauty" },
   { value: "50+", label: "creative ads" },
-  { value: "5.0 ★", label: "Upwork rating" },
+  { value: "4.9 ★", label: "Upwork rating" },
   { value: "100%", label: "job success" },
 ];
 
@@ -148,35 +148,19 @@ const socialLinks: Array<{
   { label: "Upwork", href: profileLinks.upwork, logo: "upwork" },
 ];
 
+// Combined public numbers from both Instagram accounts (checked Oct 2026):
+// followers 69.2K + 326; views summed over each account's latest 12 public reels;
+// likes and comments on the top reels; engagement = (likes + comments) / views on those reels.
+const instagramStats = [
+  { value: "69.5K", label: "followers" },
+  { value: "13.7M+", label: "views" },
+  { value: "920K+", label: "likes and comments" },
+  { value: "6.7%", label: "engagement rate" },
+];
+
 const instagramAccounts = [
-  {
-    handle: "@mysbah_butt",
-    href: profileLinks.instagramMain,
-    tag: "My main account · verified",
-    stats: [
-      { value: "69.2K", label: "followers" },
-      { value: "916K", label: "views in 30 days" },
-      { value: "1.4M", label: "views on one reel" },
-    ],
-    shots: [
-      { src: "/images/instagram/mysbah-butt-profile.jpg", alt: "Instagram profile of @mysbah_butt with 69.2K followers" },
-      { src: "/images/instagram/mysbah-butt-reel.jpg", alt: "Reel insights showing 1,401,780 views" },
-    ],
-  },
-  {
-    handle: "@mysbahdoingugc__",
-    href: profileLinks.instagram,
-    tag: "My UGC account · skincare and beauty",
-    stats: [
-      { value: "UGC", label: "portfolio in English" },
-      { value: "4.1K", label: "views in 30 days" },
-      { value: "3.2K", label: "views on one reel" },
-    ],
-    shots: [
-      { src: "/images/instagram/ugc-account-profile.jpg", alt: "Instagram profile of @mysbahdoingugc__, the UGC account" },
-      { src: "/images/instagram/ugc-account-reel.jpg", alt: "Reel insights from the UGC account showing 3,285 views" },
-    ],
-  },
+  { handle: "@mysbah_butt", href: profileLinks.instagramMain, tag: "Main account · 3 reels past 1M views" },
+  { handle: "@mysbahdoingugc__", href: profileLinks.instagram, tag: "UGC account · skincare and beauty" },
 ];
 
 const sameAs = socialLinks.map((link) => link.href);
@@ -670,66 +654,46 @@ export default function Home() {
           <section id="instagram" className="bg-cream py-16 sm:py-20">
             <div className="container-shell">
               <SectionTitle script="two accounts, real audiences" title="Find me on Instagram" />
-              <div className="mx-auto mt-10 grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                {instagramAccounts.map((account, index) => (
-                  <article
-                    key={account.handle}
+              <dl className="mx-auto mt-10 grid max-w-4xl grid-cols-[repeat(2,minmax(0,1fr))] gap-3 sm:gap-4 md:grid-cols-[repeat(4,minmax(0,1fr))]">
+                {instagramStats.map((stat, index) => (
+                  <div
+                    key={stat.label}
                     data-pop
-                    style={{ "--pop-delay": `${index * 100}ms` } as CSSProperties}
-                    className="rounded-3xl border-4 border-strawberry-milk bg-white p-5 shadow-soft sm:p-6"
+                    style={{ "--pop-delay": `${index * 80}ms` } as CSSProperties}
+                    className="rounded-3xl border-4 border-strawberry-milk bg-white px-3 py-6 text-center shadow-soft"
                   >
-                    <div className="flex items-center gap-3">
-                      <SocialLogo logo="instagram" className="size-11 shrink-0" />
-                      <div className="min-w-0">
-                        <h3 className="truncate text-[0.95rem] font-extrabold text-cocoa sm:text-lg">
-                          {account.handle}
-                        </h3>
-                        <p className="text-sm text-cocoa/65">{account.tag}</p>
-                      </div>
-                      <a
-                        href={account.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`Follow ${account.handle} on Instagram`}
-                        className="focus-ring ml-auto shrink-0 rounded-full bg-strawberry px-4 py-2 text-xs font-bold text-white transition hover:bg-berry"
-                      >
-                        Follow
-                      </a>
-                    </div>
-                    <dl className="mt-5 grid grid-cols-[repeat(3,minmax(0,1fr))] gap-2 text-center">
-                      {account.stats.map((stat) => (
-                        <div key={stat.label} className="rounded-2xl bg-strawberry-milk px-2 py-3">
-                          <dt className="sr-only">{stat.label}</dt>
-                          <dd className="font-display text-2xl text-berry sm:text-3xl">
-                            {stat.value}
-                          </dd>
-                          <dd className="text-[0.7rem] font-bold uppercase leading-tight tracking-wide text-matcha-deep">
-                            {stat.label}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                    <div className="mt-5 grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3">
-                      {account.shots.map((shot) => (
-                        <a
-                          key={shot.src}
-                          href={account.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="focus-ring block overflow-hidden rounded-2xl border-4 border-cocoa bg-cocoa transition hover:-translate-y-1"
-                        >
-                          <Image
-                            src={shot.src}
-                            alt={shot.alt}
-                            width={720}
-                            height={700}
-                            sizes="(max-width: 768px) 45vw, 240px"
-                            className="h-auto w-full"
-                          />
-                        </a>
-                      ))}
-                    </div>
-                  </article>
+                    <dt className="sr-only">{stat.label}</dt>
+                    <dd className="font-display text-4xl text-berry sm:text-5xl">{stat.value}</dd>
+                    <dd className="mt-1 text-xs font-bold uppercase tracking-wide text-matcha-deep sm:text-sm">
+                      {stat.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 text-center text-xs text-cocoa/60">
+                Combined across both accounts
+              </p>
+              <div className="mx-auto mt-8 grid max-w-3xl grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                {instagramAccounts.map((account) => (
+                  <a
+                    key={account.handle}
+                    href={account.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Follow ${account.handle} on Instagram`}
+                    className="focus-ring group flex items-center gap-3 rounded-full border-2 border-strawberry-milk bg-white py-2 pl-2 pr-3 transition hover:-translate-y-1 hover:border-strawberry"
+                  >
+                    <SocialLogo logo="instagram" className="size-10 shrink-0" />
+                    <span className="min-w-0">
+                      <span className="block truncate text-[0.95rem] font-extrabold text-cocoa">
+                        {account.handle}
+                      </span>
+                      <span className="block truncate text-xs text-cocoa/65">{account.tag}</span>
+                    </span>
+                    <span className="ml-auto shrink-0 rounded-full bg-strawberry px-3 py-1.5 text-xs font-bold text-white transition group-hover:bg-berry">
+                      Follow
+                    </span>
+                  </a>
                 ))}
               </div>
             </div>

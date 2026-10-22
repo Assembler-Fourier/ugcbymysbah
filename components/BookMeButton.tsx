@@ -242,7 +242,8 @@ export function BookMeButton({ children, className }: BookMeButtonProps) {
               <textarea
                 {...fieldProps("details")}
                 rows={4}
-                maxLength={1200}
+                // Keeps the email link short enough for every mail app.
+                maxLength={800}
                 placeholder="Your product, who it's for, the style you like, where the videos will run, usage rights, and anything else I should know."
                 className={`${inputClass} resize-y`}
                 onChange={(e) => update("details", e.target.value)}
