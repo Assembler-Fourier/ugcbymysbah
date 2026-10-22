@@ -150,7 +150,7 @@ const socialLinks: Array<{
 
 // Combined Instagram numbers for both accounts (Oct 2026, from Mysbah):
 // followers 69.2K + 326; views 154,352,627 across 320 reels on @mysbah_butt
-// + 18,273 on @mysbahdoingugc__ = 154,370,900. 33 reels past 1M, 104 past 100K.
+// + 18,273 on @mysbahdoingugc__ = 154,370,900. 33 reels past 1M.
 // Engagement = (likes + comments) / views on the top public reels.
 const instagramStats = [
   { value: "69.5K", label: "followers" },
@@ -159,16 +159,9 @@ const instagramStats = [
   { value: "6.7%", label: "engagement rate" },
 ];
 
-const instagramHighlights = [
-  { value: "19.5M", label: "views on my top reel" },
-  { value: "11.7M", label: "on my second" },
-  { value: "104", label: "reels past 100K" },
-  { value: "320", label: "reels posted" },
-];
-
 const instagramAccounts = [
-  { handle: "@mysbah_butt", href: profileLinks.instagramMain, tag: "Verified · 33 reels past 1M views" },
-  { handle: "@mysbahdoingugc__", href: profileLinks.instagram, tag: "UGC account · 18.3K views" },
+  { handle: "@mysbah_butt", href: profileLinks.instagramMain },
+  { handle: "@mysbahdoingugc__", href: profileLinks.instagram },
 ];
 
 const sameAs = socialLinks.map((link) => link.href);
@@ -681,17 +674,6 @@ export default function Home() {
               <p className="mt-3 text-center text-xs text-cocoa/60">
                 Combined across both accounts
               </p>
-              <ul className="mx-auto mt-5 flex max-w-4xl flex-wrap justify-center gap-2">
-                {instagramHighlights.map((item) => (
-                  <li
-                    key={item.label}
-                    className="rounded-full bg-strawberry-milk px-4 py-2 text-sm text-cocoa"
-                  >
-                    <span className="font-extrabold text-berry">{item.value}</span>{" "}
-                    {item.label}
-                  </li>
-                ))}
-              </ul>
               <div className="mx-auto mt-8 grid max-w-3xl grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                 {instagramAccounts.map((account) => (
                   <a
@@ -703,11 +685,8 @@ export default function Home() {
                     className="focus-ring group flex items-center gap-3 rounded-full border-2 border-strawberry-milk bg-white py-2 pl-2 pr-3 transition hover:-translate-y-1 hover:border-strawberry"
                   >
                     <SocialLogo logo="instagram" className="size-10 shrink-0" />
-                    <span className="min-w-0">
-                      <span className="block truncate text-[0.95rem] font-extrabold text-cocoa">
-                        {account.handle}
-                      </span>
-                      <span className="block truncate text-xs text-cocoa/65">{account.tag}</span>
+                    <span className="min-w-0 truncate text-[0.95rem] font-extrabold text-cocoa">
+                      {account.handle}
                     </span>
                     <span className="ml-auto shrink-0 rounded-full bg-strawberry px-3 py-1.5 text-xs font-bold text-white transition group-hover:bg-berry">
                       Follow
