@@ -287,6 +287,27 @@ summary {
   }
 }
 
+/* ---------- Typing heading ---------- */
+
+.typing-cursor {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.85em;
+  margin-left: 0.08em;
+  /* Cancels its own width so the cursor never pushes text onto a new line */
+  margin-right: -0.14em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  transition: opacity 0.3s ease;
+  animation: cursor-blink 0.9s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    background: transparent;
+  }
+}
+
 /* ---------- Services ---------- */
 
 .service-pill {

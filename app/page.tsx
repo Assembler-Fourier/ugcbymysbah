@@ -14,6 +14,7 @@ import {
 import { BookMeButton } from "@/components/BookMeButton";
 import { PopInObserver } from "@/components/PopInObserver";
 import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
+import { TypingTitle } from "@/components/TypingTitle";
 import {
   TestimonialRotator,
   type Testimonial,
@@ -120,7 +121,7 @@ const strengths = [
 const proofStats = [
   { value: "4 yrs", label: "skincare and beauty" },
   { value: "50+", label: "creative ads" },
-  { value: "★★★★★", label: "4.9 on Upwork" },
+  { value: "4.9", label: "4.9 on Upwork", stars: true },
   { value: "100%", label: "job success" },
 ];
 
@@ -293,11 +294,17 @@ function SectionTitle({
   script,
   title,
   light = false,
+  typing = false,
 }: {
   script: string;
   title: string;
   light?: boolean;
+  typing?: boolean;
 }) {
+  const titleClass = `font-display text-5xl leading-tight sm:text-6xl ${
+    light ? "text-cream" : "text-berry"
+  }`;
+
   return (
     <div data-pop className="text-center">
       <p
@@ -307,13 +314,11 @@ function SectionTitle({
       >
         {script}
       </p>
-      <h2
-        className={`font-display text-5xl leading-tight sm:text-6xl ${
-          light ? "text-cream" : "text-berry"
-        }`}
-      >
-        {title}
-      </h2>
+      {typing ? (
+        <TypingTitle text={title} className={titleClass} />
+      ) : (
+        <h2 className={titleClass}>{title}</h2>
+      )}
     </div>
   );
 }
@@ -659,34 +664,38 @@ export default function Home() {
 
           <section className="bg-strawberry-milk py-16 sm:py-20">
             <div className="container-shell">
-              <SectionTitle script="the numbers" title="Proof it works" />
-              <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
+              <SectionTitle script="the numbers" title="Proof it works" typing />
+              <div className="mx-auto mt-10 grid max-w-4xl grid-cols-[repeat(2,minmax(0,1fr))] gap-4 md:grid-cols-[repeat(4,minmax(0,1fr))]">
                 {proofStats.map((stat, index) => (
                   <div
                     key={stat.label}
                     data-pop
                     style={{ "--pop-delay": `${index * 80}ms` } as CSSProperties}
-                    className="rounded-3xl border-4 border-cream bg-white p-6 text-center shadow-soft"
+                    className="rounded-3xl border-4 border-cream bg-white px-3 py-6 text-center shadow-soft sm:px-6"
                   >
-                    <p className="font-display text-4xl text-berry sm:text-5xl">
-                      {stat.value}
-                    </p>
+                    {stat.stars ? (
+                      <p
+                        className="flex h-10 items-center justify-center gap-0.5 text-berry sm:h-12 sm:gap-1"
+                        aria-label="5 stars"
+                      >
+                        {[0, 1, 2, 3, 4].map((star) => (
+                          <Star
+                            key={star}
+                            aria-hidden="true"
+                            className="size-5 fill-current sm:size-7"
+                          />
+                        ))}
+                      </p>
+                    ) : (
+                      <p className="font-display text-4xl text-berry sm:text-5xl">
+                        {stat.value}
+                      </p>
+                    )}
                     <p className="mt-1 text-sm font-bold uppercase tracking-wide text-matcha-deep">
                       {stat.label}
                     </p>
                   </div>
                 ))}
-              </div>
-              <div className="mt-8 text-center">
-                <a
-                  href={profileLinks.upwork}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-full bg-cocoa px-5 text-sm font-bold text-cream transition hover:-translate-y-1 hover:bg-berry"
-                >
-                  <BadgeCheck aria-hidden="true" size={17} />
-                  See my Upwork reviews
-                </a>
               </div>
             </div>
           </section>
