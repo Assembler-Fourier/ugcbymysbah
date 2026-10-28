@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Dancing_Script, DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { regionKeywords } from "@/data/seo";
+import { regionKeywords, roleKeywords } from "@/data/seo";
 import { serviceKeywords } from "@/data/services";
 import "./globals.css";
 
@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     "female UGC creator",
     "South Asian UGC creator",
     "hire UGC creator",
+    ...roleKeywords,
     ...regionKeywords,
     ...serviceKeywords,
   ],

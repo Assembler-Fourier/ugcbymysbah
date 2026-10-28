@@ -3,9 +3,13 @@ import type { CSSProperties } from "react";
 import {
   ArrowRight,
   BadgeCheck,
+  CalendarDays,
   Clapperboard,
+  ClipboardList,
   Heart,
+  Lightbulb,
   Mail,
+  Megaphone,
   Sparkles,
   Star,
   Target,
@@ -13,6 +17,7 @@ import {
 } from "lucide-react";
 import { BookMeButton } from "@/components/BookMeButton";
 import { PopInObserver } from "@/components/PopInObserver";
+import { RotatingRoles } from "@/components/RotatingRoles";
 import { SocialLogo, type SocialLogoName } from "@/components/SocialLogo";
 import { TypingTitle } from "@/components/TypingTitle";
 import {
@@ -111,6 +116,35 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+const heroRoles = ["Content Strategist", "UGC Creator", "Social Media Manager"];
+
+const whatIDo = [
+  {
+    icon: Lightbulb,
+    title: "Content Strategy",
+    text: "Content pillars, creator briefs and one consistent brand voice across every platform.",
+    proof: "154M+ views on my content",
+  },
+  {
+    icon: ClipboardList,
+    title: "Marketing Coordinator",
+    text: "I keep campaigns on track: timelines, briefs, creators and launches, coordinated in one place.",
+    proof: "4 years in marketing",
+  },
+  {
+    icon: CalendarDays,
+    title: "Social Media Management",
+    text: "Content calendars, posting, community and monthly reports, handled end to end.",
+    proof: "69.5K followers grown",
+  },
+  {
+    icon: Megaphone,
+    title: "PR & Brand Communications",
+    text: "Clear brand stories and press-ready messaging, backed by a Master's in Mass Communication.",
+    proof: "Master's in Mass Comm",
+  },
+];
+
 const strengths = [
   { icon: Zap, text: "Hooks that stop the scroll in 3 seconds" },
   { icon: Heart, text: "Natural, friend-to-friend delivery" },
@@ -186,9 +220,12 @@ const structuredData = {
       },
       email: contactEmail,
       jobTitle: [
+        "Content Strategist",
         "UGC Content Creator",
+        "Social Media Manager",
+        "Marketing Coordinator",
+        "PR and Brand Communications",
         "Short-Form Video Creator",
-        "TikTok and Reels Ad Creator",
       ],
       description:
         "UGC creator with 4 years of experience in skincare and beauty, making affordable product, ASMR, and review videos for brands in the US, UK, Ireland, Europe, Canada, Malaysia and Indonesia.",
@@ -394,24 +431,14 @@ export default function Home() {
 
             <div className="container-shell grid gap-10 py-12 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-20">
               <div className="hero-pop">
-                <p className="inline-flex items-center gap-2 rounded-full bg-cream px-4 py-2 text-xs font-bold uppercase tracking-wide shadow-sm">
-                  <span className="size-2 rounded-full bg-matcha shadow-[0_0_0_4px_rgba(94,125,58,0.25)]" />
-                  <span className="sm:hidden">Available for UGC work worldwide</span>
-                  <span className="hidden sm:inline">
-                    Available for UGC and content creation worldwide
-                  </span>
-                </p>
-
-                <h1 className="mt-6">
+                <h1>
                   <span className="block font-display text-[5.2rem] italic leading-[0.95] text-berry sm:text-[7rem] lg:text-[8rem]">
                     Mysbah
                   </span>
-                  <span className="mt-4 block text-[1.7rem] font-extrabold uppercase leading-tight tracking-tight text-cocoa sm:text-4xl">
-                    <span className="block">
-                      UGC Creator <span className="text-strawberry">/</span>
-                    </span>
-                    <span className="block">Content Creator</span>
-                  </span>
+                  <RotatingRoles
+                    roles={heroRoles}
+                    className="mt-4 whitespace-nowrap text-[1.55rem] font-extrabold uppercase leading-tight tracking-tight text-cocoa sm:text-4xl"
+                  />
                 </h1>
 
                 <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-matcha px-4 py-1.5 text-sm font-bold text-white">
@@ -420,8 +447,8 @@ export default function Home() {
                 </p>
 
                 <p className="mt-4 max-w-md text-lg font-medium leading-8 text-cocoa/80">
-                  Skincare and beauty videos that feel like a friend&apos;s
-                  recommendation.
+                  Skincare and beauty content that feels like a friend&apos;s
+                  recommendation, with the marketing strategy to make it perform.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -562,6 +589,46 @@ export default function Home() {
               </div>
               <div className="mt-14">
                 <CategoryPortfolio />
+              </div>
+            </div>
+          </section>
+
+          <section id="what-i-do" className="bg-cream py-16 sm:py-20">
+            <div className="container-shell">
+              <SectionTitle script="beyond the camera" title="What I can do for you" />
+              <div className="mx-auto mt-10 grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-[repeat(2,minmax(0,1fr))] lg:grid-cols-[repeat(4,minmax(0,1fr))]">
+                {whatIDo.map((item, index) => (
+                  <article
+                    key={item.title}
+                    data-pop
+                    style={{ "--pop-delay": `${index * 80}ms` } as CSSProperties}
+                    className="flex flex-col rounded-3xl border-4 border-strawberry-milk bg-white p-6 shadow-soft"
+                  >
+                    <span className="grid size-11 place-items-center rounded-full bg-strawberry text-white">
+                      <item.icon aria-hidden="true" size={21} />
+                    </span>
+                    <h3 className="mt-4 text-lg font-extrabold leading-snug text-cocoa">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-cocoa/75">{item.text}</p>
+                    <p className="mt-auto pt-4">
+                      <span className="inline-block rounded-full bg-matcha-latte px-3 py-1 text-xs font-bold text-matcha-deep">
+                        {item.proof}
+                      </span>
+                    </p>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <a
+                  href={profileLinks.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-strawberry-milk bg-white px-5 text-sm font-bold text-cocoa transition hover:-translate-y-1 hover:border-strawberry"
+                >
+                  <SocialLogo logo="linkedin" className="size-5" />
+                  Connect on LinkedIn
+                </a>
               </div>
             </div>
           </section>

@@ -22,6 +22,17 @@ export const areaServed = [
   { "@type": "Continent", name: "Europe" },
 ];
 
+// Marketing roles Mysbah is also hired for (matches the "What I can do for you" section).
+export const roleKeywords = [
+  "content strategist",
+  "social media manager",
+  "marketing coordinator",
+  "PR and brand communications",
+  "content strategist and UGC creator",
+  "remote social media manager",
+  "beauty and skincare social media manager",
+];
+
 export const regionKeywords = [
   "UGC creator USA",
   "UGC creator UK",
