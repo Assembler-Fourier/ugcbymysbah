@@ -6,6 +6,7 @@ import {
   CalendarDays,
   Clapperboard,
   ClipboardList,
+  FileDown,
   Heart,
   Lightbulb,
   Mail,
@@ -118,6 +119,9 @@ const testimonials: Testimonial[] = [
 
 const heroRoles = ["Content Strategist", "UGC Creator", "Social Media Manager"];
 
+// Public copy of the CV without the phone number (source kept in materials/05 text and info).
+const cvFile = "/Misbah-Ahmad-CV.pdf";
+
 const whatIDo = [
   {
     icon: Lightbulb,
@@ -140,8 +144,8 @@ const whatIDo = [
   {
     icon: Megaphone,
     title: "PR & Brand Communications",
-    text: "Clear brand stories and press-ready messaging, backed by a Master's in Mass Communication.",
-    proof: "Master's in Mass Comm",
+    text: "Clear brand stories and press-ready messaging, from product launches to clinic PR.",
+    proof: "Clinic PR at AccuFix",
   },
 ];
 
@@ -463,6 +467,14 @@ export default function Home() {
                     <Sparkles aria-hidden="true" size={17} />
                     Book me
                   </BookMeButton>
+                  <a
+                    href={cvFile}
+                    download
+                    className="focus-ring inline-flex min-h-12 items-center gap-2 rounded-full bg-cocoa px-6 text-sm font-bold text-cream transition hover:-translate-y-1 hover:bg-berry"
+                  >
+                    <FileDown aria-hidden="true" size={17} />
+                    Download CV
+                  </a>
                 </div>
 
                 <div className="mt-7 flex flex-wrap gap-1.5 sm:gap-2">
@@ -619,7 +631,7 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-              <div className="mt-8 text-center">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a
                   href={profileLinks.linkedin}
                   target="_blank"
@@ -628,6 +640,14 @@ export default function Home() {
                 >
                   <SocialLogo logo="linkedin" className="size-5" />
                   Connect on LinkedIn
+                </a>
+                <a
+                  href={cvFile}
+                  download
+                  className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-full bg-cocoa px-5 text-sm font-bold text-cream transition hover:-translate-y-1 hover:bg-berry"
+                >
+                  <FileDown aria-hidden="true" size={17} />
+                  Download my CV
                 </a>
               </div>
             </div>
